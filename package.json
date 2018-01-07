@@ -1,0 +1,9 @@
+{
+  "name": "sheets.ch",
+  "version": "0.0.1",
+  "description": "Personal Blog",
+  "main": "index.js",
+  "repository": "https://github.com/cjsheets/sheets.ch",
+  "author": "Chad Sheets",
+  "license": "MIT"
+}
