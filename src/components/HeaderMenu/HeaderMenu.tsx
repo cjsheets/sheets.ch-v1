@@ -11,7 +11,7 @@ interface IHeaderMenuProps extends IMenuProps {
 export const HeaderMenu = ({ items, pathname, Link }: IHeaderMenuProps) =>
   <Container>
     <Menu size="large" pointing secondary>
-      <Menu.Item className="mobile hidden"><Icon name="spy" size="big" /></Menu.Item>
+      Chad Sheets
       {items.map((item: any) => {
         const active = (item.exact) ? pathname === item.path : startsWith(pathname, item.path);
 
