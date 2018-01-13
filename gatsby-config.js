@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `ChadSheets Homepage`
+    title: `My website`
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': `AuthorJson`

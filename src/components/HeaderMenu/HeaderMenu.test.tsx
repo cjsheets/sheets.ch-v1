@@ -14,6 +14,7 @@ const items = [
 ];
 
 const LinkStub = (props: any) => <div {...props} />;
+const dispatchStub = (a: any) => a;
 
 describe('HeaderMenu component', () => {
   it('should nothing active', () => {
@@ -22,6 +23,7 @@ describe('HeaderMenu component', () => {
         Link={LinkStub}
         items={items}
         pathname="/plop"
+        dispatch={dispatchStub}
       />
     );
     expect(wrapper.find({ active: true }).length).toBe(0);
@@ -33,7 +35,7 @@ describe('HeaderMenu component', () => {
         Link={LinkStub}
         items={items}
         pathname="/about/"
-      />
+        dispatch={dispatchStub} />
     );
     expect(wrapper.find({ name: 'About' }).prop('active')).toBeTruthy();
   });
@@ -44,10 +46,23 @@ describe('HeaderMenu component', () => {
         Link={LinkStub}
         items={items}
         pathname="/blog/toto"
+        dispatch={dispatchStub}
       />
     );
-    console.log(wrapper.debug());
     expect(wrapper.find({ name: 'Blog' }).prop('active')).toBeTruthy();
+  });
+
+  it('should have inverted style', () => {
+    const wrapper = shallow(
+      <HeaderMenu
+        Link={LinkStub}
+        items={items}
+        pathname="/blog/toto"
+        dispatch={dispatchStub}
+        inverted
+      />
+    );
+    expect(wrapper.find({ inverted: true }).length).toBe(1);
   });
 
   it('should dispatch the correct message on burger click', () => {
@@ -57,7 +72,7 @@ describe('HeaderMenu component', () => {
         Link={LinkStub}
         items={items}
         pathname=""
-      />
+        dispatch={dispatchMock} />
     );
     wrapper.find('.mobile .only').simulate('click');
     expect(dispatchMock.mock.calls.length).toBe(1);

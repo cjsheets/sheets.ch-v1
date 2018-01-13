@@ -20,6 +20,7 @@ interface IHtmlProps {
   headComponents: any;
 }
 
+// Use `module.exports` to be compliante with `webpack-require` import method
 module.exports = (props: IHtmlProps) => {
   const head = Helmet.rewind();
 
@@ -34,7 +35,7 @@ module.exports = (props: IHtmlProps) => {
     <html lang="en">
       <head>
         {props.headComponents}
-        <title>ChadSheets.com</title>
+        <title>My website</title>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta
