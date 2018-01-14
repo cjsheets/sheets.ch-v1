@@ -16,13 +16,17 @@ export const SidebarMenu = ({ items, pathname, Link, visible }: ISidebarMenuProp
   const isActive = (item: IMenuItem) => (item.exact) ? pathname === item.path : pathname.startsWith(item.path);
   const activeItem = items.find((item: IMenuItem) => isActive(item)) || {} as IMenuItem;
   return (
-    <Sidebar as={Menu} animation="slide along" width="thin"
+    <Sidebar as={Menu} animation="overlay" width="thin"
       visible={visible} icon="labeled" vertical inverted={activeItem.inverted}>
       {items.map((item) => {
         const active = isActive(item);
         return (
-          <Menu.Item as={Link} to={item.path} active={active} key={item.path}>
-            <Icon name={item.icon} />
+          <Menu.Item
+            as={Link}
+            to={item.path}
+            active={active}
+            key={item.path}
+          >
             {item.name}
           </Menu.Item>
         );
