@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Header, Icon } from 'semantic-ui-react';
+import { Grid, Header, Icon } from 'semantic-ui-react-cjs';
 
 export default () =>
   <Grid centered verticalAlign="middle"

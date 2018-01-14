@@ -2,7 +2,7 @@ import { GatsbyLinkProps } from 'gatsby-link';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { Icon, Menu, Sidebar } from 'semantic-ui-react';
+import { Icon, Menu, Sidebar } from 'semantic-ui-react-cjs';
 import { IStoreState } from '../../store';
 import { IMenuItem, IMenuProps } from '../Menu';
 

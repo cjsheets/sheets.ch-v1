@@ -1,6 +1,6 @@
 import Link from 'gatsby-link';
 import * as React from 'react';
-import { Button, Card, Comment, Container, Grid, Header, Icon, Image, Item, Label, Segment } from 'semantic-ui-react';
+import { Button, Card, Comment, Container, Grid, Header, Icon, Image, Item, Label, Segment } from 'semantic-ui-react-cjs';
 import BlogTitle from '../components/BlogTitle';
 import { ImageSharp, MarkdownRemark, MarkdownRemarkConnection } from '../graphql-types';
 
@@ -21,7 +21,7 @@ export default (props: IBlogPostProps) => {
   const recents = props.data.recents.edges
     .map(({ node }) => {
       const recentAvatar = node.frontmatter.author.avatar.children[0] as ImageSharp;
-      const recentCover = node.frontmatter.image.children[0] as ImageSharp;
+      const _recentCover = node.frontmatter.image.children[0] as ImageSharp;
       const extra = (
         <Comment.Group>
           <Comment>
@@ -46,8 +46,8 @@ export default (props: IBlogPostProps) => {
           <Card as={Link}
             to={node.fields.slug}
             image={{
-              src: recentCover.responsiveResolution.src,
-              srcSet: recentCover.responsiveResolution.srcSet
+              src: _recentCover.responsiveResolution.src,
+              srcSet: _recentCover.responsiveResolution.srcSet
             }}
             header={node.frontmatter.title}
             extra={extra}

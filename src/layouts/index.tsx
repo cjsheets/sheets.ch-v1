@@ -1,7 +1,7 @@
 import Link from 'gatsby-link';
 import 'prismjs/themes/prism-okaidia.css';
 import * as React from 'react';
-import { Button, Container, Icon, Segment, Sidebar } from 'semantic-ui-react';
+import { Button, Container, Icon, Segment, Sidebar } from 'semantic-ui-react-cjs';
 import HeaderMenu from '../components/HeaderMenu/HeaderMenu';
 import SidebarMenu from '../components/SidebarMenu/SidebarMenu';
 import '../css/responsive.css';
