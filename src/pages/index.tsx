@@ -1,20 +1,29 @@
 import Link from 'gatsby-link';
 import * as React from 'react';
-import { Button, Container, Grid, Header, Icon, Segment } from 'semantic-ui-react';
-
+import {
+  Button,
+  Container,
+  Grid,
+  Header,
+  Icon,
+  Segment
+} from 'semantic-ui-react';
 import HeaderMenu from '../components/HeaderMenu/HeaderMenu';
 import { menuItems } from '../layouts';
 
-interface IndexPageProps {
+interface IIndexPageProps {
   location: {
     pathname: string;
   };
 }
 
-export default (props: IndexPageProps) =>
+export default (props: IIndexPageProps) =>
   <div>
     {/* Master head */}
     <Segment vertical inverted textAlign="center" className="masthead">
+      <HeaderMenu
+        Link={Link} pathname={props.location.pathname} items={menuItems} inverted
+      />
       <Container text>
         <Header inverted as="h1">Gatsby 1.0 - Starter kit</Header>
         <Header inverted as="h2">Typescript - Jest - Semantic UI</Header>
