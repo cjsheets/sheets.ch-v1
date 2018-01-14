@@ -3,7 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { Icon, Menu, Sidebar } from 'semantic-ui-react-cjs';
-import { IStoreState } from '../../store';
+import { IStoreState, toggleSidebar } from '../../store';
 import { IMenuItem, IMenuProps } from '../Menu';
 
 interface ISidebarMenuProps extends IMenuProps {
@@ -12,11 +12,11 @@ interface ISidebarMenuProps extends IMenuProps {
   Link: React.ComponentClass<GatsbyLinkProps>;
 }
 
-export const SidebarMenu = ({ items, pathname, Link, visible }: ISidebarMenuProps) => {
+export const SidebarMenu = ({ items, pathname, Link, visible, dispatch }: ISidebarMenuProps) => {
   const isActive = (item: IMenuItem) => (item.exact) ? pathname === item.path : pathname.startsWith(item.path);
   const activeItem = items.find((item: IMenuItem) => isActive(item)) || {} as IMenuItem;
   return (
-    <Sidebar as={Menu} animation="overlay" width="thin"
+    <Sidebar as={Menu} animation="overlay" width="thin" onSidebarBlur={() => dispatch(toggleSidebar())}
       visible={visible} icon="labeled" vertical inverted={activeItem.inverted}>
       {items.map((item) => {
         const active = isActive(item);
@@ -26,6 +26,7 @@ export const SidebarMenu = ({ items, pathname, Link, visible }: ISidebarMenuProp
             to={item.path}
             active={active}
             key={item.path}
+            onClick={() => dispatch(toggleSidebar())}
           >
             {item.name}
           </Menu.Item>
