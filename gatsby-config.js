@@ -44,6 +44,9 @@ module.exports = {
     // Add typescript stack into webpack
     `gatsby-plugin-typescript`,
 
+    // Setup SASS for CSS modules
+    `gatsby-plugin-typescript-css-modules`,
+
     // This plugin takes your configuration and generates a
     // web manifest file so your website can be added to your
     // homescreen on Android.
@@ -51,11 +54,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby website`,
-        short_name: `Gatsby website`,
+        name: `Chad Sheets Homepage`,
+        short_name: `Chads Home`,
         start_url: `/`,
         background_color: `#f7f7f7`,
-        theme_color: `#191919`,
+        theme_color: `#0e82d0`,
         display: `minimal-ui`
       }
     },

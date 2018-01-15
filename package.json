@@ -42,6 +42,7 @@
     "gatsby-plugin-offline": "latest",
     "gatsby-plugin-sharp": "latest",
     "gatsby-plugin-typescript": "latest",
+    "gatsby-plugin-typescript-css-modules": "^1.0.4",
     "gatsby-remark-autolink-headers": "latest",
     "gatsby-remark-copy-linked-files": "latest",
     "gatsby-remark-images": "latest",
@@ -164,6 +165,9 @@
     ]
   },
   "stylelint": {
-    "extends": "stylelint-config-standard"
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "color-hex-length": "long"
+    }
   }
 }

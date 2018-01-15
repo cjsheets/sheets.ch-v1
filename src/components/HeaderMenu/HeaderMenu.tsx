@@ -13,7 +13,7 @@ interface IHeaderMenuProps extends IMenuProps {
 export const HeaderMenu = ({ items, pathname, Link, inverted, dispatch }: IHeaderMenuProps) =>
   <Container>
     <Menu size="large" pointing secondary inverted={inverted}>
-      <Menu.Item>Chad Sheets</Menu.Item>
+      <Menu.Item as={Link} style={{fontWeight: 700, fontSize: '1.75rem'}}>Chad Sheets</Menu.Item>
       {items.map((item) => {
         const active = (item.exact) ? pathname === item.path : pathname.startsWith(item.path);
         return <Menu.Item
