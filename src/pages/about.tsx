@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Container, Header, Icon, Segment } from 'semantic-ui-react-cjs';
 
-export default () => {
+export const AboutPage = () => {
   return (
     <Container>
       <Segment vertical>
@@ -27,3 +27,5 @@ export default () => {
     </Container>
   );
 };
+
+export default AboutPage;

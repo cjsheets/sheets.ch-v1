@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import { select, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { markdownRemarkGroupConnectionConnection } from '../../graphql-types';
+import { markdownRemarkGroupConnectionConnection } from '../../types/graphql-types';
 import TagsCard from './TagsCard';
 
 const tags = [

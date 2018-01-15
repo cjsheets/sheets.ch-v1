@@ -41,8 +41,8 @@ module.exports = plop => {
       return [
         {
           type: 'add',
-          path: '../data/blog/{{createdDate}}--{{dashCase title}}/index.md',
-          templateFile: 'templates/blog-post-md.template'
+          path: '../data/post/{{createdDate}}--{{dashCase title}}/index.md',
+          templateFile: 'templates/post-md.template'
         }
       ];
     }

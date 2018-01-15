@@ -1,12 +1,13 @@
 import Link from 'gatsby-link';
 import * as React from 'react';
 import { Card, Comment, Container, Feed, Grid, Header, List, Segment } from 'semantic-ui-react-cjs';
-import BlogPagination from '../components/BlogPagination/BlogPagination';
-import BlogTitle from '../components/BlogTitle';
-import TagsCard from '../components/TagsCard/TagsCard';
-import { ImageSharp, MarkdownRemarkConnection } from '../graphql-types';
 
-interface IBlogProps {
+import PostHeader from '../components/post-header';
+import PostPagination from '../components/post-pagination/post-pagination';
+import TagsCard from '../components/tags-card/tags-card';
+import { ImageSharp, MarkdownRemarkConnection } from '../types/graphql-types';
+
+interface IPostProps {
   data: {
     tags: MarkdownRemarkConnection;
     posts: MarkdownRemarkConnection;
@@ -19,7 +20,7 @@ interface IBlogProps {
   };
 }
 
-export default (props: IBlogProps) => {
+export const Post = (props: IPostProps) => {
   const tags = props.data.tags.group;
   const posts = props.data.posts.edges;
   const { pathname } = props.location;
@@ -79,7 +80,7 @@ export default (props: IBlogProps) => {
   return (
     <Container>
       {/* Title */}
-      <BlogTitle />
+      <PostHeader />
 
       {/* Content */}
       <Segment vertical>
@@ -87,7 +88,7 @@ export default (props: IBlogProps) => {
           <div style={{ maxWidth: 600 }}>
             {Posts}
             <Segment vertical textAlign="center">
-              <BlogPagination Link={Link} pathname={pathname} pageCount={pageCount} />
+              <PostPagination Link={Link} pathname={pathname} pageCount={pageCount} />
             </Segment>
           </div>
           <div>

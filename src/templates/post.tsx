@@ -1,17 +1,18 @@
 import Link from 'gatsby-link';
 import * as React from 'react';
 import { Button, Card, Comment, Container, Grid, Header, Icon, Image, Item, Label, Segment } from 'semantic-ui-react-cjs';
-import BlogTitle from '../components/BlogTitle';
-import { ImageSharp, MarkdownRemark, MarkdownRemarkConnection } from '../graphql-types';
 
-interface IBlogPostProps {
+import PostHeader from '../components/post-header';
+import { ImageSharp, MarkdownRemark, MarkdownRemarkConnection } from '../types/graphql-types';
+
+interface IPostProps {
   data: {
     post: MarkdownRemark;
     recents: MarkdownRemarkConnection;
   };
 }
 
-export default (props: IBlogPostProps) => {
+export default (props: IPostProps) => {
   const { frontmatter, html, timeToRead } = props.data.post;
   const avatar = frontmatter.author.avatar.children[0] as ImageSharp;
 
@@ -59,7 +60,7 @@ export default (props: IBlogPostProps) => {
   const recentCover = frontmatter.image.children[0] as ImageSharp;
   return (
     <Container>
-      <BlogTitle />
+      <PostHeader />
       <Segment vertical style={{ border: 'none' }}>
         <Item.Group>
           <Item>
@@ -100,7 +101,7 @@ export default (props: IBlogPostProps) => {
 };
 
 export const pageQuery = graphql`
-  query TemplateBlogPost($slug: String!) {
+  query TemplatePost($slug: String!) {
   post: markdownRemark(fields: {slug: {eq: $slug}}) {
     html
     excerpt

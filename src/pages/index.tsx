@@ -8,7 +8,7 @@ import {
   Icon,
   Segment
 } from 'semantic-ui-react-cjs';
-import HeaderMenu from '../components/HeaderMenu/HeaderMenu';
+
 import { menuItems } from '../layouts';
 
 interface IIndexPageProps {

@@ -3,13 +3,13 @@ import { times } from 'lodash';
 import * as React from 'react';
 import { Menu } from 'semantic-ui-react-cjs';
 
-interface IBlogPaginationProps extends React.HTMLProps<HTMLDivElement> {
+interface IPostPaginationProps extends React.HTMLProps<HTMLDivElement> {
   pathname: string;
   Link: React.ComponentClass<GatsbyLinkProps>;
   pageCount: number;
 }
 
-export default (props: IBlogPaginationProps) => {
+export const PostPagination = (props: IPostPaginationProps) => {
   if (props.pageCount === 1) { return null; }
   const activeItem = props.pathname.startsWith('/blog/page/')
     ? props.pathname.split('/')[3]
@@ -44,3 +44,5 @@ export default (props: IBlogPaginationProps) => {
     </Menu>
   );
 };
+
+export default PostPagination;
