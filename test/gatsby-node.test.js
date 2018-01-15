@@ -193,7 +193,7 @@ describe('gatsby-node', () => {
     it('should create slugs for MarkdownRemark file', () => {
       getNode.mockReturnValue(
         {
-          relativePath: 'blog/2017-04-18--welcoming/index.md'
+          relativePath: 'post/2017-04-18--welcoming/index.md'
         }
       );
       const node = {
@@ -210,7 +210,7 @@ describe('gatsby-node', () => {
     it('should do nothing on unknown type', () => {
       getNode.mockReturnValue(
         {
-          relativePath: 'blog/2017-04-18--welcoming/index.md'
+          relativePath: 'post/2017-04-18--welcoming/index.md'
         }
       );
       const node = {

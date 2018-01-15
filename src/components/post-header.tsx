@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Header, Icon, Segment } from 'semantic-ui-react-cjs';
 
-export default () => {
+export const PostHeader = () => {
   return (
     <Segment vertical>
       <Header as="h2">
@@ -16,3 +16,5 @@ export default () => {
     </Segment>
   );
 };
+
+export default PostHeader;

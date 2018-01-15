@@ -1,7 +1,8 @@
 import * as React from 'react';
-import Blog from '../pages/blog';
 
-export default Blog;
+import Post from '../pages/post';
+
+export default Post;
 
 export const pageQuery = graphql`
 query TemplateTagPage($tag: String) {
@@ -21,7 +22,7 @@ query TemplateTagPage($tag: String) {
         draft: { ne: true }
         tags: { in: [$tag] }
       },
-      fileAbsolutePath: { regex: "/blog/" }
+      fileAbsolutePath: { regex: "/post/" }
     }
   ) {
     totalCount

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Grid, Header, Icon } from 'semantic-ui-react-cjs';
 
-export default () =>
+export const ErrorPage404 = () =>
   <Grid centered verticalAlign="middle"
     style={{
       minHeight: '700px'
@@ -15,3 +15,5 @@ export default () =>
       </Grid.Row>
     </Grid.Column>
   </Grid>;
+
+export default ErrorPage404;

@@ -4,7 +4,7 @@ const {inputRequired} = require('./utils');
 const authors = JSON.parse(fs.readFileSync('./data/author.json'));
 
 module.exports = plop => {
-  plop.setGenerator('blog post', {
+  plop.setGenerator('post', {
     prompts: [
       {
         type: 'input',
@@ -41,8 +41,8 @@ module.exports = plop => {
       return [
         {
           type: 'add',
-          path: '../data/blog/{{createdDate}}--{{dashCase title}}/index.md',
-          templateFile: 'templates/blog-post-md.template'
+          path: '../data/post/{{createdDate}}--{{dashCase title}}/index.md',
+          templateFile: 'templates/post-md.template'
         }
       ];
     }

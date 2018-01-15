@@ -1,7 +1,7 @@
 import { GatsbyLinkProps } from 'gatsby-link';
 import * as React from 'react';
 import { Card, List } from 'semantic-ui-react-cjs';
-import { markdownRemarkGroupConnectionConnection } from '../../graphql-types';
+import { markdownRemarkGroupConnectionConnection } from '../../types/graphql-types';
 
 interface ITagsCardProps extends React.HTMLProps<HTMLDivElement> {
   tags: markdownRemarkGroupConnectionConnection[];
@@ -28,7 +28,7 @@ export default (props: ITagsCardProps) => {
               <List.Item as="a" key={tag.fieldValue}>
                 <List.Icon name="tag" color={isActive ? 'blue' : null} />
                 <List.Content style={isActive ? activeStyle : null}>
-                  <props.Link to={`/blog/tags/${tag.fieldValue}/`}>
+                  <props.Link to={`/post/tags/${tag.fieldValue}/`}>
                     {tag.fieldValue} ({tag.totalCount})
                   </props.Link>
                 </List.Content>

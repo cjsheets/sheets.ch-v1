@@ -1,7 +1,7 @@
 import { configure, shallow } from 'enzyme';
 import 'jest';
 import * as React from 'react';
-import { HeaderMenu } from './HeaderMenu';
+import SiteHeader from './site-header';
 
 // Configure enzyme with react 16 adapter
 const Adapter: any = require('enzyme-adapter-react-16');
