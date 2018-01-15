@@ -28,7 +28,7 @@ export default (props: ITagsCardProps) => {
               <List.Item as="a" key={tag.fieldValue}>
                 <List.Icon name="tag" color={isActive ? 'blue' : null} />
                 <List.Content style={isActive ? activeStyle : null}>
-                  <props.Link to={`/blog/tags/${tag.fieldValue}/`}>
+                  <props.Link to={`/post/tags/${tag.fieldValue}/`}>
                     {tag.fieldValue} ({tag.totalCount})
                   </props.Link>
                 </List.Content>

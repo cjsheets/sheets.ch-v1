@@ -4,7 +4,7 @@ const {inputRequired} = require('./utils');
 const authors = JSON.parse(fs.readFileSync('./data/author.json'));
 
 module.exports = plop => {
-  plop.setGenerator('blog post', {
+  plop.setGenerator('post', {
     prompts: [
       {
         type: 'input',

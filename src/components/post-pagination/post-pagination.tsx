@@ -11,7 +11,7 @@ interface IPostPaginationProps extends React.HTMLProps<HTMLDivElement> {
 
 export const PostPagination = (props: IPostPaginationProps) => {
   if (props.pageCount === 1) { return null; }
-  const activeItem = props.pathname.startsWith('/blog/page/')
+  const activeItem = props.pathname.startsWith('/post/page/')
     ? props.pathname.split('/')[3]
     : '1';
 
@@ -30,7 +30,7 @@ export const PostPagination = (props: IPostPaginationProps) => {
               key={pageIndex}
               style={{ cursor: 'pointer' }}
               as={props.Link}
-              to={`/blog/page/${pageIndex}/`}
+              to={`/post/page/${pageIndex}/`}
               name={pageIndex}
               active={activeItem === pageIndex}
             />

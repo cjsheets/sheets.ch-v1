@@ -9,9 +9,9 @@ import MobileSidebar from '../components/mobile-sidebar/mobile-sidebar';
 import SiteHeader from '../components/site-header/site-header';
 import { IStoreState, toggleSidebar } from '../store';
 
-import '../css/responsive.css';
-import '../css/semantic.min.css';
-import '../css/styles.css';
+import '../styles/responsive.css';
+import '../styles/semantic.min.css';
+import '../styles/styles.css';
 
 export const menuItems = [
   { name: 'Posts', path: '/post', exact: false },

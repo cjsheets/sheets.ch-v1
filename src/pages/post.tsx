@@ -100,8 +100,9 @@ export const Post = (props: IPostProps) => {
   );
 };
 
+export default Post;
 export const pageQuery = graphql`
-query PageBlog {
+query Page {
   # Get tags
   tags: allMarkdownRemark(filter: {frontmatter: {draft: {ne: true}}}) {
     group(field: frontmatter___tags) {
@@ -115,7 +116,7 @@ query PageBlog {
     sort: { order: DESC, fields: [frontmatter___updatedDate] },
     filter: {
       frontmatter: { draft: { ne: true } },
-      fileAbsolutePath: { regex: "/blog/" }
+      fileAbsolutePath: { regex: "/post/" }
     },
     limit: 10
   ) {

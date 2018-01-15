@@ -4,7 +4,7 @@ import Post from '../pages/post';
 export default Post;
 
 export const pageQuery = graphql`
-query TemplateBlogPage($skip: Int) {
+query TemplatePage($skip: Int) {
   # Get tags
   tags: allMarkdownRemark(filter: {frontmatter: {draft: {ne: true}}}) {
     group(field: frontmatter___tags) {
@@ -20,7 +20,7 @@ query TemplateBlogPage($skip: Int) {
       frontmatter: {
         draft: { ne: true }
       },
-      fileAbsolutePath: { regex: "/blog/" }
+      fileAbsolutePath: { regex: "/post/" }
     }
     limit: 10,
     skip: $skip
