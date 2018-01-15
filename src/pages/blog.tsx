@@ -1,6 +1,6 @@
 import Link from 'gatsby-link';
 import * as React from 'react';
-import { Card, Comment, Container, Feed, Grid, Header, List, Segment } from 'semantic-ui-react';
+import { Card, Comment, Container, Feed, Grid, Header, List, Segment } from 'semantic-ui-react-cjs';
 import BlogPagination from '../components/BlogPagination/BlogPagination';
 import BlogTitle from '../components/BlogTitle';
 import TagsCard from '../components/TagsCard/TagsCard';

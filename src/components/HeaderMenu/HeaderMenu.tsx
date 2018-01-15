@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { Container, Icon, Label, Menu } from 'semantic-ui-react';
+import { Container, Icon, Label, Menu } from 'semantic-ui-react-cjs';
 import { toggleSidebar } from '../../store';
 import { IMenuProps } from '../Menu';
 

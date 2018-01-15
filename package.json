@@ -59,9 +59,10 @@
     "react-helmet": "5.0.3",
     "react-redux": "^5.0.6",
     "redux-devtools-extension": "^2.13.2",
-    "semantic-ui-react": "^0.74.2",
+    "semantic-ui-react-cjs": "^0.77.2",
     "slash": "1.0.0",
     "ts-loader": "^2.3.7",
+    "tslint": "^5.9.1",
     "typescript": "2.5.3"
   },
   "devDependencies": {
@@ -99,7 +100,6 @@
     "stylelint": "^7.10.1",
     "stylelint-config-standard": "^16.0.0",
     "ts-jest": "19.0.8",
-    "ts-lint": "4.5.1",
     "xo": "^0.18.1"
   },
   "keywords": [

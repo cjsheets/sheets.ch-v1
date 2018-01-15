@@ -7,7 +7,7 @@ import {
   Header,
   Icon,
   Segment
-} from 'semantic-ui-react';
+} from 'semantic-ui-react-cjs';
 import HeaderMenu from '../components/HeaderMenu/HeaderMenu';
 import { menuItems } from '../layouts';
 

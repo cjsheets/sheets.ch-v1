@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Header, Icon, Segment } from 'semantic-ui-react';
+import { Header, Icon, Segment } from 'semantic-ui-react-cjs';
 
 export default () => {
   return (
