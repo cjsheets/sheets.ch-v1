@@ -14,7 +14,11 @@ interface ISiteHeaderProps extends IMenuProps {
 export const SiteHeader = (props: ISiteHeaderProps) =>
   <Container>
     <Menu size="large" pointing secondary inverted={props.inverted}>
-      <Menu.Item as={props.Link} style={{fontWeight: 700, fontSize: '1.75rem'}}>Chad Sheets</Menu.Item>
+      <Menu.Item
+        as={props.Link}
+        to="/"
+        style={{fontWeight: 700, fontSize: '1.75rem'}}
+      >Chad Sheets</Menu.Item>
       {props.items.map((item) => {
         const active = (item.exact) ? props.pathname === item.path : props.pathname.startsWith(item.path);
         return <Menu.Item
