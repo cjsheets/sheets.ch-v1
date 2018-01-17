@@ -2,7 +2,6 @@ import { GatsbyLinkProps } from 'gatsby-link';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { Menu, Sidebar } from 'semantic-ui-react-cjs';
 
 import { IStoreState, toggleSidebar } from '../../store';
 import { IMenuItem, IMenuProps } from '../Menu';

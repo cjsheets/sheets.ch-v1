@@ -1,7 +1,6 @@
-import { GatsbyLinkProps } from 'gatsby-link';
+import Link, { GatsbyLinkProps } from 'gatsby-link';
 import { times } from 'lodash';
 import * as React from 'react';
-import { Menu } from 'semantic-ui-react-cjs';
 
 interface IPostPaginationProps extends React.HTMLProps<HTMLDivElement> {
   pathname: string;
@@ -16,7 +15,7 @@ export const PostPagination = (props: IPostPaginationProps) => {
     : '1';
 
   return (
-    <Menu pagination>
+    <div>
       {times(props.pageCount, (index) => {
         const pageIndex = (index + 1).toString();
 
@@ -26,22 +25,19 @@ export const PostPagination = (props: IPostPaginationProps) => {
         const isFirstPage = (+pageIndex === 1);
         if (isInRange || isFirstPage || isLastPage) {
           return (
-            <Menu.Item
+            <Link
               key={pageIndex}
               style={{ cursor: 'pointer' }}
-              as={props.Link}
               to={`/post/page/${pageIndex}/`}
-              name={pageIndex}
-              active={activeItem === pageIndex}
             />
           );
         } else {
           return (+pageIndex === props.pageCount - 1 || +pageIndex === 2)
-            ? <Menu.Item key={pageIndex} disabled>...</Menu.Item>
+            ? <div key={pageIndex}>...</div>
             : null;
         }
       })}
-    </Menu>
+    </div>
   );
 };
 

@@ -1,18 +1,16 @@
 import * as React from 'react';
-import { Container, Header, Icon, Segment } from 'semantic-ui-react-cjs';
 
 export const AboutPage = () => {
   return (
-    <Container>
-      <Segment vertical>
-        <Header as="h2">
-          <Icon name="info circle" />
-          <Header.Content>
+    <div>
+      <div>
+        <div>
+          <div>
             About
-          </Header.Content>
-        </Header>
-      </Segment>
-      <Segment vertical>
+          </div>
+        </div>
+      </div>
+      <div>
         <p>
           This starter was created by @fabien0102.
         </p>
@@ -23,8 +21,8 @@ export const AboutPage = () => {
           For any issues, any PR are welcoming
           <a href="https://github.com/fabien0102/gatsby-starter/issues" target="blank"> on this repository</a>
         </p>
-      </Segment>
-    </Container>
+      </div>
+    </div>
   );
 };
 

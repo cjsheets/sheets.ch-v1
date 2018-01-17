@@ -1,6 +1,5 @@
 import Link from 'gatsby-link';
 import * as React from 'react';
-import { Card, Comment, Container, Feed, Grid, Header, List, Segment } from 'semantic-ui-react-cjs';
 
 import PostHeader from '../components/post-header';
 import PostPagination from '../components/post-pagination/post-pagination';
@@ -28,75 +27,69 @@ export const Post = (props: IPostProps) => {
 
   // TODO export posts in a proper component
   const Posts = (
-    <Container>
+    <div>
       {posts.map(({ node }) => {
         const { frontmatter, timeToRead, fields: { slug }, excerpt } = node;
         const avatar = frontmatter.author.avatar.children[0] as ImageSharp;
         const cover = frontmatter.image.children[0] as ImageSharp;
 
         const extra = (
-          <Comment.Group>
-            <Comment>
-              <Comment.Avatar
-                src={avatar.responsiveResolution.src}
-                srcSet={avatar.responsiveResolution.srcSet}
+          <div>
+            <div>
+              <div
               />
-              <Comment.Content>
-                <Comment.Author style={{ fontWeight: 400 }}>
+              <div>
+                <div style={{ fontWeight: 400 }}>
                   {frontmatter.author.id}
-                </Comment.Author>
-                <Comment.Metadata style={{ margin: 0 }}>
+                </div>
+                <div style={{ margin: 0 }}>
                   {frontmatter.updatedDate} - {timeToRead} min read
-              </Comment.Metadata>
-              </Comment.Content>
-            </Comment>
-          </Comment.Group>
+              </div>
+              </div>
+            </div>
+          </div>
         );
 
         const description = (
-          <Card.Description>
+          <div>
             {excerpt}
             <br />
             <Link to={slug}>Read more…</Link>
-          </Card.Description>
+          </div>
         );
 
         return (
-          <Card key={slug}
-            fluid
-            image={{
-              src: cover.responsiveResolution.src,
-              srcSet: cover.responsiveResolution.srcSet
-            }}
-            header={frontmatter.title}
-            extra={extra}
-            description={description}
-          />
+          <div key={slug}
+          >
+            {'header:'} frontmatter.title
+            {'src:'} cover.responsiveResolution.src
+            {'srcSet:'} cover.responsiveResolution.srcSet
+          </div>
         );
       })}
-    </Container>
+    </div>
   );
 
   return (
-    <Container>
+    <div>
       {/* Title */}
       <PostHeader />
 
       {/* Content */}
-      <Segment vertical>
-        <Grid padded style={{ justifyContent: 'space-around' }}>
+      <div>
+        <div style={{ justifyContent: 'space-around' }}>
           <div style={{ maxWidth: 600 }}>
             {Posts}
-            <Segment vertical textAlign="center">
+            <div>
               <PostPagination Link={Link} pathname={pathname} pageCount={pageCount} />
-            </Segment>
+            </div>
           </div>
           <div>
             <TagsCard Link={Link} tags={tags} tag={props.pathContext.tag} />
           </div>
-        </Grid>
-      </Segment>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 };
 
