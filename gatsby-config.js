@@ -45,7 +45,7 @@ module.exports = {
     `gatsby-plugin-typescript`,
 
     // Setup SASS for CSS modules
-    `gatsby-plugin-typescript-css-modules`,
+    `gatsby-plugin-typescript-scss-modules-cjs`,
 
     // This plugin takes your configuration and generates a
     // web manifest file so your website can be added to your

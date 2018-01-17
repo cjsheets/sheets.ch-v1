@@ -54,7 +54,6 @@ exports.createPages = ({graphql, boundActionCreators}) => {
   const {createPage} = boundActionCreators;
 
   return new Promise((resolve, reject) => {
-    console.log('1');
     const templates = ['post', 'tagsPage', 'page']
       .reduce((mem, templateName) => {
         return Object.assign({}, mem,
@@ -79,12 +78,10 @@ exports.createPages = ({graphql, boundActionCreators}) => {
       }
     `
     ).then(result => {
-      console.log('2');
       if (result.errors) {
         return reject(result.errors);
       }
       const posts = result.data.posts.edges.map(p => p.node);
-      console.log('3', posts);
 
       // Create blog pages
       posts
@@ -99,7 +96,6 @@ exports.createPages = ({graphql, boundActionCreators}) => {
           });
         });
 
-      console.log('4');
       // Create tags pages
       posts
         .reduce((mem, post) =>
@@ -115,7 +111,6 @@ exports.createPages = ({graphql, boundActionCreators}) => {
           });
         });
 
-      console.log('11');
       // Create blog pagination
       const pageCount = Math.ceil(posts.length / POSTS_PER_PAGE);
       times(pageCount, index => {

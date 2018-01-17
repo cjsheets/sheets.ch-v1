@@ -1,0 +1,15 @@
+@import '../../styles/variables.scss';
+
+.sticky-header {
+  width: 100% !important;
+  background: #ffffff;
+}
+
+.header-container {
+  z-index: 500;
+  border-bottom: 1px solid #f6f6f6;
+}
+
+.header-underlayer {
+  z-index: 10;
+}
