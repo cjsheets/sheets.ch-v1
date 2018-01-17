@@ -60,7 +60,6 @@
     "react-helmet": "5.0.3",
     "react-redux": "^5.0.6",
     "redux-devtools-extension": "^2.13.2",
-    "semantic-ui-react-cjs": "^0.77.2",
     "slash": "1.0.0",
     "ts-loader": "^2.3.7",
     "tslint": "^5.9.1",
