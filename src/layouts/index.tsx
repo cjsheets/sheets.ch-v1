@@ -8,7 +8,6 @@ import Mobilediv from '../components/mobile-sidebar/mobile-sidebar';
 import SiteHeader from '../components/site-header/site-header';
 import { IStoreState, toggleSidebar } from '../store';
 
-import '../styles/responsive.css';
 import '../styles/styles.css';
 
 export const menuItems = [

@@ -1,4 +1,4 @@
-import { GatsbyLinkProps } from 'gatsby-link';
+import Link, { GatsbyLinkProps } from 'gatsby-link';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
@@ -16,23 +16,20 @@ export const MobileSidebar = (props: IMobileSidebarProps) => {
   const isActive = (item: IMenuItem) => (item.exact) ? props.pathname === item.path : props.pathname.startsWith(item.path);
   const activeItem = props.items.find((item: IMenuItem) => isActive(item)) || {} as IMenuItem;
   return (
-    <Sidebar as={Menu} animation="overlay" width="thin" onSidebarBlur={() => props.dispatch(toggleSidebar())}
-      visible={props.visible} icon="labeled" vertical inverted={activeItem.inverted}>
+    <div onBlur={() => props.dispatch(toggleSidebar())}>
       {props.items.map((item) => {
         const active = isActive(item);
         return (
-          <Menu.Item
-            as={props.Link}
+          <Link
             to={item.path}
-            active={active}
             key={item.path}
             onClick={() => props.dispatch(toggleSidebar())}
           >
             {item.name}
-          </Menu.Item>
+          </Link>
         );
       })}
-    </Sidebar>
+    </div>
   );
 };
 
