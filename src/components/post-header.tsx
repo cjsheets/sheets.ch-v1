@@ -1,19 +1,17 @@
 import * as React from 'react';
-import { Header, Icon, Segment } from 'semantic-ui-react-cjs';
 
 export const PostHeader = () => {
   return (
-    <Segment vertical>
-      <Header as="h2">
-        <Icon name="newspaper" />
-        <Header.Content>
+    <div>
+      <div>
+        <div>
           Blog a
-            <Header.Subheader>
+            <div>
             All about this starter kit
-            </Header.Subheader>
-        </Header.Content>
-      </Header>
-    </Segment>
+            </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

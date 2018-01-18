@@ -1,6 +1,5 @@
 import Link from 'gatsby-link';
 import * as React from 'react';
-import { Button, Card, Comment, Container, Grid, Header, Icon, Image, Item, Label, Segment } from 'semantic-ui-react-cjs';
 
 import PostHeader from '../components/post-header';
 import { ImageSharp, MarkdownRemark, MarkdownRemarkConnection } from '../types/graphql-types';
@@ -17,86 +16,72 @@ export default (props: IPostProps) => {
   const avatar = frontmatter.author.avatar.children[0] as ImageSharp;
 
   const tags = props.data.post.frontmatter.tags
-    .map((tag) => <Label key={tag}><Link to={`/post/tags/${tag}/`}>{tag}</Link></Label>);
+    .map((tag) => <div key={tag}><Link to={`/post/tags/${tag}/`}>{tag}</Link></div>);
 
   const recents = props.data.recents.edges
     .map(({ node }) => {
       const recentAvatar = node.frontmatter.author.avatar.children[0] as ImageSharp;
       const _recentCover = node.frontmatter.image.children[0] as ImageSharp;
       const extra = (
-        <Comment.Group>
-          <Comment>
-            <Comment.Avatar
-              src={recentAvatar.responsiveResolution.src}
-              srcSet={recentAvatar.responsiveResolution.srcSet}
+        <div>
+          <div>
+            <div
             />
-            <Comment.Content>
-              <Comment.Author style={{ fontWeight: 400 }}>
+            <div>
+              <div style={{ fontWeight: 400 }}>
                 {node.frontmatter.author.id}
-              </Comment.Author>
-              <Comment.Metadata style={{ margin: 0 }}>
+              </div>
+              <div style={{ margin: 0 }}>
                 {node.timeToRead} min read
-              </Comment.Metadata>
-            </Comment.Content>
-          </Comment>
-        </Comment.Group>
+              </div>
+            </div>
+          </div>
+        </div>
       );
 
       return (
         <div key={node.fields.slug} style={{paddingBottom: '1em'}}>
-          <Card as={Link}
+          <Link
             to={node.fields.slug}
-            image={{
-              src: _recentCover.responsiveResolution.src,
-              srcSet: _recentCover.responsiveResolution.srcSet
-            }}
-            header={node.frontmatter.title}
-            extra={extra}
-          />
+          >
+            h
+          </Link>
         </div>
       );
     });
 
   const recentCover = frontmatter.image.children[0] as ImageSharp;
   return (
-    <Container>
+    <div>
       <PostHeader />
-      <Segment vertical style={{ border: 'none' }}>
-        <Item.Group>
-          <Item>
-            <Item.Image size="tiny" shape="circular"
-              src={avatar.responsiveResolution.src}
-              srcSet={avatar.responsiveResolution.srcSet}
-            />
-            <Item.Content>
-              <Item.Description>{frontmatter.author.id}</Item.Description>
-              <Item.Meta>{frontmatter.author.bio}</Item.Meta>
-              <Item.Extra>{frontmatter.updatedDate} - {timeToRead} min read</Item.Extra>
-            </Item.Content>
-          </Item>
-        </Item.Group>
-        <Header as="h1">{frontmatter.title}</Header>
-      </Segment>
-        <Image
-          src={recentCover.responsiveResolution.src}
-          srcSet={recentCover.responsiveResolution.srcSet}
-          fluid
-        />
-      <Segment vertical
+      <div style={{ border: 'none' }}>
+        <div>
+          <div>
+            <div  />
+            <div>
+              <div>{frontmatter.author.id}</div>
+              <div>{frontmatter.author.bio}</div>
+              <div>{frontmatter.updatedDate} - {timeToRead} min read</div>
+            </div>
+          </div>
+        </div>
+        <div>{frontmatter.title}</div>
+      </div>
+      <div
         style={{ border: 'none' }}
         dangerouslySetInnerHTML={{
           __html: html
         }}
       />
-      <Segment vertical>
+      <div>
         {tags}
-      </Segment>
-      <Segment vertical>
-        <Grid padded centered>
+      </div>
+      <div>
+        <div>
           {recents}
-        </Grid>
-      </Segment>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 };
 

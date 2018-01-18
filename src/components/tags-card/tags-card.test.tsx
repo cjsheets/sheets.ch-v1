@@ -3,7 +3,6 @@ import 'jest';
 import * as React from 'react';
 import TagsCard from './TagsCard';
 
-import { Card, List } from 'semantic-ui-react-cjs';
 import { markdownRemarkGroupConnectionConnection } from '../../types/graphql-types';
 
 // Configure enzyme with react 16 adapter

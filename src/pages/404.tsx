@@ -1,19 +1,17 @@
 import * as React from 'react';
-import { Grid, Header, Icon } from 'semantic-ui-react-cjs';
 
 export const ErrorPage404 = () =>
-  <Grid centered verticalAlign="middle"
+  <div
     style={{
       minHeight: '700px'
       }}
     >
-    <Grid.Column>
-      <Grid.Row style={{textAlign: 'center'}}>
-        <Icon name="marker" size="huge"/>
-        <Header as="h1">You are here!</Header>
-        <Header as="h2">But nothing found for you #404</Header>
-      </Grid.Row>
-    </Grid.Column>
-  </Grid>;
+    <div>
+      <div style={{textAlign: 'center'}}>
+        <div>You are here!</div>
+        <div>But nothing found for you #404</div>
+      </div>
+    </div>
+  </div>;
 
 export default ErrorPage404;
