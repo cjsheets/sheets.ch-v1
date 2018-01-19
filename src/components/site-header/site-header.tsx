@@ -1,3 +1,4 @@
+import { HeroHeader, Nav, NavItem, NavLeft, NavRight } from 'bloomer';
 import Link from 'gatsby-link';
 import * as React from 'react';
 import { connect } from 'react-redux';
@@ -11,24 +12,17 @@ interface ISiteHeaderProps extends IMenuProps {
   inverted?: boolean;
 }
 
-export const SiteHeader = (props: ISiteHeaderProps) =>
-  <div>
-    <div >
-      <Link
-        to="/"
-        style={{fontWeight: 700, fontSize: '1.75rem'}}
-      >Chad Sheets</Link>
-      {props.items.map((item) => {
-        const active = (item.exact) ? props.pathname === item.path : props.pathname.startsWith(item.path);
-        return <Link
-          as={props.Link}
-          className="mobile hidden"
-          to={item.path}
-          key={item.path}
-        />;
-      })}
-      <a className="mobile only" onClick={() => props.dispatch(toggleSidebar())} />
-    </div>
-  </div>;
+export const SiteHeader = (props: ISiteHeaderProps) => (
+  <HeroHeader>
+    <Nav>
+        <NavLeft>
+            <NavItem isBrand>Bloomer</NavItem>
+        </NavLeft>
+        <NavRight isMenu>
+            <NavItem>Home</NavItem>
+            <NavItem>Documentation</NavItem>
+        </NavRight>
+    </Nav>
+</HeroHeader>);
 
 export default connect()(SiteHeader);

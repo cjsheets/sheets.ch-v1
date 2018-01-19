@@ -28,7 +28,7 @@ export const DefaultLayout = ({ location, children, visible }: IDefaultLayoutPro
 
   return (
     <div>
-      <Mobilediv Link={Link} pathname={pathname} items={menuItems} visible={false} />
+      {/* <Mobilediv Link={Link} pathname={pathname} items={menuItems} visible={false} /> */}
       <div style={{ minHeight: '100vh' }}>
         <SiteHeader Link={Link} pathname={pathname} items={menuItems} />
 
