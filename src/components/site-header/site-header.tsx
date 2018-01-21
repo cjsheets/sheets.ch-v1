@@ -1,4 +1,3 @@
-import { Hero, HeroHeader, Nav, NavItem, NavLeft, NavRight } from 'bloomer';
 import Link from 'gatsby-link';
 import * as React from 'react';
 import { connect } from 'react-redux';
@@ -13,18 +12,6 @@ interface ISiteHeaderProps extends IMenuProps {
 }
 
 export const SiteHeader = (props: ISiteHeaderProps) => (
-  <Hero isColor="info" isSize="medium">
-    <HeroHeader>
-    <Nav>
-    <NavLeft>
-        <NavItem isBrand>Bloomer</NavItem>
-    </NavLeft>
-    <NavRight isMenu>
-        <NavItem>Home</NavItem>
-        <NavItem>Documentation</NavItem>
-    </NavRight>
-    </Nav>
-  </HeroHeader>
-  </Hero>);
+  <div>Header</div>);
 
 export default connect()(SiteHeader);
