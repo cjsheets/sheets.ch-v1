@@ -1,9 +1,9 @@
 import Link from 'gatsby-link';
 import * as React from 'react';
 
-import * as styles from './footer.scss';
+import * as styles from './site-footer.scss';
 
-export const Footer = () => (
+export const SiteFooter = () => (
   <footer className={styles.link}>
     <Link to="/copyright">&copy; {new Date().getFullYear()} Chad Sheets</Link>
     <Link to="/contact">Contact</Link>
@@ -13,4 +13,4 @@ export const Footer = () => (
   </footer>
 );
 
-export default Footer;
+export default SiteFooter;

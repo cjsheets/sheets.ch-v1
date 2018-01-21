@@ -12,5 +12,4 @@ export interface IMenuItem {
 export interface IMenuProps extends React.HTMLProps<HTMLDivElement> {
   items: IMenuItem[];
   pathname: string;
-  Link: React.ComponentClass<GatsbyLinkProps> | any;
 }

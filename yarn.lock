@@ -362,7 +362,7 @@ async@^1.3.0, async@^1.4.0, async@^1.5.0:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
-async@^2.1.2, async@^2.1.5:
+async@^2.0.1, async@^2.1.2, async@^2.1.5:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/async/-/async-2.6.0.tgz#61a29abb6fcc026fea77e56d1c6ec53a795951f4"
   dependencies:
@@ -3810,12 +3810,15 @@ gatsby-plugin-twitter@^1.0.10:
   dependencies:
     babel-runtime "^6.26.0"
 
-gatsby-plugin-typescript-scss-modules-cjs@^1.0.4-1:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-typescript-scss-modules-cjs/-/gatsby-plugin-typescript-scss-modules-cjs-1.0.4.tgz#fc42b89a6bc976bf8fb609c4b944835ff66dfabb"
+gatsby-plugin-typescript-scss-modules@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-typescript-scss-modules/-/gatsby-plugin-typescript-scss-modules-1.0.6.tgz#29ba715eab07bef93f21bdc71bbdb3df1bb43f52"
   dependencies:
     extract-text-webpack-plugin "^1.0.1"
+    gatsby-1-config-css-modules "^1.0.8"
+    node-sass "^4.5.2"
     postcss-loader "^2.0.9"
+    sass-loader "^4.1.1"
     style-loader "^0.19.1"
     typings-for-css-modules-loader "^1.7.0"
     webpack "^1.15.0"
@@ -6599,7 +6602,7 @@ node-pre-gyp@^0.6.39:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
-node-sass@^4.7.2:
+node-sass@^4.5.2, node-sass@^4.7.2:
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.7.2.tgz#9366778ba1469eb01438a9e8592f4262bcb6794e"
   dependencies:
@@ -8943,6 +8946,14 @@ sass-graph@^2.2.4:
     lodash "^4.0.0"
     scss-tokenizer "^0.2.3"
     yargs "^7.0.0"
+
+sass-loader@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-4.1.1.tgz#79ef9468cf0bf646c29529e1f2cba6bd6e51c7bc"
+  dependencies:
+    async "^2.0.1"
+    loader-utils "^0.2.15"
+    object-assign "^4.1.0"
 
 sass-loader@^6.0.6:
   version "6.0.6"
