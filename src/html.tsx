@@ -44,6 +44,7 @@ module.exports = (props: IHtmlProps) => {
         {head.title.toComponent()}
         {head.meta.toComponent()}
         {head.link.toComponent()}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
         {css}
       </head>
       <body>
