@@ -1,10 +1,16 @@
+'use strict';
+
 module.exports = {
   siteMetadata: {
-    title: `Chads Homepage`
+    title: 'Chad Sheets Homepage',
+    siteUrl: 'https://sheets.ch',
+    rssFeedTitle: 'Chad Sheets',
+    rssFeedDescription: 'Chad Sheets Homepage',
   },
   mapping: {
-    'MarkdownRemark.frontmatter.author': `AuthorJson`
+    'MarkdownRemark.frontmatter.author': 'AuthorJson',
   },
+  
   plugins: [
     // Expose `/data` to graphQL layer
     {

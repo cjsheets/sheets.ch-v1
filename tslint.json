@@ -72,5 +72,9 @@
       "allow-pascal-case"
     ],
     "whitespace": [false]
-  }
+  },
+  "extends": [
+    "tslint:latest",
+    "tslint-config-prettier"
+  ]
 }
