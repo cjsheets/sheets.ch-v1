@@ -1,10 +1,16 @@
+'use strict';
+
 module.exports = {
   siteMetadata: {
-    title: `Chads Homepage`
+    title: 'Chad Sheets Homepage',
+    siteUrl: 'https://sheets.ch',
+    rssFeedTitle: 'Chad Sheets',
+    rssFeedDescription: 'Chad Sheets Homepage',
   },
   mapping: {
-    'MarkdownRemark.frontmatter.author': `AuthorJson`
+    'MarkdownRemark.frontmatter.author': 'AuthorJson',
   },
+  
   plugins: [
     // Expose `/data` to graphQL layer
     {
@@ -45,7 +51,7 @@ module.exports = {
     `gatsby-plugin-typescript`,
 
     // Setup SASS for CSS modules
-    `gatsby-plugin-typescript-scss-modules-cjs`,
+    `gatsby-plugin-typescript-scss-modules`,
 
     // This plugin takes your configuration and generates a
     // web manifest file so your website can be added to your
@@ -64,10 +70,11 @@ module.exports = {
     },
     /* eslint-enable camelcase */
 
+    // ToDo: decide if this is a good idea
     // This plugin generates a service worker and AppShell
     // html file so the site works offline and is otherwise
     // resistant to bad networks. Works with almost any
     // site!
-    `gatsby-plugin-offline`
+    //`gatsby-plugin-offline`
   ]
 };

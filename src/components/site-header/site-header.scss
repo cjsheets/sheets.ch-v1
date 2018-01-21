@@ -1,6 +1,9 @@
 @import '../../styles/variables.scss';
 
 .sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100% !important;
   background: #ffffff;
 }

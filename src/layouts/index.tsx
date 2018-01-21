@@ -3,12 +3,13 @@ import 'prismjs/themes/prism-okaidia.css';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import Footer from '../components/footer/footer';
 import Mobilediv from '../components/mobile-sidebar/mobile-sidebar';
+import SiteFooter from '../components/site-footer/site-footer';
 import SiteHeader from '../components/site-header/site-header';
 import { IStoreState, toggleSidebar } from '../store';
 
-import '../styles/styles.css';
+import '../styles/normalize.css';
+import * as styles from '../styles/styles.scss';
 
 export const menuItems = [
   { name: 'Posts', path: '/post', exact: false },
@@ -27,19 +28,12 @@ export const DefaultLayout = ({ location, children, visible }: IDefaultLayoutPro
   const { pathname } = location;
 
   return (
-    <div>
-      {/* <Mobilediv Link={Link} pathname={pathname} items={menuItems} visible={false} /> */}
-      <div style={{ minHeight: '100vh' }}>
-        <SiteHeader Link={Link} pathname={pathname} items={menuItems} />
-
-        <div style={{ paddingBottom: 60 }}>
-          {children()}
-        </div>
-
-        <div style={{ position: 'absolute', bottom: 0, width: '100%' }}>
-          <Footer />
-        </div>
+    <div className={styles.siteBody}>
+      <SiteHeader pathname={pathname} items={menuItems} />
+      <div className={styles.pageBody}>
+        {children()}
       </div>
+      <SiteFooter />
     </div>
   );
 };
