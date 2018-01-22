@@ -1,4 +1,3 @@
-import { get } from 'lodash';
 import { createStore } from 'redux';
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
@@ -31,3 +30,8 @@ export const store = createStore<IStoreState>(
   initialState,
   devToolsEnhancer({})
 );
+
+export const primaryNavigation = [
+  { name: 'Posts', path: '/post', exact: false },
+  { name: 'About', path: '/about', exact: true }
+];

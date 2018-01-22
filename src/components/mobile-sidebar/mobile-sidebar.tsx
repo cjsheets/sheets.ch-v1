@@ -1,6 +1,7 @@
 import Link, { GatsbyLinkProps } from 'gatsby-link';
 import * as React from 'react';
 import { connect } from 'react-redux';
+import Sidebar from 'react-sidebar';
 import { Dispatch } from 'redux';
 
 import { IStoreState, toggleSidebar } from '../../store';
@@ -9,16 +10,13 @@ import { IMenuItem, IMenuProps } from '../Menu';
 interface IMobileSidebarProps extends IMenuProps {
   visible?: boolean;
   dispatch?: Dispatch<any>;
-  Link: React.ComponentClass<GatsbyLinkProps>;
+  children: React.ReactChildren;
 }
 
 export const MobileSidebar = (props: IMobileSidebarProps) => {
-  const isActive = (item: IMenuItem) => (item.exact) ? props.pathname === item.path : props.pathname.startsWith(item.path);
-  const activeItem = props.items.find((item: IMenuItem) => isActive(item)) || {} as IMenuItem;
   return (
-    <div onBlur={() => props.dispatch(toggleSidebar())}>
+    <Sidebar >
       {props.items.map((item) => {
-        const active = isActive(item);
         return (
           <Link
             to={item.path}
@@ -29,7 +27,7 @@ export const MobileSidebar = (props: IMobileSidebarProps) => {
           </Link>
         );
       })}
-    </div>
+    </Sidebar>
   );
 };
 
