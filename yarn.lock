@@ -49,6 +49,12 @@
     "@types/history" "*"
     "@types/react" "*"
 
+"@types/react-sidebar@^2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@types/react-sidebar/-/react-sidebar-2.2.2.tgz#405b8232ba93db29bd754cf28111b4e4e37b17d6"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^16.0.20":
   version "16.0.34"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.34.tgz#7a8f795afd8a404a9c4af9539b24c75d3996914e"

@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === `production`) {
   try {
     styles = require('!raw-loader!../public/styles.css');
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }
 

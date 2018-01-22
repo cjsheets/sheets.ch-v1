@@ -1,7 +1,7 @@
 import Link from 'gatsby-link';
 import * as React from 'react';
 
-import { menuItems } from '../layouts';
+import { primaryNavigation } from '../store';
 
 interface IIndexPageProps {
   location: {
