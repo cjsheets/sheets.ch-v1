@@ -86,7 +86,7 @@ export default (props: IPostProps) => {
 };
 
 export const pageQuery = graphql`
-  query TemplatePost($slug: String!) {
+  query TemplateBlogPost($slug: String!) {
   post: markdownRemark(fields: {slug: {eq: $slug}}) {
     html
     excerpt

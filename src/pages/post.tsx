@@ -91,7 +91,7 @@ export const Post = (props: IPostProps) => {
 
 export default Post;
 export const pageQuery = graphql`
-query Page {
+query PageBlog {
   # Get tags
   tags: allMarkdownRemark(filter: {frontmatter: {draft: {ne: true}}}) {
     group(field: frontmatter___tags) {
@@ -99,7 +99,6 @@ query Page {
       totalCount
     }
   }
-
   # Get posts
   posts: allMarkdownRemark(
     sort: { order: DESC, fields: [frontmatter___updatedDate] },
