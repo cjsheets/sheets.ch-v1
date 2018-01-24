@@ -54,7 +54,7 @@ exports.createPages = ({graphql, boundActionCreators}) => {
   const {createPage} = boundActionCreators;
 
   return new Promise((resolve, reject) => {
-    const templates = ['post', 'tagsPage', 'page']
+    const templates = ['blogPost', 'tagsPage', 'blogPage']
       .reduce((mem, templateName) => {
         return Object.assign({}, mem,
         {[templateName]: path.resolve(`src/templates/${kebabCase(templateName)}.tsx`)});
@@ -89,7 +89,7 @@ exports.createPages = ({graphql, boundActionCreators}) => {
         .forEach(post => {
           createPage({
             path: post.fields.slug,
-            component: slash(templates.post),
+            component: slash(templates.blogPost),
             context: {
               slug: post.fields.slug
             }
@@ -116,7 +116,7 @@ exports.createPages = ({graphql, boundActionCreators}) => {
       times(pageCount, index => {
         createPage({
           path: `/post/page/${index + 1}/`,
-          component: slash(templates.page),
+          component: slash(templates.blogPage),
           context: {
             skip: index * POSTS_PER_PAGE
           }
