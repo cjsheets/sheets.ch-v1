@@ -24,13 +24,13 @@ export default (props: ITagsdivProps) => {
               fontWeight: '700'
             };
             return (
-              <a key={tag.fieldValue}>
+              <div key={tag.fieldValue}>
                 <div>
                   <props.Link to={`/post/tags/${tag.fieldValue}/`}>
                     {tag.fieldValue} ({tag.totalCount})
                   </props.Link>
                 </div>
-              </a>
+              </div>
             );
           })}
         </div>

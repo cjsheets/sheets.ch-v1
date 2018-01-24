@@ -1,21 +1,18 @@
 import Link, { GatsbyLinkProps } from 'gatsby-link';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import Sidebar from 'react-sidebar';
 import { Dispatch } from 'redux';
 
 import { IStoreState, toggleSidebar } from '../../store';
 import { IMenuItem, IMenuProps } from '../Menu';
 
 interface IMobileSidebarProps extends IMenuProps {
-  visible?: boolean;
   dispatch?: Dispatch<any>;
-  children: React.ReactChildren;
 }
 
 export const MobileSidebar = (props: IMobileSidebarProps) => {
   return (
-    <Sidebar >
+    <div>
       {props.items.map((item) => {
         return (
           <Link
@@ -27,7 +24,7 @@ export const MobileSidebar = (props: IMobileSidebarProps) => {
           </Link>
         );
       })}
-    </Sidebar>
+    </div>
   );
 };
 

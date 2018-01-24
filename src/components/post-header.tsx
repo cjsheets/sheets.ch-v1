@@ -3,14 +3,7 @@ import * as React from 'react';
 export const PostHeader = () => {
   return (
     <div>
-      <div>
-        <div>
-          Blog a
-            <div>
-            All about this starter kit
-            </div>
-        </div>
-      </div>
+      <h1>This is a Post</h1>
     </div>
   );
 };
