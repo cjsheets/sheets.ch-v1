@@ -72,21 +72,17 @@ export const Post = (props: IPostProps) => {
 
   return (
     <div>
-      {/* Title */}
       <PostHeader />
 
-      {/* Content */}
-      <div>
-        <div style={{ justifyContent: 'space-around' }}>
-          <div style={{ maxWidth: 600 }}>
-            {Posts}
-            <div>
-              <PostPagination Link={Link} pathname={pathname} pageCount={pageCount} />
-            </div>
-          </div>
+      <div style={{ justifyContent: 'space-around' }}>
+        <div style={{ maxWidth: 600 }}>
+          {Posts}
           <div>
-            <TagsCard Link={Link} tags={tags} tag={props.pathContext.tag} />
+            <PostPagination Link={Link} pathname={pathname} pageCount={pageCount} />
           </div>
+        </div>
+        <div>
+          <TagsCard Link={Link} tags={tags} tag={props.pathContext.tag} />
         </div>
       </div>
     </div>
