@@ -61,9 +61,9 @@ export const Post = (props: IPostProps) => {
         return (
           <div key={slug}
           >
-            {'header:'} frontmatter.title
-            {'src:'} cover.responsiveResolution.src
-            {'srcSet:'} cover.responsiveResolution.srcSet
+            {frontmatter.title}
+            {cover.responsiveResolution.src}
+            {cover.responsiveResolution.srcSet}
           </div>
         );
       })}
