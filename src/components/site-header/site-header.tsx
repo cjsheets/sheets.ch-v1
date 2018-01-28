@@ -5,6 +5,7 @@ import { Dispatch } from 'redux';
 
 import { toggleSidebar } from '../../store';
 import { IMenuProps } from '../Menu';
+import { Icon, SvgIcon } from '../svg-icon/svg-icon';
 
 import * as styles from './site-header.scss';
 
@@ -15,9 +16,18 @@ interface ISiteHeaderProps extends IMenuProps {
 
 export const SiteHeader = (props: ISiteHeaderProps) => (
   <div className={styles.stickyHeader}>
-    <Link to="/">Chad Sheets</Link> {' '}
-    <Link to="/about">About</Link> {' '}
-    <Link to="/post">Posts</Link>
+    <div className={styles.headerLogo}>
+      <Link to="/">Sheets.ch/ad</Link>
+    </div>
+    <div className={styles.headerNavigation}>
+      <Link to="/post"><span>Home</span></Link>
+      <Link to="/post"><span>Posts</span></Link>
+      <Link to="/projects"><span>Projects</span></Link>
+      <Link to="/ad"><span>About</span></Link>
+    </div>
+    <div className={styles.headerIconBar}>
+      <SvgIcon icon={Icon.github} />
+    </div>
   </div>);
 
 export default connect()(SiteHeader);
