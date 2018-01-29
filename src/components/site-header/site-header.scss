@@ -10,7 +10,6 @@
   align-items: center;
   justify-content: center;
   background: #ffffff;
-  padding: 0px 1rem;
 }
 
 .header-container {
@@ -18,38 +17,56 @@
   border-bottom: 1px solid #f6f6f6;
 }
 
-.header-logo {
-  flex: 0 0 150px;
+.header-navigation {
+  padding: 0px 1rem;
 
   a {
-    font-family: $font_family_heading;
-    font-weight: $font-weight-md-bold;
-    font-size: 1.2rem;
-    color: #000000;
+    vertical-align: middle;
   }
 }
 
-.header-navigation {
-  flex: 1;
+.header-logo {
+  display: inline-flex;
+  font-family: $font_family_heading;
+  padding: 0px 20px 0px 10px;
+  color: #000000;
 
-  a {
-    display: inline-flex;
-    font-family: $font_family_heading;
-    font-weight: $font-weight-light;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    color: #333333;
-    
-    span {
-      flex: 1;
-      line-height: 2rem;
-      margin: 0px 10px;
-    }
+  span {
+    flex: 1;
+    line-height: 2rem;
+  }
+
+  .primary {
+    font-weight: $font-weight-md-bold;
+    font-size: 1.2rem;
+  }
+
+  .secondary {
+    font-weight: $font-weight-regular;
+    font-size: 1.1rem;
+  }
+}
+
+.header-link {
+  display: inline-flex;
+  font-family: $font_family_heading;
+  font-weight: $font-weight-light;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: #333333;
+
+  span {
+    flex: 1;
+    line-height: 2rem;
+    margin: 0px 10px;
   }
 }
 
 .header-icon-bar {
   flex: 1;
+  justify-content: flex-end;
+  text-align: right;
+  padding: 0px 1rem;
 
   a {
     display: inline-flex;

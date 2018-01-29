@@ -5,7 +5,7 @@ https://leungwensen.github.io/svg-icon/
 ## How To Use
 
 * Download svg
-* Open as text and remove all but svg and path tags
+* Open as text and remove defs/symbol/title
 * Open in Inkscape
   * File > Document Properties > Adjust page size
   * Set x y w h in header

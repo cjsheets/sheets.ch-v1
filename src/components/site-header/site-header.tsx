@@ -16,17 +16,19 @@ interface ISiteHeaderProps extends IMenuProps {
 
 export const SiteHeader = (props: ISiteHeaderProps) => (
   <div className={styles.stickyHeader}>
-    <div className={styles.headerLogo}>
-      <Link to="/">Sheets.ch/ad</Link>
-    </div>
     <div className={styles.headerNavigation}>
-      <Link to="/post"><span>Home</span></Link>
-      <Link to="/post"><span>Posts</span></Link>
-      <Link to="/projects"><span>Projects</span></Link>
-      <Link to="/ad"><span>About</span></Link>
+      <SvgIcon icon={Icon.sheets} width={26} height={26} inline />
+      <Link to="/" className={styles.headerLogo}>
+        <span className={styles.primary}>Sheets.ch</span><span className={styles.secondary}>ad</span>
+      </Link>
+      <Link to="/post" className={styles.headerLink}><span>Posts</span></Link>
+      <Link to="/projects" className={styles.headerLink}><span>Projects</span></Link>
+      <Link to="/ad" className={styles.headerLink}><span>About</span></Link>
     </div>
     <div className={styles.headerIconBar}>
-      <SvgIcon icon={Icon.github} />
+      <Link to="/ad" className={styles.headerLink}>
+        <SvgIcon icon={Icon.github} />
+      </Link>
     </div>
   </div>);
 
