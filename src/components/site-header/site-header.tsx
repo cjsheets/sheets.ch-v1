@@ -16,6 +16,7 @@ interface ISiteHeaderProps extends IMenuProps {
 
 export const SiteHeader = (props: ISiteHeaderProps) => (
   <div className={styles.stickyHeader}>
+    <div className={styles.wellCover} />
     <div className={styles.headerNavigation}>
       <SvgIcon icon={Icon.sheets} width={26} height={26} inline />
       <Link to="/" className={styles.headerLogo}>
@@ -30,6 +31,7 @@ export const SiteHeader = (props: ISiteHeaderProps) => (
         <SvgIcon icon={Icon.github} />
       </Link>
     </div>
+    <div className={styles.wellCover} />
   </div>);
 
 export default connect()(SiteHeader);

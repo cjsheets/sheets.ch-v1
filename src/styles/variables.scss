@@ -20,7 +20,7 @@ $font-weight-bold: 700;
 $font-weight-md-bold: 600;
 $font-weight-regular: 400;
 $font-weight-regular: 400;
-$font-weight-light: 200;
+$font-weight-light: 300;
 
 $link_color_dark_grey: #444444;
 $link_color_grey: #666666;
@@ -43,3 +43,11 @@ $hr_dotted_color: #c0c0c0;
 $hr_margin: 1em;
 
 $line_height_menu: 18px;
+$page_well_width: 10px;
+
+$z_index_sidebar_content: 902;
+$z_index_sidebar_overlay: 901;
+$z_index_sidebar_base: 900;
+$z_index_floating_header: 800;
+$z_index_header_well_cover: 750;
+$z_index_base_content: 0;
