@@ -23,7 +23,7 @@ export const SiteHeader = (props: ISiteHeaderProps) => (
         <span className={styles.primary}>Sheets.ch</span><span className={styles.secondary}>ad</span>
       </Link>
       <Link to="/post" className={styles.headerLink}><span>Posts</span></Link>
-      <Link to="/projects" className={styles.headerLink}><span>Projects</span></Link>
+      <Link to="/project" className={styles.headerLink}><span>Projects</span></Link>
       <Link to="/ad" className={styles.headerLink}><span>About</span></Link>
     </div>
     <div className={styles.headerIconBar}>
