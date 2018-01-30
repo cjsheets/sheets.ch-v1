@@ -5,7 +5,6 @@
  */
 
 html, body {
-	height: 100%; 
 }
 
 body {
@@ -13,6 +12,7 @@ body {
 	color: $font_color_body;
 	font-family: $font_family_body;
 	font-size: $font_size_body;
+	overflow-y: scroll;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -129,14 +129,4 @@ hr {
 	border-bottom: 1px dotted $hr_color;
 	margin: 45px 0;
 
-}
-
-
-
-.site-body {
-  min-height: 100vh;
-}
-
-.page-body {
-  margin-top: 50px;
 }

@@ -1,4 +1,4 @@
-$accent_blue_dark: #14568a;
+$accent_blue_dark:  #14568a;
 $accent_blue_medium_dark: #0D79C2;
 $accent_blue_medium: #417a97;
 $background_blue_light: #f5f8fa;
@@ -15,6 +15,12 @@ $font_size_h1: 200%;
 $font_size_h2: 160%;
 $font_size_h3: 130%;
 $font_color_hx: #323232;
+
+$font-weight-bold: 700;
+$font-weight-md-bold: 600;
+$font-weight-regular: 400;
+$font-weight-regular: 400;
+$font-weight-light: 300;
 
 $link_color_dark_grey: #444444;
 $link_color_grey: #666666;
@@ -37,3 +43,11 @@ $hr_dotted_color: #c0c0c0;
 $hr_margin: 1em;
 
 $line_height_menu: 18px;
+$page_well_width: 10px;
+
+$z_index_sidebar_content: 902;
+$z_index_sidebar_overlay: 901;
+$z_index_sidebar_base: 900;
+$z_index_floating_header: 800;
+$z_index_header_well_cover: 750;
+$z_index_base_content: 0;
