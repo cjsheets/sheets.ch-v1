@@ -4,17 +4,15 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 import { toggleSidebar } from '../../store';
-import { IMenuProps } from '../Menu';
 import { Icon, SvgIcon } from '../svg-icon/svg-icon';
 
 import * as styles from './site-header.scss';
 
-interface ISiteHeaderProps extends IMenuProps {
+interface ISiteHeader {
   dispatch: Dispatch<any>;
-  inverted?: boolean;
 }
 
-export const SiteHeader = (props: ISiteHeaderProps) => (
+export const SiteHeader = (props: ISiteHeader) => (
   <div className={styles.stickyHeader}>
     <div className={styles.wellCover} />
     <div className={styles.headerNavigation}>
