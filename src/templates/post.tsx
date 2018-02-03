@@ -4,87 +4,90 @@ import * as React from 'react';
 import PostHeader from '../components/post-header';
 import { ImageSharp, MarkdownRemark, MarkdownRemarkConnection } from '../types/graphql-types';
 
-interface IPostProps {
+interface IBlogPost {
   data: {
     post: MarkdownRemark;
     recents: MarkdownRemarkConnection;
   };
 }
 
-export default (props: IPostProps) => {
-  const { frontmatter, html, timeToRead } = props.data.post;
-  const avatar = frontmatter.author.avatar.children[0] as ImageSharp;
+export class BlogPost extends React.Component<IBlogPost, {}> {
+  render() {
+    const { frontmatter, html, timeToRead } = this.props.data.post;
+    const avatar = frontmatter.author.avatar.children[0] as ImageSharp;
 
-  const tags = props.data.post.frontmatter.tags
-    .map((tag) => <div key={tag}><Link to={`/post/tags/${tag}/`}>{tag}</Link></div>);
+    const tags = this.props.data.post.frontmatter.tags
+      .map((tag) => <div key={tag}><Link to={`/post/tags/${tag}/`}>{tag}</Link></div>);
 
-  const recents = props.data.recents.edges
-    .map(({ node }) => {
-      const recentAvatar = node.frontmatter.author.avatar.children[0] as ImageSharp;
-      const _recentCover = node.frontmatter.image.children[0] as ImageSharp;
-      const extra = (
-        <div>
+    const recents = this.props.data.recents.edges
+      .map(({ node }) => {
+        const recentAvatar = node.frontmatter.author.avatar.children[0] as ImageSharp;
+        const _recentCover = node.frontmatter.image.children[0] as ImageSharp;
+        const extra = (
           <div>
-            <div
-            />
             <div>
-              <div style={{ fontWeight: 400 }}>
-                {node.frontmatter.author.id}
-              </div>
-              <div style={{ margin: 0 }}>
-                {node.timeToRead} min read
+              <div
+              />
+              <div>
+                <div style={{ fontWeight: 400 }}>
+                  {node.frontmatter.author.id}
+                </div>
+                <div style={{ margin: 0 }}>
+                  {node.timeToRead} min read
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      );
+        );
 
-      return (
-        <div key={node.fields.slug} style={{paddingBottom: '1em'}}>
-          <Link
-            to={node.fields.slug}
-          >
-            h
-          </Link>
-        </div>
-      );
-    });
+        return (
+          <div key={node.fields.slug} style={{paddingBottom: '1em'}}>
+            <Link
+              to={node.fields.slug}
+            >
+              h
+            </Link>
+          </div>
+        );
+      });
 
-  const recentCover = frontmatter.image.children[0] as ImageSharp;
-  return (
-    <div>
-      <PostHeader />
-      <div style={{ border: 'none' }}>
-        <div>
+    const recentCover = frontmatter.image.children[0] as ImageSharp;
+    return (
+      <div>
+        <PostHeader />
+        <div style={{ border: 'none' }}>
           <div>
-            <div  />
             <div>
-              <div>{frontmatter.author.id}</div>
-              <div>{frontmatter.author.bio}</div>
-              <div>{frontmatter.updatedDate} - {timeToRead} min read</div>
+              <div  />
+              <div>
+                <div>{frontmatter.author.id}</div>
+                <div>{frontmatter.author.bio}</div>
+                <div>{frontmatter.updatedDate} - {timeToRead} min read</div>
+              </div>
             </div>
           </div>
+          <div>{frontmatter.title}</div>
         </div>
-        <div>{frontmatter.title}</div>
-      </div>
-      <div
-        style={{ border: 'none' }}
-        dangerouslySetInnerHTML={{
-          __html: html
-        }}
-      />
-      <div>
-        {tags}
-      </div>
-      <div>
+        <div
+          style={{ border: 'none' }}
+          dangerouslySetInnerHTML={{
+            __html: html
+          }}
+        />
         <div>
-          {recents}
+          {tags}
+        </div>
+        <div>
+          <div>
+            {recents}
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
+export default BlogPost;
 export const pageQuery = graphql`
   query TemplateBlogPost($slug: String!) {
   post: markdownRemark(fields: {slug: {eq: $slug}}) {

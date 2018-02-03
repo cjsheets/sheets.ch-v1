@@ -1,6 +1,6 @@
 const path = require('path');
 const slash = require('slash');
-const {kebabCase, uniq, get, compact, times} = require('lodash');
+const {uniq, get, compact, times} = require('lodash');
 
 // Don't forget to update hard code values into:
 // - `templates/page.tsx:25`
@@ -54,10 +54,10 @@ exports.createPages = ({graphql, boundActionCreators}) => {
   const {createPage} = boundActionCreators;
 
   return new Promise((resolve, reject) => {
-    const templates = ['blogPost', 'tagsPage', 'blogPage']
+    const templates = ['post', 'tags', 'page']
       .reduce((mem, templateName) => {
         return Object.assign({}, mem,
-        {[templateName]: path.resolve(`src/templates/${kebabCase(templateName)}.tsx`)});
+        {[templateName]: path.resolve(`src/templates/${templateName}.tsx`)});
       }, {});
 
     graphql(
@@ -89,7 +89,7 @@ exports.createPages = ({graphql, boundActionCreators}) => {
         .forEach(post => {
           createPage({
             path: post.fields.slug,
-            component: slash(templates.blogPost),
+            component: slash(templates.post),
             context: {
               slug: post.fields.slug
             }
@@ -103,8 +103,8 @@ exports.createPages = ({graphql, boundActionCreators}) => {
         , [])
         .forEach(tag => {
           createPage({
-            path: `/post/tags/${kebabCase(tag)}/`,
-            component: slash(templates.tagsPage),
+            path: `/post/tags/${tag}/`,
+            component: slash(templates.tags),
             context: {
               tag
             }
@@ -116,7 +116,7 @@ exports.createPages = ({graphql, boundActionCreators}) => {
       times(pageCount, index => {
         createPage({
           path: `/post/page/${index + 1}/`,
-          component: slash(templates.blogPage),
+          component: slash(templates.page),
           context: {
             skip: index * POSTS_PER_PAGE
           }

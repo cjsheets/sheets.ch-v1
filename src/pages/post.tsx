@@ -6,7 +6,7 @@ import PostPagination from '../components/post-pagination/post-pagination';
 import TagsCard from '../components/tags-card/tags-card';
 import { ImageSharp, MarkdownRemarkConnection } from '../types/graphql-types';
 
-interface IPostProps {
+interface IPostPage {
   data: {
     tags: MarkdownRemarkConnection;
     posts: MarkdownRemarkConnection;
@@ -19,11 +19,13 @@ interface IPostProps {
   };
 }
 
-export const Post = (props: IPostProps) => {
-  const tags = props.data.tags.group;
-  const posts = props.data.posts.edges;
-  const { pathname } = props.location;
-  const pageCount = Math.ceil(props.data.posts.totalCount / 10);
+export class PostPage extends React.Component<IPostPage, {}> {
+
+  render() {
+  const tags = this.props.data.tags.group;
+  const posts = this.props.data.posts.edges;
+  const { pathname } = this.props.location;
+  const pageCount = Math.ceil(this.props.data.posts.totalCount / 10);
 
   // TODO export posts in a proper component
   const Posts = (
@@ -82,14 +84,15 @@ export const Post = (props: IPostProps) => {
           </div>
         </div>
         <div>
-          <TagsCard Link={Link} tags={tags} tag={props.pathContext.tag} />
+          <TagsCard Link={Link} tags={tags} tag={this.props.pathContext.tag} />
         </div>
       </div>
     </div>
   );
-};
+  }
+}
 
-export default Post;
+export default PostPage;
 export const pageQuery = graphql`
 query PageBlog {
   # Get tags
