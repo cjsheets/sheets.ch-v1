@@ -14,8 +14,8 @@ export const Icon: {
   github: string;
   sheets: string;
 } = {
-  github: require('../../../data/icons/github.svg'),
-  sheets: require('../../../data/icons/sheets-logo.svg')
+  github: require('../../../content/icons/github.svg'),
+  sheets: require('../../../content/icons/sheets-logo.svg')
 };
 
 export const SvgIcon = (props: ISvgIcon) => {

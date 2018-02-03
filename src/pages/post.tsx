@@ -46,7 +46,7 @@ export class PostPage extends React.Component<IPostPage, {}> {
                   {frontmatter.author.id}
                 </div>
                 <div style={{ margin: 0 }}>
-                  {frontmatter.updatedDate} - {timeToRead} min read
+                  {frontmatter.createdDate} - {timeToRead} min read
               </div>
               </div>
             </div>
@@ -65,8 +65,8 @@ export class PostPage extends React.Component<IPostPage, {}> {
           <div key={slug}
           >
             {frontmatter.title}
-            {cover.responsiveResolution.src}
-            {cover.responsiveResolution.srcSet}
+            {cover && cover.responsiveResolution.src}
+            {cover && cover.responsiveResolution.srcSet}
           </div>
         );
       })}
@@ -105,7 +105,7 @@ query PageBlog {
   }
   # Get posts
   posts: allMarkdownRemark(
-    sort: { order: DESC, fields: [frontmatter___updatedDate] },
+    sort: { order: DESC, fields: [frontmatter___createdDate] },
     filter: {
       frontmatter: { draft: { ne: true } },
       fileAbsolutePath: { regex: "/post/" }
@@ -122,7 +122,7 @@ query PageBlog {
         }
         frontmatter {
           title
-          updatedDate(formatString: "DD MMMM, YYYY")
+          createdDate(formatString: "DD MMMM, YYYY")
           author {
             id
             avatar {

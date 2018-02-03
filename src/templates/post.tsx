@@ -62,7 +62,7 @@ export class BlogPost extends React.Component<IBlogPost, {}> {
               <div>
                 <div>{frontmatter.author.id}</div>
                 <div>{frontmatter.author.bio}</div>
-                <div>{frontmatter.updatedDate} - {timeToRead} min read</div>
+                <div>{frontmatter.createdDate} - {timeToRead} min read</div>
               </div>
             </div>
           </div>
@@ -115,7 +115,7 @@ export const pageQuery = graphql`
         }
       }
       title
-      updatedDate(formatString: "MMM D, YYYY")
+      createdDate(formatString: "MMM D, YYYY")
     }
   }
   recents: allMarkdownRemark(
@@ -124,7 +124,7 @@ export const pageQuery = graphql`
       frontmatter: {draft: {ne: true}},
       fileAbsolutePath: {regex: "/post/"},
     },
-    sort: {order: DESC, fields: [frontmatter___updatedDate]},
+    sort: {order: DESC, fields: [frontmatter___createdDate]},
     limit: 4
   ) {
     edges {
