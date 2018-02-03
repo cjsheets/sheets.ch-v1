@@ -1,4 +1,5 @@
 import Link from 'gatsby-link';
+import { get } from 'lodash';
 import * as React from 'react';
 
 import PostHeader from '../components/post-header';
@@ -33,7 +34,7 @@ export class PostPage extends React.Component<IPostPage, {}> {
       {posts.map(({ node }) => {
         const { frontmatter, timeToRead, fields: { slug }, excerpt } = node;
         const avatar = frontmatter.author.avatar.children[0] as ImageSharp;
-        const cover = frontmatter.image.children[0] as ImageSharp;
+        const cover = get(frontmatter, 'image.children', [])[0] as ImageSharp;
 
         const extra = (
           <div>
@@ -122,16 +123,6 @@ query PageBlog {
         frontmatter {
           title
           updatedDate(formatString: "DD MMMM, YYYY")
-          image {
-          	children {
-              ... on ImageSharp {
-                responsiveResolution(width: 700, height: 100) {
-                  src
-                  srcSet
-                }
-              }
-            }
-          }
           author {
             id
             avatar {

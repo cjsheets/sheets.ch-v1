@@ -116,16 +116,6 @@ export const pageQuery = graphql`
       }
       title
       updatedDate(formatString: "MMM D, YYYY")
-      image {
-        children {
-          ... on ImageSharp {
-            responsiveResolution(width: 900, height: 300, quality: 100) {
-              src
-              srcSet
-            }
-          }
-        }
-      }
     }
   }
   recents: allMarkdownRemark(
@@ -145,16 +135,6 @@ export const pageQuery = graphql`
         timeToRead
         frontmatter {
           title
-          image {
-            children {
-              ... on ImageSharp {
-                responsiveResolution(width: 300, height: 100) {
-                  src
-                  srcSet
-                }
-              }
-            }
-          }
           author {
             id
             avatar {

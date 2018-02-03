@@ -2,10 +2,9 @@
 title: 'Article #1'
 createdDate: '2017-05-02'
 updatedDate: '2017-05-06'
-author: Fabien BERNARD
+author: Chad Sheets
 tags:
   - test
-image: pexels-photo-59628.jpeg
 draft: false
 ---
 
