@@ -1,29 +1,37 @@
 import * as React from 'react';
 
-export const AboutPage = () => {
-  return (
-    <div>
-      <div>
-        <div>
-          <div>
-            About
-          </div>
-        </div>
-      </div>
-      <div>
-        <p>
-          This starter was created by @fabien0102.
-        </p>
-        <p>
-          For any question, I'm on <a href="https://discord.gg/2bz8EzW" target="blank">discord #reactiflux/gatsby</a>
-        </p>
-        <p>
-          For any issues, any PR are welcoming
-          <a href="https://github.com/fabien0102/gatsby-starter/issues" target="blank"> on this repository</a>
-        </p>
-      </div>
-    </div>
-  );
-};
+import { MarkdownRemarkConnection } from '../types/graphql-types';
 
-export default AboutPage;
+interface IPostPage {
+  data: { home: MarkdownRemarkConnection; };
+  location: { pathname: string; };
+}
+
+export class AboutMePage extends React.Component<IPostPage, {}> {
+
+  render() {
+    const content = this.props.data.home.edges[0].node.html;
+    return (
+      <div dangerouslySetInnerHTML={{__html: content}} />
+    );
+  }
+}
+
+export const pageQuery = graphql`
+  query AboutMeMarkdown {
+    home: allMarkdownRemark(
+      filter: {id: {regex: "//home/about-me/"}}
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+          }
+          html
+        }
+      }
+    }
+  }
+`;
+
+export default AboutMePage;
