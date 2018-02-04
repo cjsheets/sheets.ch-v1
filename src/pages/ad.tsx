@@ -20,7 +20,7 @@ export class AboutMePage extends React.Component<IPostPage, {}> {
 export const pageQuery = graphql`
   query AboutMeMarkdown {
     home: allMarkdownRemark(
-      filter: {id: {regex: "//home/about-me/"}}
+      filter: {id: {regex: "//home/about/"}}
     ) {
       edges {
         node {
