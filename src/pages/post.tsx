@@ -7,6 +7,8 @@ import PostPagination from '../components/post-pagination/post-pagination';
 import TagsCard from '../components/tags-card/tags-card';
 import { ImageSharp, MarkdownRemarkConnection } from '../types/graphql-types';
 
+import * as styles from './post.scss';
+
 interface IPostPage {
   data: {
     tags: MarkdownRemarkConnection;
@@ -32,7 +34,7 @@ export class PostPage extends React.Component<IPostPage, {}> {
       <PostHeader />
 
       <div style={{ justifyContent: 'space-around' }}>
-        <div style={{ maxWidth: 600 }}>
+        <div className={styles.postContainer}>
           {postCardProps.map(props => <PostCard {...props} key={props.slug} />)}
           <div>
             {/* <PostPagination Link={Link} pathname={pathname} pageCount={pageCount} /> */}
