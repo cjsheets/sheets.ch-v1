@@ -92,6 +92,7 @@ query PostPageMarkdown {
               }
             }
           }
+          tags
         }
       }
     }

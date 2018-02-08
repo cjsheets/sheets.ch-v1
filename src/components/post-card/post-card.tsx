@@ -16,10 +16,12 @@ interface IPostCard extends React.HTMLProps<HTMLDivElement> {
 }
 
 export const PostCard = (props: IPostCard) => {
+  const tags = props.frontmatter.tags || [];
+  console.log(props.frontmatter);
 
   const getFormattedDateString = () => {
     const date = new Date(props.frontmatter.createdDate);
-    return getMonthAbbreviation(date);
+    return `${date.getDate()}-${getMonthAbbreviation(date)}-${date.getFullYear()}`;
   };
 
   return (
@@ -32,6 +34,11 @@ export const PostCard = (props: IPostCard) => {
           {getFormattedDateString()} - {props.timeToRead} min read
         </div>
         {props.excerpt}
+        <div>
+          {tags.map((tag, i) =>
+            <Link key={tag + i} to="/">{`#${tag} `}</Link>
+          )}
+        </div>
       </Link>
     </div>
   );
