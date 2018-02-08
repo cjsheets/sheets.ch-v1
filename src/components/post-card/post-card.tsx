@@ -3,6 +3,7 @@ import { times } from 'lodash';
 import * as React from 'react';
 
 import { frontmatter_2, ImageSharp } from '../../types/graphql-types';
+import { getMonthAbbreviation } from '../../utility/date';
 
 import * as styles from './post-card.scss';
 
@@ -15,6 +16,12 @@ interface IPostCard extends React.HTMLProps<HTMLDivElement> {
 }
 
 export const PostCard = (props: IPostCard) => {
+
+  const getFormattedDateString = () => {
+    const date = new Date(props.frontmatter.createdDate);
+    return getMonthAbbreviation(date);
+  };
+
   return (
     <div className={styles.postCardContainer}>
       <Link to={props.slug}>
@@ -22,7 +29,7 @@ export const PostCard = (props: IPostCard) => {
          {props.frontmatter.title}
         </div>
         <div className={styles.postCardDate}>
-          {props.frontmatter.createdDate} - {props.timeToRead} min read
+          {getFormattedDateString()} - {props.timeToRead} min read
         </div>
         {props.excerpt}
       </Link>
