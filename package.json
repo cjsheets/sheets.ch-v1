@@ -15,6 +15,7 @@
   "scripts": {
     "build": "gatsby build",
     "build:dev": "gatsby develop -H 0.0.0.0",
+    "patch": "sed -i -e 's/if(c\\.initial) return;/if(!c||c.initial) return;/g' ./node_modules/extract-text-webpack-plugin/index.js",
     "graphql-types": "gql-gen --url http://localhost:8000/___graphql --template typescript --out ./src/types/graphql-types.d.ts",
     "netlify": "yarn install --verbose && yarn build",
     "reset": "rimraf ./.cache"
