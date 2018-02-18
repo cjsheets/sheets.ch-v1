@@ -17,6 +17,8 @@
     "build:dev": "gatsby develop -H 0.0.0.0",
     "graphql-types": "gql-gen --url http://localhost:8000/___graphql --template typescript --out ./src/types/graphql-types.d.ts",
     "netlify": "yarn install && yarn build",
+    "test": "lint:ts && test:tsc",
+    "test:tsc": "tsc --noEmit",
     "lint:ts": "tslint \"./src/**/*.ts\" \"./src/**/*.tsx\"",
     "reset": "rimraf ./.cache"
   },
