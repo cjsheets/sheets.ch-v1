@@ -3329,7 +3329,7 @@ extglob@^2.0.2:
     to-regex "^3.0.1"
 
 extract-text-webpack-plugin@cjsheets/extract-text-webpack-plugin#webpack-1:
-  version "1.0.1"
+  version "cjsheets/extract-text-webpack-plugin#webpack-1"
   resolved "https://codeload.github.com/cjsheets/extract-text-webpack-plugin/tar.gz/eadb19bf878333d0094a2f53637d18ab1d2bfb73"
   dependencies:
     async "^1.5.0"
