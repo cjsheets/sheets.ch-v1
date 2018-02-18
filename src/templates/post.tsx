@@ -1,4 +1,5 @@
 import Link from 'gatsby-link';
+import { get } from 'lodash';
 import * as React from 'react';
 
 import PostHeader from '../components/post-header';
@@ -14,15 +15,15 @@ interface IBlogPost {
 export class BlogPost extends React.Component<IBlogPost, {}> {
   render() {
     const { frontmatter, html, timeToRead } = this.props.data.post;
-    const avatar = frontmatter.author.avatar.children[0] as ImageSharp;
+    const avatar = get(frontmatter, 'author.avatar.children', [])[0] as ImageSharp;
 
     const tags = this.props.data.post.frontmatter.tags
       .map((tag) => <div key={tag}><Link to={`/post/tags/${tag}/`}>{tag}</Link></div>);
 
     const recents = this.props.data.recents.edges
       .map(({ node }) => {
-        const recentAvatar = node.frontmatter.author.avatar.children[0] as ImageSharp;
-        const _recentCover = node.frontmatter.image.children[0] as ImageSharp;
+        const recentAvatar = get(node, 'frontmatter.author.avatar.children', [])[0] as ImageSharp;
+        const _recentCover = get(node, 'frontmatter.image.children', [])[0] as ImageSharp;
         const extra = (
           <div>
             <div>
@@ -51,7 +52,7 @@ export class BlogPost extends React.Component<IBlogPost, {}> {
         );
       });
 
-    const recentCover = frontmatter.image.children[0] as ImageSharp;
+    const recentCover = get(frontmatter, 'image.children', [])[0] as ImageSharp;
     return (
       <div>
         <PostHeader />
