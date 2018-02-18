@@ -1,6 +1,9 @@
 Personal Blog and Portfolio
 ===========================
 
+[![Build Status](https://travis-ci.org/cjsheets/sheets.ch.svg?branch=master)](https://travis-ci.org/cjsheets/sheets.ch)
+
+
 This repository contains the [Gatsby](https://www.gatsbyjs.org) build for my personal blog.
 
 Warning

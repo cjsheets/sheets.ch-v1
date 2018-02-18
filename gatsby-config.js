@@ -48,7 +48,18 @@ module.exports = {
     `gatsby-transformer-json`,
 
     // Add typescript stack into webpack
-    `gatsby-plugin-typescript`,
+    //https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-typescript
+    {
+      resolve: "gatsby-plugin-typescript",
+      options: {
+        transpileOnly: true,
+        compilerOptions: {
+          target: `es2015`,  // default: esnext
+          experimentalDecorators: true,
+          jsx: `react`,
+        },
+      },
+    },
 
     // Setup SASS for CSS modules
     `gatsby-plugin-typescript-scss-modules`,

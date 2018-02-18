@@ -1,23 +1,12 @@
 {
   "compilerOptions": {
-    "jsx": "react",
-    "target": "es2015",
-    "module": "es2015",
-    "moduleResolution": "Node",
-    "allowUnreachableCode": false,
-    "alwaysStrict": true,
-    "declaration": false,
-    "forceConsistentCasingInFileNames": true,
-    "noEmitOnError": false,
+    "outDir": "./dist/",
+    "sourceMap": true,
     "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "pretty": true,
-    "removeComments": false
+    "module": "commonjs",
+    "target": "es2015",
+    "jsx": "react",
+    "lib": ["dom", "es2015", "es2017"]
   },
-  "moduleResolution": "node",
-  "include": [
-    "src",
-    "test"
-  ]
+  "include": ["./src/**/*"]
 }

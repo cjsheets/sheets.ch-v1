@@ -1,6 +1,6 @@
-import Post from '../pages/post';
+import PostPage from '../pages/post';
 
-export default Post;
+export default PostPage;
 
 export const pageQuery = graphql`
 query TemplateTagPage($tag: String) {

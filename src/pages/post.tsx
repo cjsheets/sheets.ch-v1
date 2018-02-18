@@ -1,10 +1,7 @@
-import { get } from 'lodash';
 import * as React from 'react';
 
 import PostCard from '../components/post-card/post-card';
 import PostHeader from '../components/post-header';
-import PostPagination from '../components/post-pagination/post-pagination';
-import TagsCard from '../components/tags-card/tags-card';
 import { ImageSharp, MarkdownRemarkConnection } from '../types/graphql-types';
 
 import * as styles from './post.scss';
@@ -37,6 +34,9 @@ export class PostPage extends React.Component<IPostPage, {}> {
         <div className={styles.postContainer}>
           {postCardProps.map(props => <PostCard {...props} key={props.slug} />)}
           <div>
+            {tags}
+            {pathname}
+            {pageCount}
             {/* <PostPagination Link={Link} pathname={pathname} pageCount={pageCount} /> */}
           </div>
         </div>

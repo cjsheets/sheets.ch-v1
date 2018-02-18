@@ -4,12 +4,10 @@ import { Router } from 'react-router-dom';
 
 import { store } from './src/store';
 
-interface IProps {
-  history: History;
-}
-
-exports.replaceRouterComponent = ({ history }: IProps) =>
-  ({ children }: {children: React.ReactChildren}) =>
-    <Provider store={store} >
+exports.replaceRouterComponent = ({ history }) => {
+  return ({ children }) => (
+    <Provider store={store}>
       <Router history={history}>{children}</Router>
-    </Provider>;
+    </Provider>
+  );
+};
