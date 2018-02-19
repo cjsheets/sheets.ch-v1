@@ -10,18 +10,17 @@ Google Analytics utilizes "cookies" (small text files stored in your browsers ca
 
 Google Analytics stores session information, but not personally identifying information. Examples of session information include:
 
-* Referring website
-* Length of visit
-* Pages visited
-* Type of web browser used
-* ...and quite a bit more along these lines
+-   Referring website
+-   Length of visit
+-   Pages visited
+-   Type of web browser used
+-   ...and quite a bit more along these lines
 
 ## Do you store information about my visit?
 
 The information collected by Google Analytics is sent straight to Google servers and is only accessible to me through reports. Google manages the technical details relating to the gathering and storing of all analytics information.
 
 ## What do I do with your data?
-
 
 Analytics allows me to better understand what content is most popular and how users navigate the site. This helps me make better future design and writing decisions.
 

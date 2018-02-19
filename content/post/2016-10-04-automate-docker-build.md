@@ -16,7 +16,7 @@ First, on Docker Hub, choose the "Create" drop-down and select "Create an Automa
 
 If you haven't linked a GitHub or BitBucket account yet, you will be prompted to do so. Select "Link Accounts" and follow the prompts.
 
-Select "Create an Automated Build with < Provider >".
+Select "Create an Automated Build with &lt; Provider >".
 
 From there, it's simply a matter of selecting your repository containing a Docker file.
 

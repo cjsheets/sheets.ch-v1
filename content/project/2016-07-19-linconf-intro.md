@@ -9,10 +9,10 @@ draft: false
 
 LinConf is a blanket organization on GitHub where I intend to publish Ansible roles, tests and modules which adhere to the following important design principles:
 
-* Dependency free
-* Structural consistency
-* High extensibility
-* High modularity
+-   Dependency free
+-   Structural consistency
+-   High extensibility
+-   High modularity
 
 ### Dependencies
 

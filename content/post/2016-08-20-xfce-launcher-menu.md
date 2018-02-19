@@ -13,7 +13,6 @@ When an application fails to register a menu shortcut, you can add one manually 
 
 Below is an example of a shortcut to robomongo.
 
-
 robomongo.desktop
 
 ```bash

@@ -60,21 +60,21 @@ module.exports = async ({graphql, boundActionCreators}) => {
       });
     });
 
-  // Create tag pages
-  const tagTemplate = path.resolve(__dirname, '../src/templates/tags.tsx');
-  posts
-    .reduce((mem, post) =>
-      cleanArray(mem.concat(get(post, 'frontmatter.tags')))
-    , [])
-    .forEach(tag => {
-      createPage({
-        path: `/post/tags/${tag}/`,
-        component: tagTemplate,
-        context: {
-          tag
-        }
-      });
-    });
+  // // Create tag pages
+  // const tagTemplate = path.resolve(__dirname, '../src/templates/tags.tsx');
+  // posts
+  //   .reduce((mem, post) =>
+  //     cleanArray(mem.concat(get(post, 'frontmatter.tags')))
+  //   , [])
+  //   .forEach(tag => {
+  //     createPage({
+  //       path: `/post/tags/${tag}/`,
+  //       component: tagTemplate,
+  //       context: {
+  //         tag
+  //       }
+  //     });
+  //   });
 
       // // Create post pagination
       // const pageCount = Math.ceil(posts.length / POSTS_PER_PAGE);

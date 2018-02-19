@@ -17,10 +17,11 @@ interface IPostPage {
 
 export class PostPage extends React.Component<IPostPage, {}> {
   render() {
+    const md = this.props.data.allMarkdownRemark;
   const tags = this.props.data.tags && this.props.data.tags.group;
   const { pathname } = this.props.location;
-  const pageCount = Math.ceil(this.props.data.posts.totalCount / 10);
-  const postCardProps = this.props.data.posts.edges.map(({ node }) => {
+  const pageCount = Math.ceil(md.totalCount / 10);
+  const postCardProps = md.edges.map(({ node }) => {
     const { frontmatter, timeToRead, fields: { slug }, excerpt } = node;
     const avatar = frontmatter.author.avatar.children[0] as ImageSharp;
     return ({frontmatter, timeToRead, slug, excerpt, avatar});
@@ -52,14 +53,6 @@ export class PostPage extends React.Component<IPostPage, {}> {
 export default PostPage;
 export const pageQuery = graphql`
 query PagePostMarkdown {
-  # Get tags
-  tags: allMarkdownRemark(filter: {frontmatter: {draft: {ne: true}}}) {
-    group(field: frontmatter___tags) {
-      fieldValue
-      totalCount
-    }
-  }
-
   # Get posts
   posts: allMarkdownRemark(
     sort: { order: DESC, fields: [frontmatter___createdDate] },

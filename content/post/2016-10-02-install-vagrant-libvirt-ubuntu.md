@@ -9,7 +9,7 @@ draft: false
 ---
 
 Vagrant could be installed using the Ubuntu package manager: `apt-get install vagrant` It's strongly recommended, however, to download the
-[latest version](https://www.vagrantup.com/downloads.html) from their site and install it manually. Choose 32 or 64 bit *.deb, download, and install with the following command:
+[latest version](https://www.vagrantup.com/downloads.html) from their site and install it manually. Choose 32 or 64 bit \*.deb, download, and install with the following command:
 
 ```bash
 sudo dpkg -i vagrant_*.deb  
@@ -22,7 +22,6 @@ Vagrant supports virtualbox, VMware and AWS out of the box and is easily extende
 For use with libvirt, see the [official plugin page](https://github.com/vagrant-libvirt/vagrant-libvirt) on GitHub for detailed instructions.
 
 I installed the following prerequisites prior to installing the libvirt plugin:
-
 
 ```bash
 sudo apt-get install libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev  

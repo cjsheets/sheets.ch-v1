@@ -32,8 +32,7 @@ What are you doing today?
 
 Facebook and LinkedIn are the best ways to keep track of what I'm up to today.
 
-If you'd like to touch base feel free to drop me an email: < chad at cjsheets dot com >
-
+If you'd like to touch base feel free to drop me an email: &lt; chad at cjsheets dot com >
 
 [PPA](https://launchpad.net/~cjsheets)
 [Facebook](http://www.facebook.com/chad.sheets)
