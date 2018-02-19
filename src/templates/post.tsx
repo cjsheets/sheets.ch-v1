@@ -11,7 +11,7 @@ interface IBlogPost {
   };
 }
 
-export class BlogPost extends React.Component<IBlogPost, {}> {
+export default class Post extends React.Component<IBlogPost, {}> {
   render() {
     const { frontmatter, html, timeToRead } = this.props.data.post;
 
@@ -66,7 +66,6 @@ export class BlogPost extends React.Component<IBlogPost, {}> {
   }
 }
 
-export default BlogPost;
 export const pageQuery = graphql`
   query TemplateBlogPost($slug: String!) {
   post: markdownRemark(fields: {slug: {eq: $slug}}) {

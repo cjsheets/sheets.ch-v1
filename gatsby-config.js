@@ -5,12 +5,12 @@ module.exports = {
     title: 'Chad Sheets Homepage',
     siteUrl: 'https://sheets.ch',
     rssFeedTitle: 'Chad Sheets',
-    rssFeedDescription: 'Chad Sheets Homepage',
+    rssFeedDescription: 'Chad Sheets Homepage'
   },
   mapping: {
-    'MarkdownRemark.frontmatter.author': 'AuthorJson',
+    'MarkdownRemark.frontmatter.author': 'AuthorJson'
   },
-  
+
   plugins: [
     // Expose `/data` to graphQL layer
     {
@@ -48,18 +48,8 @@ module.exports = {
     `gatsby-transformer-json`,
 
     // Add typescript stack into webpack
-    //https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-typescript
-    {
-      resolve: "gatsby-plugin-typescript",
-      options: {
-        transpileOnly: true,
-        compilerOptions: {
-          target: `es2015`,  // default: esnext
-          experimentalDecorators: true,
-          jsx: `react`,
-        },
-      },
-    },
+    // https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-typescript
+    `gatsby-plugin-typescript`,
 
     // Setup SASS for CSS modules
     `gatsby-plugin-typescript-scss-modules`,
@@ -78,7 +68,7 @@ module.exports = {
         theme_color: `#0e82d0`,
         display: `minimal-ui`
       }
-    },
+    }
     /* eslint-enable camelcase */
 
     // ToDo: decide if this is a good idea
@@ -86,6 +76,6 @@ module.exports = {
     // html file so the site works offline and is otherwise
     // resistant to bad networks. Works with almost any
     // site!
-    //`gatsby-plugin-offline`
+    // `gatsby-plugin-offline`
   ]
 };

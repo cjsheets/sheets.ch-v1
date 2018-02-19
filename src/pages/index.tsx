@@ -1,19 +1,15 @@
-import * as React from 'react';
+import * as React from "react";
+import Link from "gatsby-link";
+import HeaderMenu from "../components/HeaderMenu/HeaderMenu";
+import { menuItems } from "../layouts";
 
-interface IIndex {
+interface IndexPageProps {
   location: {
     pathname: string;
   };
 }
 
-export class Index extends React.Component<IIndex, {}> {
-  render() {
-    return (
-      <div>
-        <h1>Welcome!</h1>
-      </div>
-    );
-  }
-}
+export default (props: IndexPageProps) =>
+  <div>
 
-export default Index;
+  </div>;
