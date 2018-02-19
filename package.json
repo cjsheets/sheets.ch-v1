@@ -13,15 +13,15 @@
     "url": "git+https://github.com/cjsheets/sheets.ch.git"
   },
   "scripts": {
-    "start": "gatsby develop",
     "build": "gatsby build",
     "build:dev": "gatsby develop -H 0.0.0.0",
     "test": "yarn lint:ts && yarn test:tsc",
     "test:tsc": "tsc --noEmit",
+    "test:watch": "tsc --watch --noEmit",
     "lint": "npm run lint:ts && npm run lint:md",
     "lint:ts": "tslint \"./src/**/*.ts\" \"./src/**/*.tsx\"",
     "lint:md": "remark .",
-    "graphql-types": "gql-gen --url http://localhost:8000/___graphql --template typescript --out ./src/types/graphql-types.d.ts"
+    "graphql-types": "gql-gen --url http://localhost:8000/___graphql --template typescript --out ./@types/graphql-types.d.ts"
   },
   "dependencies": {
     "@types/lodash": "^4.14.63",
@@ -58,7 +58,7 @@
     "react-redux": "5.0.6",
     "redux-devtools-extension": "^2.13.2",
     "ts-loader": "2.3.7",
-    "typescript": "2.5.3"
+    "typescript": "2.7.2"
   },
   "devDependencies": {
     "@types/node": "^7.0.15",
@@ -67,6 +67,6 @@
     "remark": "7.0.1",
     "remark-cli": "^3.0.1",
     "remark-preset-lint-recommended": "^2.0.0",
-    "ts-lint": "4.5.1"
+    "tslint": "^5.9.1"
   }
 }

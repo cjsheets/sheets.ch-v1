@@ -1,3 +1,5 @@
+import { graphql } from 'graphql';
+
 import Post from '../pages/post';
 
 export default Post;

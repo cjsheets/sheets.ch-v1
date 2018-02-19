@@ -1,3 +1,4 @@
+/* tslint:disable prefer-object-spread */
 import { createStore } from 'redux';
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
