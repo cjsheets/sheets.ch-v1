@@ -1,10 +1,13 @@
 $accent_blue_dark:  #14568a;
 $accent_blue_medium_dark: #0D79C2;
 $accent_blue_medium: #417a97;
-$background_blue_light: #f5f8fa;
 
-$font_family_heading: "Titillium Web", arial, sans-serif;
-$font_family_body: "Open Sans", verdana, sans-serif;
+$header_blue_transparent_offset: rgba(31,69,120,0.95); // #1f4578
+$header_blue: #294E80;
+$background_blue_light: #6784AC;
+
+$font_family_heading: Lato, arial, sans-serif;
+$font_family_body: Open Sans, verdana, sans-serif;
 
 $font_size_body: 100%;
 $font_color_body: #323232;
@@ -17,8 +20,6 @@ $font_size_h3: 130%;
 $font_color_hx: #323232;
 
 $font-weight-bold: 700;
-$font-weight-md-bold: 600;
-$font-weight-regular: 400;
 $font-weight-regular: 400;
 $font-weight-light: 300;
 

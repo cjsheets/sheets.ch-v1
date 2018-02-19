@@ -1,16 +1,15 @@
-import { graphql } from 'graphql';
 import * as React from 'react';
 
 import { ImageSharp, MarkdownRemarkConnection } from '../../@types/graphql-types';
 import PostCard from '../components/post-card/post-card';
 import PostHeader from '../components/post-header';
 
-// import * as styles from '../styles/post.scss';
+import * as styles from '../styles/post.scss';
 
 interface IPostPage {
   data: {
     tags: MarkdownRemarkConnection;
-    posts: MarkdownRemarkConnection;
+    projects: MarkdownRemarkConnection;
   };
   pathContext: { tag?: string; };
   location: { pathname: string; };
@@ -18,11 +17,11 @@ interface IPostPage {
 
 export class PostPage extends React.Component<IPostPage, {}> {
   render() {
-  const {posts} = this.props.data;
+  const {projects} = this.props.data;
   const tags = this.props.data.tags && this.props.data.tags.group;
   const { pathname } = this.props.location;
-  const pageCount = Math.ceil(posts.totalCount / 10);
-  const postCardProps = posts.edges.map(({ node }) => {
+  const pageCount = Math.ceil(projects.totalCount / 10);
+  const postCardProps = projects.edges.map(({ node }) => {
     const { frontmatter, timeToRead, fields: { slug }, excerpt } = node;
     const avatar = frontmatter.author.avatar.children[0] as ImageSharp;
     return ({frontmatter, timeToRead, slug, excerpt, avatar});
@@ -31,9 +30,8 @@ export class PostPage extends React.Component<IPostPage, {}> {
   return (
     <div>
       <PostHeader />
-      {/* styles.postContainer */}
       <div style={{ justifyContent: 'space-around' }}>
-        <div>
+        <div className={styles.postContainer}>
           {postCardProps.map(props => <PostCard {...props} key={props.slug} />)}
           <div>
             {tags}
@@ -53,13 +51,13 @@ export class PostPage extends React.Component<IPostPage, {}> {
 
 export default PostPage;
 export const pageQuery = graphql`
-query PagePostMarkdown {
+query ProjectsPageMarkdown {
   # Get posts
-  posts: allMarkdownRemark(
+  projects: allMarkdownRemark(
     sort: { order: DESC, fields: [frontmatter___createdDate] },
     filter: {
       frontmatter: { draft: { ne: true } },
-      fileAbsolutePath: { regex: "/post/" }
+      fileAbsolutePath: { regex: "/project/" }
     },
     limit: 10
   ) {

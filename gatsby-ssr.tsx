@@ -1,8 +1,9 @@
-import * as React from "react";
-import { Provider } from "react-redux";
-import { renderToString } from "react-dom/server";
+// tslint:disable:no-submodule-imports
+import * as React from 'react';
+import { renderToString } from 'react-dom/server';
+import { Provider } from 'react-redux';
 
-import { store } from "./src/store";
+import { store } from './src/store';
 
 exports.replaceRenderer = ({ bodyComponent, replaceBodyHTMLString }) => {
   const ConnectedBody = () => (

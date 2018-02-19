@@ -60,6 +60,19 @@ module.exports = async ({graphql, boundActionCreators}) => {
       });
     });
 
+  const projectTemplate = path.resolve(__dirname, '../src/templates/project.tsx');
+  posts
+    .filter(post => (post.fields.slug || '').startsWith('/project/'))
+    .forEach(post => {
+      createPage({
+        path: post.fields.slug,
+        component: postTemplate,
+        context: {
+          slug: post.fields.slug
+        }
+      });
+    });
+
   // // Create tag pages
   // const tagTemplate = path.resolve(__dirname, '../src/templates/tags.tsx');
   // posts

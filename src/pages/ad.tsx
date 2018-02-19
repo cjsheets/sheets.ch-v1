@@ -1,14 +1,13 @@
-import { graphql } from 'graphql';
 import * as React from 'react';
 
 import { MarkdownRemarkConnection } from '../../@types/graphql-types';
 
-interface IPostPage {
+interface IAboutMePage {
   data: { home: MarkdownRemarkConnection; };
   location: { pathname: string; };
 }
 
-class AboutMePage extends React.Component<IPostPage, {}> {
+class AboutMePage extends React.Component<IAboutMePage, {}> {
 
   render() {
     const content = this.props.data.home.edges[0].node.html;

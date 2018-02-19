@@ -4,18 +4,18 @@ import * as React from 'react';
 import { MarkdownRemark, MarkdownRemarkConnection } from '../../@types/graphql-types';
 import PostHeader from '../components/post-header';
 
-interface IPostTemplate {
+interface IProjectTemplate {
   data: {
-    post: MarkdownRemark;
+    project: MarkdownRemark;
     recents: MarkdownRemarkConnection;
   };
 }
 
-export default class PostTemplate extends React.Component<IPostTemplate, {}> {
+export default class ProjectTemplate extends React.Component<IProjectTemplate, {}> {
   render() {
-    const { frontmatter, html, timeToRead } = this.props.data.post;
+    const { frontmatter, html, timeToRead } = this.props.data.project;
 
-    const tags = this.props.data.post.frontmatter.tags
+    const tags = this.props.data.project.frontmatter.tags
       .map((tag) => <div key={tag}><Link to={`/post/tags/${tag}/`}>{tag}</Link></div>);
 
     const recents = this.props.data.recents.edges
@@ -67,8 +67,8 @@ export default class PostTemplate extends React.Component<IPostTemplate, {}> {
 }
 
 export const pageQuery = graphql`
-  query PostTemplate($slug: String!) {
-  post: markdownRemark(fields: {slug: {eq: $slug}}) {
+  query ProjectTemplate($slug: String!) {
+  project: markdownRemark(fields: {slug: {eq: $slug}}) {
     html
     excerpt
     timeToRead
@@ -94,40 +94,6 @@ export const pageQuery = graphql`
       }
       title
       createdDate(formatString: "MMM D, YYYY")
-    }
-  }
-  recents: allMarkdownRemark(
-    filter: {
-      fields: {slug: {ne: $slug}}
-      frontmatter: {draft: {ne: true}},
-      fileAbsolutePath: {regex: "/post/"},
-    },
-    sort: {order: DESC, fields: [frontmatter___createdDate]},
-    limit: 4
-  ) {
-    edges {
-      node {
-        fields {
-          slug
-        }
-        timeToRead
-        frontmatter {
-          title
-          author {
-            id
-            avatar {
-              children {
-                ... on ImageSharp {
-                  responsiveResolution(width: 36, height: 36) {
-                    src
-                    srcSet
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
     }
   }
 }
