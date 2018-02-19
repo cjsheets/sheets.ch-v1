@@ -1,8 +1,9 @@
 import Link from 'gatsby-link';
+import { graphql } from 'graphql';
 import * as React from 'react';
 
+import { MarkdownRemark, MarkdownRemarkConnection } from '../../@types/graphql-types';
 import PostHeader from '../components/post-header';
-import { MarkdownRemark, MarkdownRemarkConnection } from '../types/graphql-types';
 
 interface IBlogPost {
   data: {

@@ -8,6 +8,7 @@ import Helmet from 'react-helmet';
 let styles: string;
 if (process.env.NODE_ENV === `production`) {
   try {
+  // tslint:disable-next-line:no-submodule-imports
     styles = require('!raw-loader!../public/styles.css');
   } catch (err) {
     console.error(err);

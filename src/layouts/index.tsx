@@ -1,4 +1,3 @@
-import 'prismjs/themes/prism-okaidia.css';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
@@ -7,6 +6,7 @@ import SiteHeader from '../components/site-header/site-header';
 import { IStoreState } from '../store';
 
 import '../styles/normalize.css';
+import '../styles/prism-vs.css';
 import '../styles/styles.scss';
 import * as styles from './index.scss';
 

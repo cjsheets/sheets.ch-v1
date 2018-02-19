@@ -1,7 +1,7 @@
 import Link from 'gatsby-link';
 import * as React from 'react';
 
-import { frontmatter_2, ImageSharp } from '../../types/graphql-types';
+import { frontmatter_2, ImageSharp } from '../../../@types/graphql-types';
 
 import * as styles from './post-card.scss';
 
@@ -15,7 +15,7 @@ interface IPostCard extends React.HTMLProps<HTMLDivElement> {
 
 export const PostCard = (props: IPostCard) => {
   const tags = props.frontmatter.tags || [];
-  console.log(props.frontmatter);
+  // console.log(props.frontmatter);
   const getMonthAbbreviation = (date: Date) => {
     const monthAbbreviations = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return monthAbbreviations[date.getMonth()];

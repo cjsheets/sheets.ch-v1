@@ -1,6 +1,7 @@
-import * as React from "react";
+import { graphql } from 'graphql';
+import * as React from 'react';
 
-import { MarkdownRemarkConnection } from '../types/graphql-types';
+import { MarkdownRemarkConnection } from '../../@types/graphql-types';
 
 interface IPostPage {
   data: { home: MarkdownRemarkConnection; };

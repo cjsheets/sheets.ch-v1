@@ -1,10 +1,11 @@
+import { graphql } from 'graphql';
 import * as React from 'react';
 
+import { ImageSharp, MarkdownRemarkConnection } from '../../@types/graphql-types';
 import PostCard from '../components/post-card/post-card';
 import PostHeader from '../components/post-header';
-import { ImageSharp, MarkdownRemarkConnection } from '../types/graphql-types';
 
-//import * as styles from '../styles/post.scss';
+// import * as styles from '../styles/post.scss';
 
 interface IPostPage {
   data: {
@@ -17,7 +18,7 @@ interface IPostPage {
 
 export class PostPage extends React.Component<IPostPage, {}> {
   render() {
-  const {allMarkdownRemark, posts} = this.props.data;
+  const {posts} = this.props.data;
   const tags = this.props.data.tags && this.props.data.tags.group;
   const { pathname } = this.props.location;
   const pageCount = Math.ceil(posts.totalCount / 10);
@@ -32,7 +33,7 @@ export class PostPage extends React.Component<IPostPage, {}> {
       <PostHeader />
       {/* styles.postContainer */}
       <div style={{ justifyContent: 'space-around' }}>
-        <div> 
+        <div>
           {postCardProps.map(props => <PostCard {...props} key={props.slug} />)}
           <div>
             {tags}
