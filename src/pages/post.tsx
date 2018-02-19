@@ -17,11 +17,11 @@ interface IPostPage {
 
 export class PostPage extends React.Component<IPostPage, {}> {
   render() {
-    const md = this.props.data.allMarkdownRemark;
+  const {allMarkdownRemark, posts} = this.props.data;
   const tags = this.props.data.tags && this.props.data.tags.group;
   const { pathname } = this.props.location;
-  const pageCount = Math.ceil(md.totalCount / 10);
-  const postCardProps = md.edges.map(({ node }) => {
+  const pageCount = Math.ceil(posts.totalCount / 10);
+  const postCardProps = posts.edges.map(({ node }) => {
     const { frontmatter, timeToRead, fields: { slug }, excerpt } = node;
     const avatar = frontmatter.author.avatar.children[0] as ImageSharp;
     return ({frontmatter, timeToRead, slug, excerpt, avatar});
