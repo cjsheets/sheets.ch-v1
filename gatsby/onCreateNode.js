@@ -28,8 +28,8 @@ module.exports = ({node, boundActionCreators, getNode}) => {
         }
       }
 
-    createNodeField({node, name: 'slug', value: slug});
-    createNodeField({node, name: 'path', value: relativePath}); // GitHub edit link
-    return;
+      createNodeField({node, name: 'slug', value: slug});
+      createNodeField({node, name: 'path', value: relativePath}); // GitHub edit link
+
   }
 };

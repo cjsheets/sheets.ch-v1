@@ -1,13 +1,10 @@
-import { get } from 'lodash';
 import * as React from 'react';
 
 import PostCard from '../components/post-card/post-card';
 import PostHeader from '../components/post-header';
-import PostPagination from '../components/post-pagination/post-pagination';
-import TagsCard from '../components/tags-card/tags-card';
 import { ImageSharp, MarkdownRemarkConnection } from '../types/graphql-types';
 
-import * as styles from './post.scss';
+//import * as styles from '../styles/post.scss';
 
 interface IPostPage {
   data: {
@@ -20,7 +17,7 @@ interface IPostPage {
 
 export class PostPage extends React.Component<IPostPage, {}> {
   render() {
-  const tags = this.props.data.tags.group;
+  const tags = this.props.data.tags && this.props.data.tags.group;
   const { pathname } = this.props.location;
   const pageCount = Math.ceil(this.props.data.posts.totalCount / 10);
   const postCardProps = this.props.data.posts.edges.map(({ node }) => {
@@ -32,11 +29,14 @@ export class PostPage extends React.Component<IPostPage, {}> {
   return (
     <div>
       <PostHeader />
-
+      {/* styles.postContainer */}
       <div style={{ justifyContent: 'space-around' }}>
-        <div className={styles.postContainer}>
+        <div> 
           {postCardProps.map(props => <PostCard {...props} key={props.slug} />)}
           <div>
+            {tags}
+            {pathname}
+            {pageCount}
             {/* <PostPagination Link={Link} pathname={pathname} pageCount={pageCount} /> */}
           </div>
         </div>
@@ -51,7 +51,7 @@ export class PostPage extends React.Component<IPostPage, {}> {
 
 export default PostPage;
 export const pageQuery = graphql`
-query PostPageMarkdown {
+query PagePostMarkdown {
   # Get tags
   tags: allMarkdownRemark(filter: {frontmatter: {draft: {ne: true}}}) {
     group(field: frontmatter___tags) {
@@ -59,6 +59,7 @@ query PostPageMarkdown {
       totalCount
     }
   }
+
   # Get posts
   posts: allMarkdownRemark(
     sort: { order: DESC, fields: [frontmatter___createdDate] },
@@ -92,7 +93,6 @@ query PostPageMarkdown {
               }
             }
           }
-          tags
         }
       }
     }

@@ -21,7 +21,6 @@ export const Icon: {
 export const SvgIcon = (props: ISvgIcon) => {
   const width = props.width || 18;
   const height = props.height || 18;
-  const style = props.inline ? {display: 'inline-block'} : {display: 'block'};
 
   return (
     <div
