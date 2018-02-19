@@ -3,7 +3,6 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { toggleSidebar } from '../../store';
 import { Icon, SvgIcon } from '../svg-icon/svg-icon';
 
 import * as styles from './site-header.scss';

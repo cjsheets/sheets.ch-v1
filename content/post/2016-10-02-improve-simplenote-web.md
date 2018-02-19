@@ -27,7 +27,6 @@ javascript:void(window.open("https://app.simplenote.com","_blank","outerWidth=95
 
 Done. Next?
 
-
 ## Step 2: Stylish
 
 Simplenote uses text and element spacing that's too large. This issue requires an extension to fix.

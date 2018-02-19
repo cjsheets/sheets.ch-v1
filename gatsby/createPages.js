@@ -6,7 +6,7 @@ const {get, times} = require('lodash');
 // - `pages/post.tsx:27`
 // - `pages/post.tsx:121`
 const POSTS_PER_PAGE = 10;
-const cleanArray = arr => [...new Set(arr.filter(v => !!v))];
+const cleanArray = arr => [...new Set(arr.filter(v => Boolean(v)))];
 
 // Implement the Gatsby API `createPages`.
 // This is called after the Gatsby bootstrap is finished
@@ -16,15 +16,15 @@ const cleanArray = arr => [...new Set(arr.filter(v => !!v))];
 module.exports = async ({graphql, boundActionCreators}) => {
   const {createPage, createRedirect} = boundActionCreators;
 
-  const tagsTemplate = path.resolve(__dirname, '../src/templates/tags.tsx');
-  const pageTemplate = path.resolve(__dirname, '../src/templates/page.tsx');
+  // Const tagsTemplate = path.resolve(__dirname, '../src/templates/tags.tsx');
+  // const pageTemplate = path.resolve(__dirname, '../src/templates/page.tsx');
 
   createRedirect({fromPath: '/index.html', redirectInBrowser: true, toPath: '/'});
 
   const allMarkdown = await graphql(
     `
       {
-        allMarkdownRemark(limit: 1000) {
+        allMarkdownRemark {
           edges {
             node {
               fields {
@@ -42,7 +42,7 @@ module.exports = async ({graphql, boundActionCreators}) => {
 
   if (allMarkdown.errors) {
     console.error(allMarkdown.errors);
-    throw Error(allMarkdown.errors);
+    throw new Error(allMarkdown.errors);
   }
 
   const posts = allMarkdown.data.allMarkdownRemark.edges.map(p => p.node);
@@ -60,33 +60,21 @@ module.exports = async ({graphql, boundActionCreators}) => {
       });
     });
 
-  posts
-    .filter(post => (post.fields.slug || '').startsWith('/project/'))
-    .forEach(project => {
-      createPage({
-        path: project.fields.slug,
-        component: postTemplate,
-        context: {
-          slug: project.fields.slug
-        }
-      });
-    });
-
-
-      // // Create tag pages
-      // posts
-      //   .reduce((mem, post) =>
-      //     cleanArray(mem.concat(get(post, 'frontmatter.tags')))
-      //   , [])
-      //   .forEach(tag => {
-      //     createPage({
-      //       path: `/post/tags/${tag}/`,
-      //       component: slash(templates.tags),
-      //       context: {
-      //         tag
-      //       }
-      //     });
-      //   });
+  // // Create tag pages
+  // const tagTemplate = path.resolve(__dirname, '../src/templates/tags.tsx');
+  // posts
+  //   .reduce((mem, post) =>
+  //     cleanArray(mem.concat(get(post, 'frontmatter.tags')))
+  //   , [])
+  //   .forEach(tag => {
+  //     createPage({
+  //       path: `/post/tags/${tag}/`,
+  //       component: tagTemplate,
+  //       context: {
+  //         tag
+  //       }
+  //     });
+  //   });
 
       // // Create post pagination
       // const pageCount = Math.ceil(posts.length / POSTS_PER_PAGE);
@@ -99,5 +87,4 @@ module.exports = async ({graphql, boundActionCreators}) => {
       //     }
       //   });
       // });
-
 };

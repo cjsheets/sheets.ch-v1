@@ -20,14 +20,11 @@ export default (props: ITagsdivProps) => {
         <div>
           {props.tags.map((tag) => {
             const isActive = tag.fieldValue === props.tag;
-            const activeStyle = {
-              fontWeight: '700'
-            };
             return (
               <div key={tag.fieldValue}>
                 <div>
                   <props.Link to={`/post/tags/${tag.fieldValue}/`}>
-                    {tag.fieldValue} ({tag.totalCount})
+                    {tag.fieldValue} ({tag.totalCount}) {isActive}
                   </props.Link>
                 </div>
               </div>

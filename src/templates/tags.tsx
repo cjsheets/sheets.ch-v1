@@ -1,8 +1,6 @@
-import * as React from 'react';
+import Page from '../pages/page';
 
-import Post from '../pages/post';
-
-export default Post;
+export default Page;
 
 export const pageQuery = graphql`
 query TemplateTagPage($tag: String) {

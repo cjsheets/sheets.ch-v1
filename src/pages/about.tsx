@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 import { MarkdownRemarkConnection } from '../types/graphql-types';
 
@@ -7,7 +7,7 @@ interface IPostPage {
   location: { pathname: string; };
 }
 
-export class AboutMePage extends React.Component<IPostPage, {}> {
+class AboutMePage extends React.Component<IPostPage, {}> {
 
   render() {
     const content = this.props.data.home.edges[0].node.html;
@@ -17,6 +17,7 @@ export class AboutMePage extends React.Component<IPostPage, {}> {
   }
 }
 
+export default AboutMePage;
 export const pageQuery = graphql`
   query AboutMeMarkdown {
     home: allMarkdownRemark(
@@ -33,5 +34,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-export default AboutMePage;
