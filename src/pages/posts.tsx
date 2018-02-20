@@ -4,7 +4,7 @@ import { ImageSharp, MarkdownRemarkConnection } from '../../@types/graphql-types
 import PostCard from '../components/post-card/post-card';
 import PostHeader from '../components/post-header';
 
-import * as styles from '../styles/post.scss';
+import * as styles from '../styles/pages/post.scss';
 
 interface IPostPage {
   data: {

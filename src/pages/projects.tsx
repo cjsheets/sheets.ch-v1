@@ -4,9 +4,9 @@ import { ImageSharp, MarkdownRemarkConnection } from '../../@types/graphql-types
 import PostCard from '../components/post-card/post-card';
 import PostHeader from '../components/post-header';
 
-import * as styles from '../styles/post.scss';
+import * as styles from '../styles/pages/post.scss';
 
-interface IPostPage {
+interface IProjectsPage {
   data: {
     tags: MarkdownRemarkConnection;
     projects: MarkdownRemarkConnection;
@@ -15,7 +15,7 @@ interface IPostPage {
   location: { pathname: string; };
 }
 
-export class PostPage extends React.Component<IPostPage, {}> {
+class ProjectsPage extends React.Component<IProjectsPage, {}> {
   render() {
   const {projects} = this.props.data;
   const tags = this.props.data.tags && this.props.data.tags.group;
@@ -49,7 +49,7 @@ export class PostPage extends React.Component<IPostPage, {}> {
   }
 }
 
-export default PostPage;
+export default ProjectsPage;
 export const pageQuery = graphql`
 query ProjectsPageMarkdown {
   # Get posts
