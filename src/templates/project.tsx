@@ -1,7 +1,7 @@
 import Link from 'gatsby-link';
 import * as React from 'react';
 
-import { MarkdownRemark, MarkdownRemarkConnection } from '../../@types/graphql-types';
+import { MarkdownRemark } from '../../@types/graphql-types';
 import PostHeader from '../components/post-header';
 
 interface IProjectTemplate {

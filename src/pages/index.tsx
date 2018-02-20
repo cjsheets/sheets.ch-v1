@@ -1,7 +1,7 @@
 import { get } from 'lodash';
 import * as React from 'react';
 
-import { ImageSharp, MarkdownRemark, MarkdownRemarkConnection } from '../../@types/graphql-types';
+import { MarkdownRemark, MarkdownRemarkConnection } from '../../@types/graphql-types';
 import * as styles from '../styles/pages/index.scss';
 
 interface IndexPageProps {

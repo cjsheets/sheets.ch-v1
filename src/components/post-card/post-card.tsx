@@ -1,5 +1,4 @@
-import Link, { GatsbyLinkProps } from 'gatsby-link';
-import { times } from 'lodash';
+import Link from 'gatsby-link';
 import * as React from 'react';
 
 import { frontmatter_2, ImageSharp } from '../../../@types/graphql-types';
