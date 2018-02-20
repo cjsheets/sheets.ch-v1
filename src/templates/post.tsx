@@ -7,29 +7,15 @@ import PostHeader from '../components/post-header';
 interface IPostTemplate {
   data: {
     post: MarkdownRemark;
-    recents: MarkdownRemarkConnection;
   };
 }
 
-export default class PostTemplate extends React.Component<IPostTemplate, {}> {
+class PostTemplate extends React.Component<IPostTemplate, {}> {
   render() {
     const { frontmatter, html, timeToRead } = this.props.data.post;
 
     const tags = this.props.data.post.frontmatter.tags
       .map((tag) => <div key={tag}><Link to={`/post/tags/${tag}/`}>{tag}</Link></div>);
-
-    const recents = this.props.data.recents.edges
-      .map(({ node }) => {
-        return (
-          <div key={node.fields.slug} style={{paddingBottom: '1em'}}>
-            <Link
-              to={node.fields.slug}
-            >
-              h
-            </Link>
-          </div>
-        );
-      });
 
     return (
       <div>
@@ -57,17 +43,15 @@ export default class PostTemplate extends React.Component<IPostTemplate, {}> {
           {tags}
         </div>
         <div>
-          <div>
-            {recents}
-          </div>
         </div>
       </div>
     );
   }
 }
 
+export default PostTemplate;
 export const pageQuery = graphql`
-  query PostTemplate($slug: String!) {
+  query PostTemplateMarkdown($slug: String!) {
   post: markdownRemark(fields: {slug: {eq: $slug}}) {
     html
     excerpt
@@ -94,40 +78,6 @@ export const pageQuery = graphql`
       }
       title
       createdDate(formatString: "MMM D, YYYY")
-    }
-  }
-  recents: allMarkdownRemark(
-    filter: {
-      fields: {slug: {ne: $slug}}
-      frontmatter: {draft: {ne: true}},
-      fileAbsolutePath: {regex: "/post/"},
-    },
-    sort: {order: DESC, fields: [frontmatter___createdDate]},
-    limit: 4
-  ) {
-    edges {
-      node {
-        fields {
-          slug
-        }
-        timeToRead
-        frontmatter {
-          title
-          author {
-            id
-            avatar {
-              children {
-                ... on ImageSharp {
-                  responsiveResolution(width: 36, height: 36) {
-                    src
-                    srcSet
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
     }
   }
 }

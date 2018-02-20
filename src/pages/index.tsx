@@ -1,8 +1,13 @@
+import { get } from 'lodash';
 import * as React from 'react';
 
+import { ImageSharp, MarkdownRemark, MarkdownRemarkConnection } from '../../@types/graphql-types';
 import * as styles from '../styles/pages/index.scss';
 
 interface IndexPageProps {
+  data: {
+    posts: MarkdownRemarkConnection;
+  };
   location: {
     pathname: string;
   };
@@ -11,12 +16,18 @@ interface IndexPageProps {
 class IndexPage extends React.Component<IndexPageProps, {}> {
 
   render() {
+    const { posts } = this.props.data;
+    const firstPost: MarkdownRemark = get(posts, 'edges[0].node');
+
     return (
       <div className={styles.latestPostContainer}>
         <div className={styles.latestPost}>
-          <span className={styles.latestPostTitle}>
-            Latest Post
+          <span className={styles.latestPostLabel}>
+            Latest post:
           </span>
+          <div className={styles.latestPostTitle}>
+            {firstPost.frontmatter.title}
+          </div>
         </div>
       </div>
     );
@@ -26,14 +37,13 @@ class IndexPage extends React.Component<IndexPageProps, {}> {
 export default IndexPage;
 export const pageQuery = graphql`
 query IndexPageMarkdown {
-  # Get posts
-  projects: allMarkdownRemark(
+  posts: allMarkdownRemark(
     sort: { order: DESC, fields: [frontmatter___createdDate] },
     filter: {
       frontmatter: { draft: { ne: true } },
-      fileAbsolutePath: { regex: "/project/" }
+      fileAbsolutePath: { regex: "/post/" }
     },
-    limit: 10
+    limit: 5
   ) {
     totalCount
     edges {

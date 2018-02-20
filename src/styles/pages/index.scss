@@ -12,7 +12,13 @@
   text-align: center;
 }
 
-.latest-post-title {
+.latest-post-label {
   font-family: $font_family_heading;
   font-size: $font_size_h3;
+}
+
+.latest-post-title {
+  font-family: $font_family_heading;
+  font-size: $font_size_h1;
+  padding: 10px
 }

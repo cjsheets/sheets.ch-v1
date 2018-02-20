@@ -7,29 +7,15 @@ import PostHeader from '../components/post-header';
 interface IProjectTemplate {
   data: {
     project: MarkdownRemark;
-    recents: MarkdownRemarkConnection;
   };
 }
 
-export default class ProjectTemplate extends React.Component<IProjectTemplate, {}> {
+class ProjectTemplate extends React.Component<IProjectTemplate, {}> {
   render() {
     const { frontmatter, html, timeToRead } = this.props.data.project;
 
     const tags = this.props.data.project.frontmatter.tags
       .map((tag) => <div key={tag}><Link to={`/post/tags/${tag}/`}>{tag}</Link></div>);
-
-    const recents = this.props.data.recents.edges
-      .map(({ node }) => {
-        return (
-          <div key={node.fields.slug} style={{paddingBottom: '1em'}}>
-            <Link
-              to={node.fields.slug}
-            >
-              h
-            </Link>
-          </div>
-        );
-      });
 
     return (
       <div>
@@ -57,17 +43,15 @@ export default class ProjectTemplate extends React.Component<IProjectTemplate, {
           {tags}
         </div>
         <div>
-          <div>
-            {recents}
-          </div>
         </div>
       </div>
     );
   }
 }
 
+export default ProjectTemplate;
 export const pageQuery = graphql`
-  query ProjectTemplate($slug: String!) {
+  query ProjectTemplateMarkdown($slug: String!) {
   project: markdownRemark(fields: {slug: {eq: $slug}}) {
     html
     excerpt

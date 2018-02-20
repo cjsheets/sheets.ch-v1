@@ -52,7 +52,6 @@ export class PostPage extends React.Component<IPostPage, {}> {
 export default PostPage;
 export const pageQuery = graphql`
 query PostsPageMarkdown {
-  # Get posts
   posts: allMarkdownRemark(
     sort: { order: DESC, fields: [frontmatter___createdDate] },
     filter: {
