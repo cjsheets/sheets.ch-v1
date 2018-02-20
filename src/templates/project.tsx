@@ -4,17 +4,17 @@ import * as React from 'react';
 import { MarkdownRemark } from '../../@types/graphql-types';
 import PostHeader from '../components/post-header';
 
-interface IPostTemplate {
+interface IProjectTemplate {
   data: {
-    post: MarkdownRemark;
+    project: MarkdownRemark;
   };
 }
 
-class PostTemplate extends React.Component<IPostTemplate, {}> {
+class ProjectTemplate extends React.Component<IProjectTemplate, {}> {
   render() {
-    const { frontmatter, html, timeToRead } = this.props.data.post;
+    const { frontmatter, html, timeToRead } = this.props.data.project;
 
-    const tags = this.props.data.post.frontmatter.tags
+    const tags = this.props.data.project.frontmatter.tags
       .map((tag) => <div key={tag}><Link to={`/post/tags/${tag}/`}>{tag}</Link></div>);
 
     return (
@@ -49,10 +49,10 @@ class PostTemplate extends React.Component<IPostTemplate, {}> {
   }
 }
 
-export default PostTemplate;
+export default ProjectTemplate;
 export const pageQuery = graphql`
-  query PostTemplateMarkdown($slug: String!) {
-  post: markdownRemark(fields: {slug: {eq: $slug}}) {
+  query ProjectTemplateMarkdown($slug: String!) {
+  project: markdownRemark(fields: {slug: {eq: $slug}}) {
     html
     excerpt
     timeToRead

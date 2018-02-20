@@ -45,7 +45,7 @@ module.exports = (props: IHtmlProps) => {
         {head.title.toComponent()}
         {head.meta.toComponent()}
         {head.link.toComponent()}
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700|Titillium+Web:300,400,600" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Open+Sans:400,700" rel="stylesheet" />
         {css}
       </head>
       <body>

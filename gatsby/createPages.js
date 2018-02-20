@@ -45,10 +45,10 @@ module.exports = async ({graphql, boundActionCreators}) => {
     throw new Error(allMarkdown.errors);
   }
 
-  const posts = allMarkdown.data.allMarkdownRemark.edges.map(p => p.node);
+  const nodes = allMarkdown.data.allMarkdownRemark.edges.map(p => p.node);
 
   const postTemplate = path.resolve(__dirname, '../src/templates/post.tsx');
-  posts
+  nodes
     .filter(post => (post.fields.slug || '').startsWith('/post/'))
     .forEach(post => {
       createPage({
@@ -56,6 +56,19 @@ module.exports = async ({graphql, boundActionCreators}) => {
         component: postTemplate,
         context: {
           slug: post.fields.slug
+        }
+      });
+    });
+
+  const projectTemplate = path.resolve(__dirname, '../src/templates/project.tsx');
+  nodes
+    .filter(project => (project.fields.slug || '').startsWith('/project/'))
+    .forEach(project => {
+      createPage({
+        path: project.fields.slug,
+        component: projectTemplate,
+        context: {
+          slug: project.fields.slug
         }
       });
     });

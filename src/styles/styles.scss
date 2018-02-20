@@ -8,7 +8,7 @@ html, body {
 }
 
 body {
-	background-color: $accent_blue_medium_dark;
+	background-color: $blue_light;
 	color: $font_color_body;
 	font-family: $font_family_body;
 	font-size: $font_size_body;
@@ -17,7 +17,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: $font_family_heading;
-	color: $accent_blue_dark; 
+	color: $blue_dark; 
 	text-decoration: none;
 	font-weight: normal;
 	text-transform: none;
@@ -69,15 +69,15 @@ p {
 }
 
 a {
-	color: $accent_blue_medium_dark;
+	color: $blue_medium_dark;
 	text-decoration: none;
 }
 
 blockquote {
-	border-left: 3px solid $accent_blue_medium;
+	border-left: 3px solid $blue_medium;
 	margin: 25px 0;
 	padding: 5px 15px;
-	background-color: $background_blue_light;
+	background-color: $blue_light;
 
 	p {
 		display: block;

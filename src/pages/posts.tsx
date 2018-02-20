@@ -1,11 +1,10 @@
-import { graphql } from 'graphql';
 import * as React from 'react';
 
 import { ImageSharp, MarkdownRemarkConnection } from '../../@types/graphql-types';
 import PostCard from '../components/post-card/post-card';
 import PostHeader from '../components/post-header';
 
-// import * as styles from '../styles/post.scss';
+import * as styles from '../styles/pages/post.scss';
 
 interface IPostPage {
   data: {
@@ -31,9 +30,8 @@ export class PostPage extends React.Component<IPostPage, {}> {
   return (
     <div>
       <PostHeader />
-      {/* styles.postContainer */}
       <div style={{ justifyContent: 'space-around' }}>
-        <div>
+        <div className={styles.postContainer}>
           {postCardProps.map(props => <PostCard {...props} key={props.slug} />)}
           <div>
             {tags}
@@ -53,8 +51,7 @@ export class PostPage extends React.Component<IPostPage, {}> {
 
 export default PostPage;
 export const pageQuery = graphql`
-query PagePostMarkdown {
-  # Get posts
+query PostsPageMarkdown {
   posts: allMarkdownRemark(
     sort: { order: DESC, fields: [frontmatter___createdDate] },
     filter: {

@@ -6,6 +6,7 @@
     "moduleResolution": "Node",
     "allowUnreachableCode": false,
     "alwaysStrict": true,
+    "allowSyntheticDefaultImports": true,
     "declaration": false,
     "forceConsistentCasingInFileNames": true,
     "noEmitOnError": false,
