@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import { MarkdownRemarkConnection } from '../../@types/graphql-types';
 
+import * as sharedStyles from '../styles/shared.scss';
+
 interface IAboutMePage {
   data: { home: MarkdownRemarkConnection; };
   location: { pathname: string; };
@@ -12,7 +14,9 @@ class AboutMePage extends React.Component<IAboutMePage, {}> {
   render() {
     const content = this.props.data.home.edges[0].node.html;
     return (
-      <div dangerouslySetInnerHTML={{__html: content}} />
+      <div className={sharedStyles.pageBodyContainer}>
+        <div dangerouslySetInnerHTML={{__html: content}} />
+      </div>
     );
   }
 }

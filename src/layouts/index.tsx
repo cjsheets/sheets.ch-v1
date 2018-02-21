@@ -8,7 +8,7 @@ import { IStoreState } from '../store';
 import * as styles from '../styles/layouts/index.scss';
 import '../styles/normalize.css';
 import '../styles/prism-vs.css';
-import '../styles/styles.scss';
+import '../styles/theme.scss';
 
 interface IDefaultLayoutProps extends React.HTMLProps<HTMLDivElement> {
   location: {
