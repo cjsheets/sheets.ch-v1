@@ -5,4 +5,5 @@ export const primary: string;
 export const secondary: string;
 export const headerLink: string;
 export const headerIconBar: string;
+export const headerFlexPadding: string;
 export const wellCover: string;

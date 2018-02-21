@@ -5,6 +5,7 @@ import PostCard from '../components/post-card/post-card';
 import PostHeader from '../components/post-header';
 
 import * as styles from '../styles/pages/post.scss';
+import * as sharedStyles from '../styles/shared.scss';
 
 interface IPostPage {
   data: {
@@ -28,7 +29,7 @@ export class PostPage extends React.Component<IPostPage, {}> {
   });
 
   return (
-    <div>
+    <div className={sharedStyles.pageBodyContainer}>
       <PostHeader />
       <div style={{ justifyContent: 'space-around' }}>
         <div className={styles.postContainer}>
