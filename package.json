@@ -55,6 +55,7 @@
     "react": "16.0.0",
     "react-dom": "16.0.0",
     "react-helmet": "5.0.3",
+    "react-particles-js": "^2.1.0",
     "react-redux": "5.0.6",
     "redux-devtools-extension": "^2.13.2",
     "ts-loader": "2.3.7",
