@@ -8,7 +8,7 @@
 .latest-post {
   flex: 1;
   background: linear-gradient(to right, $green_medium, $green_primary, $green_primary, $green_medium);
-  padding: 20px 10px;
+  padding: 30px 10px;
   color: #FFFFFF;
   text-align: center;
 }
@@ -22,4 +22,10 @@
   font-family: $font_family_heading;
   font-size: $font_size_h1;
   padding: 10px
+}
+
+
+
+.intro-statement-container {
+  display: flex;
 }

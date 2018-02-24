@@ -8,6 +8,7 @@ import * as styles from '../styles/pages/index.scss';
 interface IndexPageProps {
   data: {
     posts: MarkdownRemarkConnection;
+    files: MarkdownRemarkConnection;
   };
   location: {
     pathname: string;
@@ -17,8 +18,9 @@ interface IndexPageProps {
 class IndexPage extends React.Component<IndexPageProps, {}> {
 
   render() {
-    const { posts } = this.props.data;
+    const { files, posts } = this.props.data;
     const firstPost: MarkdownRemark = get(posts, 'edges[0].node');
+    const tux: MarkdownRemark = get(files, 'edges[0].node.relativePath');
 
     return (
       <div>
@@ -67,7 +69,14 @@ class IndexPage extends React.Component<IndexPageProps, {}> {
             </div>
           </div>
         </div>
-
+        <div className={styles.introStatementContainer}>
+          <div>
+            <h2>Hey there, I'm Chad, a software engineer who enjoys tinkering with Linux and OSS.</h2>
+          </div>
+          <div>
+            {/* <img src=`tux` /> */}
+          </div>
+        </div>
       </div>
     );
   }
@@ -109,6 +118,13 @@ query IndexPageMarkdown {
             }
           }
         }
+      }
+    }
+  },
+  files: allFile(filter: { name: { eq: "tux-pajamas" } }) {
+    edges {
+      node {
+        relativePath
       }
     }
   }
