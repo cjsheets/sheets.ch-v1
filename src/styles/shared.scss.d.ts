@@ -1,1 +1,2 @@
-export const pageBodyContainer: string;
+export const pageBody: string;
+export const contentPadding: string;

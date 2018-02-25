@@ -29,7 +29,7 @@ export class PostPage extends React.Component<IPostPage, {}> {
   });
 
   return (
-    <div className={sharedStyles.pageBodyContainer}>
+    <div className={sharedStyles.pageBody}>
       <PostHeader />
       <div style={{ justifyContent: 'space-around' }}>
         <div className={styles.postContainer}>

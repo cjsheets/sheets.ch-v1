@@ -14,7 +14,7 @@ class AboutMePage extends React.Component<IAboutMePage, {}> {
   render() {
     const content = this.props.data.home.edges[0].node.html;
     return (
-      <div className={sharedStyles.pageBodyContainer}>
+      <div className={sharedStyles.pageBody}>
         <div dangerouslySetInnerHTML={{__html: content}} />
       </div>
     );

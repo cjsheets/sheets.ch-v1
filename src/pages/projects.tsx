@@ -29,7 +29,7 @@ class ProjectsPage extends React.Component<IProjectsPage, {}> {
   });
 
   return (
-    <div className={sharedStyles.pageBodyContainer}>
+    <div className={sharedStyles.pageBody}>
       <PostHeader />
       <div style={{ justifyContent: 'space-around' }}>
         <div className={styles.postContainer}>
