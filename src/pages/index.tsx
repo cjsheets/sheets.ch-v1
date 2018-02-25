@@ -74,7 +74,7 @@ class IndexPage extends React.Component<IndexPageProps, {}> {
             <h2>Hey there, I'm Chad, a software engineer who enjoys tinkering with Linux and OSS.</h2>
           </div>
           <div>
-            {/* <img src=`tux` /> */}
+            <div className={styles.tuxImage} />
           </div>
         </div>
       </div>

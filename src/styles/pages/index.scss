@@ -24,7 +24,11 @@
   padding: 10px
 }
 
-
+.tux-image {
+  background-image: url('../../assets/tux-pajamas.png');
+  width: 200px;
+  height: 200px;
+}
 
 .intro-statement-container {
   display: flex;
