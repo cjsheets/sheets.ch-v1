@@ -11,3 +11,4 @@
     -   Set x y w h in header
     -   Save as new svg in src
 -   Remove metadata and inkscape data
+-   Might have to manually add width, height and viewbox to svg tag
