@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "build:dev": "gatsby develop -H 0.0.0.0",
+    "build:dev": "gatsby develop -H 127.0.0.1",
     "test": "yarn lint:ts && yarn test:tsc",
     "test:tsc": "tsc --noEmit",
     "test:watch": "tsc --watch --noEmit",
