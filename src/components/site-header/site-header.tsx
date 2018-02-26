@@ -16,9 +16,9 @@ export const SiteHeader = (props: ISiteHeader) => (
     <div className={styles.wellCover} />
     <div className={styles.headerFlexPadding} />
     <div className={styles.headerNavigation}>
-      <SvgIcon icon={Icon.sheets} width={26} height={26} inline />
       <Link to="/" className={styles.headerLogo}>
-        <span className={styles.primary}>Sheets.ch</span><span className={styles.secondary}>ad</span>
+        <SvgIcon icon={Icon.sheets} width={26} height={26} inline />
+        <span className={styles.primary}>Sheets.ch</span><span>ad</span>
       </Link>
       <Link to="/posts" className={styles.headerLink}><span>Posts</span></Link>
       <Link to="/projects" className={styles.headerLink}><span>Projects</span></Link>

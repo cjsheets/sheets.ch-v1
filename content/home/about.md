@@ -1,6 +1,4 @@
-About Me
-
-Last Updated: 19.Aug.2016
+# About Me
 
 Hi, my name is Chad Sheets.
 

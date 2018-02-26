@@ -1,6 +1,4 @@
-Privacy Policy
-
-Last Updated: 19.Aug.2016
+# Privacy Policy
 
 This site, like millions of others, uses [Google Analytics](http://analytics.google.com/). Google helps developers understand how visitors use their site and which pages are most popular.
 

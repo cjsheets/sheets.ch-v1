@@ -53,8 +53,8 @@ class IndexPage extends React.Component<IndexPageProps, {}> {
     return (
       <div>
         <div className={`${styles.introStatementContainer} ${sharedStyles.pageBody}`}>
-          <div className={sharedStyles.contentPadding}>
-            <h2>Hey there, I'm Chad, a software engineer who enjoys tinkering with Linux and OSS.</h2>
+          <div className={sharedStyles.pagePadding}>
+            <h3>Hey there, I'm Chad, a software engineer who enjoys tinkering with Linux and OSS.</h3>
           </div>
           <div>
             <img src={tux} className={styles.introMessageImage} />

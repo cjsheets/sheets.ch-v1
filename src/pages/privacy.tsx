@@ -4,12 +4,12 @@ import { MarkdownRemarkConnection } from '../../@types/graphql-types';
 
 import * as sharedStyles from '../styles/shared.scss';
 
-interface IAboutMePage {
+interface IPrivacyPage {
   data: { home: MarkdownRemarkConnection; };
   location: { pathname: string; };
 }
 
-class AboutMePage extends React.Component<IAboutMePage, {}> {
+class PrivacyPage extends React.Component<IPrivacyPage, {}> {
 
   render() {
     const content = this.props.data.home.edges[0].node.html;
@@ -21,11 +21,11 @@ class AboutMePage extends React.Component<IAboutMePage, {}> {
   }
 }
 
-export default AboutMePage;
+export default PrivacyPage;
 export const pageQuery = graphql`
-  query AboutMeMarkdown {
+  query PrivacyMarkdown {
     home: allMarkdownRemark(
-      filter: {id: {regex: "//home/about/"}}
+      filter: {id: {regex: "//home/privacy/"}}
     ) {
       edges {
         node {
