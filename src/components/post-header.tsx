@@ -1,11 +1,15 @@
 import * as React from 'react';
 
-export const PostHeader = () => {
-  return (
+interface IPostHeader {
+  title?: string;
+}
+
+export const PostHeader = ({title}: IPostHeader) => {
+  return title && (
     <div>
-      <h1>This is a Post</h1>
+      <h1>{title}</h1>
     </div>
-  );
+  ) || null;
 };
 
 export default PostHeader;

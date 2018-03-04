@@ -4,6 +4,8 @@ import * as React from 'react';
 import { MarkdownRemark } from '../../@types/graphql-types';
 import PostHeader from '../components/post-header';
 
+import * as sharedStyles from '../styles/shared.scss';
+
 interface IPostTemplate {
   data: {
     post: MarkdownRemark;
@@ -18,31 +20,21 @@ class PostTemplate extends React.Component<IPostTemplate, {}> {
       .map((tag) => <div key={tag}><Link to={`/post/tags/${tag}/`}>{tag}</Link></div>);
 
     return (
-      <div>
-        <PostHeader />
-        <div style={{ border: 'none' }}>
+      <div className={sharedStyles.pageBody}>
+        <div className={sharedStyles.contentPadding}>
+          <PostHeader title={frontmatter.title} />
+          <div
+            style={{ border: 'none' }}
+            dangerouslySetInnerHTML={{
+              __html: html
+            }}
+          />
           <div>
-            <div>
-              <div  />
-              <div>
-                <div>{frontmatter.author.id}</div>
-                <div>{frontmatter.author.bio}</div>
-                <div>{frontmatter.createdDate} - {timeToRead} min read</div>
-              </div>
-            </div>
+            {tags}
           </div>
-          <div>{frontmatter.title}</div>
-        </div>
-        <div
-          style={{ border: 'none' }}
-          dangerouslySetInnerHTML={{
-            __html: html
-          }}
-        />
-        <div>
-          {tags}
-        </div>
-        <div>
+          <div>{frontmatter.author.id}</div>
+          <div>{frontmatter.author.bio}</div>
+          <div>{frontmatter.createdDate} - {timeToRead} min read</div>
         </div>
       </div>
     );
