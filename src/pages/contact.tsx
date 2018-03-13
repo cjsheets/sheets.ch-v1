@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import { MarkdownRemarkConnection } from '../../@types/graphql-types';
-
 import * as sharedStyles from '../styles/shared.scss';
 
 interface IContactPageProps {
@@ -19,7 +17,7 @@ interface IContactPageState {
 class ContactPage extends React.Component<IContactPageProps, IContactPageState> {
   render() {
     return (
-      <div>
+      <div className={`${sharedStyles.contentBody} ${sharedStyles.contentPadding}`}>
         <h1>Contact</h1>
         <form
           name="contact"
