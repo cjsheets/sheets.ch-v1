@@ -1,36 +1,29 @@
-# About Me
+# Hello!
 
-Hi, my name is Chad Sheets.
+My name is Chad.
 
-This blog is a mixture of notes to myself, collections of my photos and expositions of my ongoing projects. The internet can be a noisy place and I try not to contribute unnecessarily.
+I'm a software developer who works at Microsoft. I build solutions for Educators.
 
-My professional background (if you're curious) is detailed on my Resume and LinkedIn profile. My publicly available code is mostly on GitHub and I'm on Facebook if you'd like to touch base.
-Why publish a blog?
+## About Me
 
-Professionals posting their techniques, tips and solutions helped me develop and grow as a programmer and Linux administrator. With this blog I hope to give back to the community. It's also very convienient to have one place to gather my notes.
-What's your background in technology?
+Originally from Ohio, I currently live in the Seattle area. I studied Electrical Engineering and have a diverse
+professional background.
 
-I earned a B.S. in Electrical Engineering from the University of Dayton in 2009. My fascination with technology predates the degree by many years.
+I like software, music coffee and beer.
 
-Wacky Wheels
+Further elaboration about me (in all its boring detail) is available on [LinkedIn](https://www.linkedin.com/in/chadsheets)
 
-My first CLI experience involved navigating MS-DOS on an outdated workstation to launch Wacky Wheels.
+## About sheets.ch
 
-... those were the days ...
+I enjoy learning and contributing to open source projects. This site is a convenient place
+to collect notes for my future, forgetful self. 
 
-I used RedHat / Fedora casually in the early 2000s, Arch during and shortly after college and Debian / Ubuntu ever since.
+I also thought it would be neat ot own Swiss property in the form of this TLD. For only
+$15/year, I get to be available at sheets.ch/ad :-)
 
-(No love lost for Arch. My professional life became very time consuming and I no longer had time for maintenance and configuration)
-What's your professional background?
+## Get In Touch
 
-After university I spent 7 years working for Schlumberger as a Wireline engineer.
-
-SLB offered an intense petroleum industry training program, world-class leadership development and as much responsibility as you could handle. I personally grew more as a professional working for Schlumberger than I thought possible.
-What are you doing today?
-
-Facebook and LinkedIn are the best ways to keep track of what I'm up to today.
-
-If you'd like to touch base feel free to drop me an email: &lt; chad at cjsheets dot com >
+If you'd like to touch base feel free to drop me an email: &lt; chad at sheets dot ch >
 
 [PPA](https://launchpad.net/~cjsheets)
 [Facebook](http://www.facebook.com/chad.sheets)
