@@ -15,7 +15,7 @@ interface IProjectTemplate {
 
 class ProjectTemplate extends React.Component<IProjectTemplate, {}> {
   render() {
-    const { frontmatter, html, timeToRead } = this.props.data.project;
+    const { frontmatter, html } = this.props.data.project;
     const avatar = frontmatter.author.avatar.children && frontmatter.author.avatar.children[0] as ImageSharp;
 
     const tags = this.props.data.project.frontmatter.tags

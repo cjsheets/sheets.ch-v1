@@ -19,9 +19,9 @@ interface IProjectsPage {
 class ProjectsPage extends React.Component<IProjectsPage, {}> {
   render() {
   const {projects} = this.props.data;
-  const tags = this.props.data.tags && this.props.data.tags.group;
-  const { pathname } = this.props.location;
-  const pageCount = Math.ceil(projects.totalCount / 10);
+  // const tags = this.props.data.tags && this.props.data.tags.group;
+  // const { pathname } = this.props.location;
+  // const pageCount = Math.ceil(projects.totalCount / 10);
   const postCardProps = projects.edges.map(({ node }) => {
     const { frontmatter, timeToRead, fields: { slug }, excerpt } = node;
     const avatar = frontmatter.author.avatar.children[0] as ImageSharp;

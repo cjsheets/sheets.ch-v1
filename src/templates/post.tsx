@@ -15,7 +15,7 @@ interface IPostTemplate {
 
 class PostTemplate extends React.Component<IPostTemplate, {}> {
   render() {
-    const { frontmatter, html, timeToRead } = this.props.data.post;
+    const { frontmatter, html } = this.props.data.post;
     const avatar = frontmatter.author.avatar.children && frontmatter.author.avatar.children[0] as ImageSharp;
 
     const tags = this.props.data.post.frontmatter.tags

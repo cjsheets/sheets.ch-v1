@@ -3,7 +3,7 @@ import * as React from 'react';
 import Particles from 'react-particles-js';
 
 import { MarkdownRemark, MarkdownRemarkConnection } from '../../@types/graphql-types';
-import * as tux from '../assets/tux-pajamas.png';
+// import * as tux from '../assets/tux-pajamas.png';
 import { Icon, SvgIcon } from '../components/svg-icon/svg-icon';
 
 import * as styles from '../styles/pages/index.scss';
