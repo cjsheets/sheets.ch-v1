@@ -52,13 +52,9 @@ class IndexPage extends React.Component<IndexPageProps, {}> {
 
     return (
       <div>
-        <div className={`${styles.introStatementContainer} ${sharedStyles.pageBody}`}>
-          <div className={sharedStyles.pagePadding}>
-            <h3>Hey there, I'm Chad, a software engineer who enjoys tinkering with Linux and OSS.</h3>
-          </div>
-          <div>
-            <img src={tux} className={styles.introMessageImage} />
-          </div>
+        <div className={`${styles.introStatementContainer}`}>
+            <div className={sharedStyles.pagePadding}>
+            </div>
         </div>
         <div className={styles.latestPostContainer}>
           <div className={styles.latestPost}>
@@ -80,7 +76,22 @@ class IndexPage extends React.Component<IndexPageProps, {}> {
             </div>
           </div>
         </div>
-        <div>
+        <div className={sharedStyles.pagePadding}>
+          <br />
+          <h1>Welcome to my blog!</h1>
+          <br />
+
+          <p>Please excuse the mess.</p>
+          <br />
+
+          <p>This site is a work in progress.</p>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+        </div>
+        <div style={{display: 'none'}}>
           <SvgIcon icon={Icon.debian} inline />
           <SvgIcon icon={Icon.netlify} inline />
           <SvgIcon icon={Icon.nodejs} inline />
