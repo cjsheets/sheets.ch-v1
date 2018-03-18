@@ -1,7 +1,8 @@
 import Link from 'gatsby-link';
 import * as React from 'react';
 
-import { MarkdownRemark } from '../../@types/graphql-types';
+import { ImageSharp, MarkdownRemark } from '../../@types/graphql-types';
+import PostFooter from '../components/post-footer/post-footer';
 import PostHeader from '../components/post-header';
 
 import * as sharedStyles from '../styles/shared.scss';
@@ -15,6 +16,7 @@ interface IPostTemplate {
 class PostTemplate extends React.Component<IPostTemplate, {}> {
   render() {
     const { frontmatter, html, timeToRead } = this.props.data.post;
+    const avatar = frontmatter.author.avatar.children && frontmatter.author.avatar.children[0] as ImageSharp;
 
     const tags = this.props.data.post.frontmatter.tags
       .map((tag) => <div key={tag}><Link to={`/post/tags/${tag}/`}>{tag}</Link></div>);
@@ -32,9 +34,11 @@ class PostTemplate extends React.Component<IPostTemplate, {}> {
           <div>
             {tags}
           </div>
-          <div>{frontmatter.author.id}</div>
-          <div>{frontmatter.author.bio}</div>
-          <div>{frontmatter.createdDate} - {timeToRead} min read</div>
+          <PostFooter
+            avatar={avatar}
+            authorName={frontmatter.author.id}
+            authorBio={frontmatter.author.bio}
+          />
         </div>
       </div>
     );

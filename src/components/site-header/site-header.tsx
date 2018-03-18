@@ -25,9 +25,9 @@ export const SiteHeader = (props: ISiteHeader) => (
       <Link to="/ad" className={styles.headerLink}><span>About</span></Link>
     </div>
     <div className={styles.headerIconBar}>
-      <Link to="https://github.com/cjsheets" className={styles.headerLink}>
+      <a href="https://github.com/cjsheets" className={styles.headerLink}>
         <SvgIcon icon={Icon.github} />
-      </Link>
+      </a>
     </div>
     <div className={styles.headerFlexPadding} />
     <div className={styles.wellCover} />

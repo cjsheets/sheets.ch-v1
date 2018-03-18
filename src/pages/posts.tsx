@@ -30,15 +30,18 @@ export class PostPage extends React.Component<IPostPage, {}> {
 
   return (
     <div className={sharedStyles.pageBody}>
-      <PostHeader />
+
+      <PostHeader title="All Posts" />
+
       <div style={{ justifyContent: 'space-around' }}>
         <div className={styles.postContainer}>
           {postCardProps.map(props => <PostCard {...props} key={props.slug} />)}
           <div>
+            {/*
             {tags}
             {pathname}
             {pageCount}
-            {/* <PostPagination Link={Link} pathname={pathname} pageCount={pageCount} /> */}
+             <PostPagination Link={Link} pathname={pathname} pageCount={pageCount} /> */}
           </div>
         </div>
         <div>

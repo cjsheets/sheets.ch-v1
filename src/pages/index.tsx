@@ -76,20 +76,20 @@ class IndexPage extends React.Component<IndexPageProps, {}> {
             </div>
           </div>
         </div>
-        <div className={sharedStyles.pagePadding}>
-          <br />
-          <h1>Welcome to my blog!</h1>
-          <br />
+          <div className={sharedStyles.pagePadding}>
+            <br />
+            <h1>Welcome to my blog!</h1>
+            <br />
 
-          <p>Please excuse the mess.</p>
-          <br />
+            <p>Please excuse the mess.</p>
+            <br />
 
-          <p>This site is a work in progress.</p>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
+            <p>This site is a work in progress.</p>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
         </div>
         <div style={{display: 'none'}}>
           <SvgIcon icon={Icon.debian} inline />
