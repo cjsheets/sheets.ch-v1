@@ -1,6 +1,8 @@
+@import '../../styles/variables.scss';
+
 .post-card-container {
   flex: 1 0 400px;
-  padding: 20px 30px;
+  padding: 30px;
 
   a {
     color: #000000;
@@ -8,16 +10,19 @@
 }
 
 .post-card-title {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 
 .post-card-date {
-  color: #BBBBBB;
+  font-size: 0.9rem;
+  color: #666666;
+  padding: 6px 0;
+  font-weight: $font_weight_bold;
 }
 
 
 .post-card-excerpt {
-
+  line-height: $line_height_body;
 }
 

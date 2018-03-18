@@ -9,7 +9,7 @@ I'm a software developer who works at Microsoft. I build solutions for Educators
 Originally from Ohio, I currently live in the Seattle area. I studied Electrical Engineering and have a diverse
 professional background.
 
-I like software, music coffee and beer.
+I like software, music, coffee and beer.
 
 Further elaboration about me (in all its boring detail) is available on [LinkedIn](https://www.linkedin.com/in/chadsheets)
 

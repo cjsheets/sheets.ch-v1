@@ -19,9 +19,9 @@ interface IProjectsPage {
 class ProjectsPage extends React.Component<IProjectsPage, {}> {
   render() {
   const {projects} = this.props.data;
-  const tags = this.props.data.tags && this.props.data.tags.group;
-  const { pathname } = this.props.location;
-  const pageCount = Math.ceil(projects.totalCount / 10);
+  // const tags = this.props.data.tags && this.props.data.tags.group;
+  // const { pathname } = this.props.location;
+  // const pageCount = Math.ceil(projects.totalCount / 10);
   const postCardProps = projects.edges.map(({ node }) => {
     const { frontmatter, timeToRead, fields: { slug }, excerpt } = node;
     const avatar = frontmatter.author.avatar.children[0] as ImageSharp;
@@ -30,15 +30,18 @@ class ProjectsPage extends React.Component<IProjectsPage, {}> {
 
   return (
     <div className={sharedStyles.pageBody}>
-      <PostHeader />
+
+      <PostHeader title="All Projects" />
+
       <div style={{ justifyContent: 'space-around' }}>
         <div className={styles.postContainer}>
           {postCardProps.map(props => <PostCard {...props} key={props.slug} />)}
           <div>
+            {/*
             {tags}
             {pathname}
             {pageCount}
-            {/* <PostPagination Link={Link} pathname={pathname} pageCount={pageCount} /> */}
+            <PostPagination Link={Link} pathname={pathname} pageCount={pageCount} /> */}
           </div>
         </div>
         <div>

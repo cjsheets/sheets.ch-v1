@@ -30,7 +30,9 @@ export const PostCard = (props: IPostCard) => {
         <div className={styles.postCardDate}>
           {getFormattedDateString()} - {props.timeToRead} min read
         </div>
-        {props.excerpt}
+        <div className={styles.postCardExcerpt}>
+          {props.excerpt}
+        </div>
         <div>
           {tags.map((tag, i) =>
             <Link key={tag + i} to="/">{`#${tag} `}</Link>
