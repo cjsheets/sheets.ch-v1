@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "start": "gatsby develop",
-    "develop": "gatsby develop",
     "build": "gatsby build",
+    "build:dev": "gatsby develop",
     "pretty": "prettier --config .prettierrc --write \"{gatsby-*.js,src/**/*.tsx}\"",
     "type-check": "tsc --noEmit",
     "lint": "tslint --project ."
