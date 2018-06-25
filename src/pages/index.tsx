@@ -1,146 +1,66 @@
-import { get } from 'lodash';
-import * as React from 'react';
-import Particles from 'react-particles-js';
+import { Link } from 'gatsby';
+import get from 'lodash/get';
+import React from 'react';
+import Helmet from 'react-helmet';
 
-import { MarkdownRemark, MarkdownRemarkConnection } from '../../@types/graphql-types';
-// import * as tux from '../assets/tux-pajamas.png';
-import { Icon, SvgIcon } from '../components/svg-icon/svg-icon';
+import Bio from '../components/Bio';
+import Layout from '../components/layout';
 
-import * as styles from '../styles/pages/index.scss';
-import * as sharedStyles from '../styles/shared.scss';
-
-interface IndexPageProps {
-  data: {
-    posts: MarkdownRemarkConnection;
-  };
-  location: {
-    pathname: string;
-  };
+interface IBlogIndex {
+  posts: any;
+  location: any;
 }
 
-class IndexPage extends React.Component<IndexPageProps, {}> {
-
+class BlogIndex extends React.Component<IBlogIndex, {}> {
   render() {
-    const { posts } = this.props.data;
-    const firstPost: MarkdownRemark = get(posts, 'edges[0].node');
-    const particleParams = {
-      particles: {
-        number: {
-          value: 100,
-          density: {
-            enable: true,
-            value_area: 800
-          }
-        },
-        line_linked: {
-          color: '#ffffff',
-          distance: 150,
-          enable: true,
-          opacity: 0.1,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 1
-        },
-        opacity: {
-          value: 0.15,
-          random: false
-        }
-      }
-    };
+    const siteTitle = get(this, 'props.data.site.siteMetadata.title');
+    const posts = get(this, 'props.data.allMarkdownRemark.edges');
 
     return (
-      <div>
-        <div className={`${styles.introStatementContainer}`}>
-            <div className={sharedStyles.pagePadding}>
+      <Layout location={this.props.location}>
+        <Helmet title={siteTitle} />
+        <Bio />
+        {posts.map(({ node }) => {
+          const title = get(node, 'frontmatter.title') || node.fields.slug;
+          return (
+            <div key={node.fields.slug}>
+              <h3>
+                <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
+                  {title}
+                </Link>
+              </h3>
+              <small>{node.frontmatter.date}</small>
+              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
             </div>
-        </div>
-        <div className={styles.latestPostContainer}>
-          <div className={styles.latestPost}>
-            <Particles
-              width="100%"
-              height="125px"
-              params={particleParams}
-              style={{
-                left: 0,
-                position: 'absolute',
-                top: 0
-              }}
-            />
-            <span className={styles.latestPostLabel}>
-              Latest post:
-            </span>
-            <div className={styles.latestPostTitle}>
-              {firstPost.frontmatter.title}
-            </div>
-          </div>
-        </div>
-          <div className={sharedStyles.pagePadding}>
-            <br />
-            <h1>Welcome to my blog!</h1>
-            <br />
-
-            <p>Please excuse the mess.</p>
-            <br />
-
-            <p>This site is a work in progress.</p>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-        </div>
-        <div style={{display: 'none'}}>
-          <SvgIcon icon={Icon.debian} inline />
-          <SvgIcon icon={Icon.netlify} inline />
-          <SvgIcon icon={Icon.nodejs} inline />
-          <SvgIcon icon={Icon.react} inline />
-          <SvgIcon icon={Icon.typescript} inline />
-        </div>
-      </div>
+          );
+        })}
+      </Layout>
     );
   }
 }
 
-export default IndexPage;
+export default BlogIndex;
+
 export const pageQuery = graphql`
-query IndexPageMarkdown {
-  posts: allMarkdownRemark(
-    sort: { order: DESC, fields: [frontmatter___createdDate] },
-    filter: {
-      frontmatter: { draft: { ne: true } },
-      fileAbsolutePath: { regex: "/post/" }
-    },
-    limit: 5
-  ) {
-    totalCount
-    edges {
-      node {
-        excerpt
-        timeToRead
-        fields {
-          slug
-        }
-        frontmatter {
-          title
-          createdDate(formatString: "DD MMMM, YYYY")
-          author {
-            id
-            avatar {
-              children {
-                ... on ImageSharp {
-                  responsiveResolution(width: 35, height: 35) {
-                    src
-                    srcSet
-                  }
-                }
-              }
-            }
+  query IndexQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            date(formatString: "DD MMMM, YYYY")
+            title
           }
         }
       }
     }
   }
-}
 `;

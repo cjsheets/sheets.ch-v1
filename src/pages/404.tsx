@@ -1,17 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 
-export const ErrorPage404 = () =>
-  <div
-    style={{
-      minHeight: '700px'
-      }}
-    >
-    <div>
-      <div style={{textAlign: 'center'}}>
-        <div>You are here!</div>
-        <div>But nothing found for you #404</div>
-      </div>
-    </div>
-  </div>;
+const NotFoundPage = () => (
+  <div>
+    <h1>NOT FOUND</h1>
+    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+  </div>
+);
 
-export default ErrorPage404;
+export default NotFoundPage;
