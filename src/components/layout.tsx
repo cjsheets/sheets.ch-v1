@@ -1,64 +1,21 @@
 import { Link } from 'gatsby';
 import React from 'react';
 
-class Template extends React.Component {
+class Layout extends React.Component {
   render() {
     const { location, children } = this.props;
-    const rootPath = `${__PATH_PREFIX__}/`;
-    let header;
+    // const rootPath = `${__PATH_PREFIX__}/`;
+    // if (location.pathname === rootPath) {
 
-    if (location.pathname === rootPath) {
-      header = (
-        <h1
-          style={{
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: 'none',
-              textDecoration: 'none',
-              color: 'inherit',
-            }}
-            to={'/'}
-          >
-            Gatsby Starter Blog
-          </Link>
-        </h1>
-      );
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: 'Montserrat, sans-serif',
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: 'none',
-              textDecoration: 'none',
-              color: 'inherit',
-            }}
-            to={'/'}
-          >
-            Gatsby Starter Blog
-          </Link>
-        </h3>
-      );
-    }
     return (
-      <div
-        style={{
-          marginLeft: 'auto',
-          marginRight: 'auto',
-        }}
-      >
-        {header}
+      <div>
+        <Link to={'/'} >
+          Sheets.ch
+        </Link>
         {children}
       </div>
     );
   }
 }
 
-export default Template;
+export default Layout;

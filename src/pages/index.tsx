@@ -19,7 +19,6 @@ class BlogIndex extends React.Component<IBlogIndex, {}> {
     return (
       <Layout location={this.props.location}>
         <Helmet title={siteTitle} />
-        <Bio />
         {posts.map(({ node }) => {
           const title = get(node, 'frontmatter.title') || node.fields.slug;
           return (
@@ -34,6 +33,7 @@ class BlogIndex extends React.Component<IBlogIndex, {}> {
             </div>
           );
         })}
+        <Bio />
       </Layout>
     );
   }
