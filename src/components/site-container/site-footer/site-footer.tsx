@@ -1,7 +1,7 @@
 import Link from 'gatsby-link';
 import * as React from 'react';
 
-import * as styles from './site-footer.scss';
+import * as styles from './site-footer.module.scss';
 
 export const SiteFooter = () => (
   <footer className={styles.link}>

@@ -1,8 +1,8 @@
 import { Link } from 'gatsby';
 import React from 'react';
 
-import PostFooter from './post-footer/post-footer';
-import PostHeader from './post-header/post-header';
+import SiteFooter from './site-footer/site-footer';
+import SiteHeader from './site-header/site-header';
 
 interface ISiteContainer {
   location: string;
@@ -16,13 +16,8 @@ class SiteContainer extends React.Component<ISiteContainer, {}> {
 
     return (
       <div>
-        <PostHeader title={'frontmatter.title'} />
+        <SiteHeader title={'frontmatter.title'} />
         {children}
-          <PostFooter
-            avatar={avatar}
-            authorName={frontmatter.author.id}
-            authorBio={frontmatter.author.bio}
-          />
       </div>
     );
   }
