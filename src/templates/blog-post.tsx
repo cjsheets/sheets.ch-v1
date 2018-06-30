@@ -4,10 +4,12 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import Bio from '../components/Bio';
-import Layout from '../components/layout';
+import SiteContainer from '../components/site-container/site-container';
 
 interface IBlogPostTemplate {
   data: any;
+  location: string;
+  pageContext: string;
 }
 
 class BlogPostTemplate extends React.Component<IBlogPostTemplate, {}> {
@@ -17,7 +19,7 @@ class BlogPostTemplate extends React.Component<IBlogPostTemplate, {}> {
     const { previous, next } = this.props.pageContext;
 
     return (
-      <Layout location={this.props.location}>
+      <SiteContainer location={this.props.location}>
         <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
         <h1>{post.frontmatter.title}</h1>
         <p
@@ -56,7 +58,7 @@ class BlogPostTemplate extends React.Component<IBlogPostTemplate, {}> {
             </li>
           )}
         </ul>
-      </Layout>
+      </SiteContainer>
     );
   }
 }

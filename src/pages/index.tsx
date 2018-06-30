@@ -4,7 +4,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import Bio from '../components/Bio';
-import Layout from '../components/layout';
+import SiteContainer from '../components/site-container/site-container';
 
 interface IBlogIndex {
   posts: any;
@@ -17,7 +17,7 @@ class BlogIndex extends React.Component<IBlogIndex, {}> {
     const posts = get(this, 'props.data.allMarkdownRemark.edges');
 
     return (
-      <Layout location={this.props.location}>
+      <SiteContainer location={this.props.location}>
         <Helmet title={siteTitle} />
         {posts.map(({ node }) => {
           const title = get(node, 'frontmatter.title') || node.fields.slug;
@@ -34,7 +34,7 @@ class BlogIndex extends React.Component<IBlogIndex, {}> {
           );
         })}
         <Bio />
-      </Layout>
+      </SiteContainer>
     );
   }
 }

@@ -1,13 +1,14 @@
 module.exports = {
   siteMetadata: {
     siteName: `Using Typescript Example`,
-    title: 'Gatsby Starter Blog',
+    title: 'Sheets.Ch/ad',
     author: 'Kyle Mathews',
     description: 'A starter blog demonstrating what Gatsby can do.',
     siteUrl: 'https://gatsbyjs.github.io/gatsby-starter-blog/',
   },
   pathPrefix: '/gatsby-starter-blog',
   plugins: [
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

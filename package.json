@@ -10,7 +10,8 @@
     "build:dev": "gatsby develop",
     "pretty": "prettier --config .prettierrc --write \"{gatsby-*.js,src/**/*.tsx}\"",
     "type-check": "tsc --noEmit",
-    "lint": "tslint --project ."
+    "lint": "tslint --project .",
+    "graphql-types": "gql-gen --url http://localhost:8000/___graphql --template typescript --out ./@types/graphql-types.d.ts"
   },
   "dependencies": {
     "gatsby": "next",
@@ -19,6 +20,7 @@
     "gatsby-plugin-google-analytics": "next",
     "gatsby-plugin-offline": "next",
     "gatsby-plugin-react-helmet": "next",
+    "gatsby-plugin-sass": "next",
     "gatsby-plugin-sharp": "next",
     "gatsby-plugin-typescript": "next",
     "gatsby-remark-copy-linked-files": "next",
@@ -29,7 +31,11 @@
     "gatsby-source-filesystem": "next",
     "gatsby-transformer-remark": "next",
     "gatsby-transformer-sharp": "next",
+    "graphql-code-generator": "^0.9.4",
+    "graphql-codegen-typescript-template": "^0.9.4",
     "lodash": "^4.17.5",
+    "node-sass": "^4.9.0",
+    "postcss-scss": "^1.0.6",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-helmet": "^5.2.0"
