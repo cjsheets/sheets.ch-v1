@@ -1,4 +1,3 @@
-import { Link } from 'gatsby';
 import React from 'react';
 
 import SiteFooter from './site-footer/site-footer';
@@ -11,13 +10,12 @@ interface ISiteContainer {
 class SiteContainer extends React.Component<ISiteContainer, {}> {
   render() {
     const { location, children } = this.props;
-    // const rootPath = `${__PATH_PREFIX__}/`;
-    // if (location.pathname === rootPath) {
 
     return (
       <div>
         <SiteHeader title={'frontmatter.title'} />
         {children}
+        <SiteFooter />
       </div>
     );
   }
