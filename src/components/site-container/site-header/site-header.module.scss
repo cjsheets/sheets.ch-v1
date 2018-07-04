@@ -16,7 +16,7 @@
 
 .header-navigation {
   display: flex;
-  flex: 0 1 1000px;
+  flex: 0 1 1200px;
   height: 100%;
   font-size: 1.4rem;
   line-height: 1.6rem;
@@ -36,6 +36,7 @@
 }
 
 .header-logo {
+  padding-right: 40px;
 
   span {
     padding-top: 2px;
@@ -49,9 +50,9 @@
 }
 
 .header-link {
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-transform: uppercase;
-  margin-left: 30px;
+  margin-left: 40px;
 
   span {
     padding-top: 6px;
@@ -77,15 +78,4 @@
       margin: 0px 10px;
     }
   }
-}
-
-.header-flex-padding {
-  flex: 1 0 20px;
-  height: 3.5rem;
-}
-
-.well-cover {
-  flex: 0 0 $page_well_width;
-  height: 3.5rem;
-  background-color: $header_blue;
 }

@@ -11,8 +11,6 @@ interface ISiteHeader {
 
 export const SiteHeader = (props: ISiteHeader) => (
   <div className={styles.stickyHeader}>
-    <div className={styles.wellCover} />
-    <div className={styles.headerFlexPadding} />
     <div className={styles.headerNavigation}>
       <Link to='/' className={styles.headerLogo}>
         <SvgIcon icon={Icon.sheets} width={26} height={26} inline />
@@ -27,8 +25,6 @@ export const SiteHeader = (props: ISiteHeader) => (
         <SvgIcon icon={Icon.github} />
       </a>
     </div>
-    <div className={styles.headerFlexPadding} />
-    <div className={styles.wellCover} />
   </div>);
 
 export default SiteHeader;

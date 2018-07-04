@@ -8,7 +8,6 @@ html, body {
 }
 
 body {
-	background-color: $blue_light;
 	color: $font_color_body;
 	font-family: $font_family_body;
 	font-size: $font_size_body;
@@ -87,7 +86,6 @@ blockquote {
 
 img {
 	display: block;
-	margin: 10px 0;
 	width: auto;
 	max-width: 100%;
 
