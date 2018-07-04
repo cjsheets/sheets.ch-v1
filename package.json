@@ -11,7 +11,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cjsheets/sheets.ch.git"
-},
+  },
   "scripts": {
     "start": "gatsby develop",
     "build": "gatsby build",
@@ -28,6 +28,7 @@
     "gatsby-plugin-google-analytics": "next",
     "gatsby-plugin-offline": "next",
     "gatsby-plugin-react-helmet": "next",
+    "gatsby-plugin-remove-trailing-slashes": "^1.0.9",
     "gatsby-plugin-sass": "next",
     "gatsby-plugin-sharp": "next",
     "gatsby-plugin-typescript": "next",

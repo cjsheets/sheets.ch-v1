@@ -1,4 +1,4 @@
-import { Link } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import get from 'lodash/get';
 import React from 'react';
 
