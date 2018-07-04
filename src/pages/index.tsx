@@ -1,7 +1,6 @@
 import { Link } from 'gatsby';
 import get from 'lodash/get';
 import React from 'react';
-import Helmet from 'react-helmet';
 
 import Bio from '../components/Bio';
 import SiteContainer from '../components/site-container/site-container';
@@ -13,12 +12,11 @@ interface IBlogIndex {
 
 class BlogIndex extends React.Component<IBlogIndex, {}> {
   render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title');
+    const pageTitle = get(this, 'props.data.site.siteMetadata.title');
     const posts = get(this, 'props.data.allMarkdownRemark.edges');
 
     return (
-      <SiteContainer location={this.props.location}>
-        <Helmet title={siteTitle} />
+      <SiteContainer location={this.props.location} pageTitle={pageTitle}>
         {posts.map(({ node }) => {
           const title = get(node, 'frontmatter.title') || node.fields.slug;
           return (
