@@ -40,21 +40,35 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Create blog posts pages.
-  const posts = allMarkdown.data.allMarkdownRemark.edges;
+  const nodes = allMarkdown.data.allMarkdownRemark.edges.map(p => p.node);
 
-  _.each(posts, (post, index) => {
-    const previous =
-      index === posts.length - 1 ? null : posts[index + 1].node;
+  const posts = nodes.filter(post => (post.fields.slug || '').startsWith('/post/'));
+  posts.forEach((post, index) => {
+    const previous = index === posts.length - 1 ? null : posts[index + 1].node;
     const next = index === 0 ? null : posts[index - 1].node;
-
     createPage({
-      path: post.node.fields.slug,
+      path: post.fields.slug,
       component: blogPost,
       context: {
-        slug: post.node.fields.slug,
+        slug: post.fields.slug,
         previous,
         next,
-      },
+      }
+    });
+  });
+
+  const projects = nodes.filter(post => (post.fields.slug || '').startsWith('/project/'))
+  projects.forEach((post, index) => {
+    const previous = index === projects.length - 1 ? null : projects[index + 1].node;
+    const next = index === 0 ? null : projects[index - 1].node;
+    createPage({
+      path: post.fields.slug,
+      component: blogPost,
+      context: {
+        slug: post.fields.slug,
+        previous,
+        next,
+      }
     });
   });
 

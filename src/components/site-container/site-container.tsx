@@ -25,21 +25,21 @@ class SiteContainer extends React.Component<ISiteContainer, {}> {
   }
 
   renderHead = () =>
-    <Helmet>
+    <Helmet key='site-container-head'>
       <title>{this.props.pageTitle}</title>
       <link href='https://fonts.googleapis.com/css?family=Lato:300,400|Open+Sans:400,700' rel='stylesheet' />
     </Helmet>
 
   renderHeader = () =>
-    <SiteHeader title={'frontmatter.title'} />
+    <SiteHeader title={'frontmatter.title'} key='site-container-header' />
 
   renderBody = () =>
-    <div className={styles.contentContainer}>
+    <div className={styles.contentContainer} key='site-container-body'>
       {this.props.children}
     </div>
 
   renderFooter = () =>
-    <SiteFooter />
+    <SiteFooter key='site-container-footer' />
 }
 
 export default SiteContainer;
