@@ -16,22 +16,30 @@ import * as styles from './site-container.module.scss';
 
 class SiteContainer extends React.Component<ISiteContainer, {}> {
   render() {
-    const { location, children } = this.props;
-
-    return (
-      <div className={styles.sitePadding}>
-        <SiteHeader title={'frontmatter.title'} />
-          <Helmet>
-            <title>{this.props.pageTitle}</title>
-            <link href='https://fonts.googleapis.com/css?family=Lato:300,400|Open+Sans:400,700' rel='stylesheet' />
-          </Helmet>
-          <div className={styles.contentContainer}>
-            {children}
-          </div>
-        <SiteFooter />
-      </div>
-    );
+    return [
+      this.renderHead(),
+      this.renderHeader(),
+      this.renderBody(),
+      this.renderFooter()
+    ];
   }
+
+  renderHead = () =>
+    <Helmet>
+      <title>{this.props.pageTitle}</title>
+      <link href='https://fonts.googleapis.com/css?family=Lato:300,400|Open+Sans:400,700' rel='stylesheet' />
+    </Helmet>
+
+  renderHeader = () =>
+    <SiteHeader title={'frontmatter.title'} />
+
+  renderBody = () =>
+    <div className={styles.contentContainer}>
+      {this.props.children}
+    </div>
+
+  renderFooter = () =>
+    <SiteFooter />
 }
 
 export default SiteContainer;
