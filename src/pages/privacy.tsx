@@ -5,21 +5,21 @@ import React from 'react';
 import { MarkdownRemarkConnection } from '../../@types/graphql-types';
 import SiteContainer from '../components/site-container/site-container';
 
-interface ITermsOfService {
+interface IPrivacy {
   data: { allMarkdownRemark: MarkdownRemarkConnection; };
   location: any;
 }
 
-const TermsOfService = (props: ITermsOfService) =>(
+const Privacy = (props: IPrivacy) =>(
   <SiteContainer location={props.location}>
     <div dangerouslySetInnerHTML={{__html: get(props, 'data.allMarkdownRemark.edges[0].node.html')}} />
   </SiteContainer>)
 
-export default TermsOfService;
+export default Privacy;
 
 export const pageQuery = graphql`
-  query TosMarkdown {
-    allMarkdownRemark(filter: {fields: {slug: {eq: "/tos"}}}) {
+  query PrivacyMarkdown {
+    allMarkdownRemark(filter: {fields: {slug: {eq: "/privacy"}}}) {
       edges {
         node {
           frontmatter {
