@@ -127,3 +127,40 @@ hr {
 	margin: 45px 0;
 
 }
+
+:root {
+	--content-max-width: 840px
+}
+
+@media (max-width: $viewport_small) {
+	:root {
+		font-size: 100%;
+	}
+}
+
+@media (min-width: $viewport_small) and (max-width: $viewport_medium) {
+	:root {
+		font-size: 110%;
+	}
+}
+
+@media (min-width: $viewport_medium) and (max-width: $viewport_large) {
+	:root {
+		font-size: 120%;
+		--content-max-width: 750px
+	}
+}
+
+@media (min-width: $viewport_large) and (max-width: $viewport_extra_large) {
+	:root {
+		font-size: 120%;
+		--content-max-width: 1000px
+	}
+}
+
+@media (min-width: $viewport_extra_large) {
+	:root {
+		font-size: 130%;
+		--content-max-width: 1200px
+	}
+}
