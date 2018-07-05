@@ -12,6 +12,7 @@
     "emitDecoratorMetadata": true,
     "noEmit": true,
     "skipLibCheck": true,
+    "strictNullChecks": false,
     "typeRoots": [
       "@types",
       "node_modules/@types"

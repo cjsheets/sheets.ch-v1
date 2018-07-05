@@ -1,8 +1,9 @@
+import get from 'lodash/get';
 import * as React from 'react';
 
-import { ImageSharp, MarkdownRemarkConnection } from '../../@types/graphql-types';
+import { ImageSharp, MarkdownRemarkConnection, MarkdownRemarkEdge } from '../../@types/graphql-types';
 import PostCard from '../components/post-card/post-card';
-import PostHeader from '../components/post-header';
+import PostHeader from '../components/post-header/post-header';
 
 import * as styles from '../styles/pages/post.scss';
 import * as sharedStyles from '../styles/shared.module.scss';
@@ -22,8 +23,8 @@ class ProjectsPage extends React.Component<IProjectsPage, {}> {
   // const tags = this.props.data.tags && this.props.data.tags.group;
   // const { pathname } = this.props.location;
   // const pageCount = Math.ceil(projects.totalCount / 10);
-  const postCardProps = projects.edges.map(({ node }) => {
-    const { frontmatter, timeToRead, fields: { slug }, excerpt } = node;
+  const postCardProps = projects.edges.map((edge) => {
+    const { frontmatter, timeToRead, fields: { slug }, excerpt } = edge.node;
     const avatar = frontmatter.author.avatar.children[0] as ImageSharp;
     return ({frontmatter, timeToRead, slug, excerpt, avatar});
   });
