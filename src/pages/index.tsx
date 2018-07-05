@@ -7,7 +7,7 @@ import SiteContainer from '../components/site-container/site-container';
 
 interface IBlogIndex {
   posts: any;
-  location: any;
+  location: { pathname: string; };
 }
 
 class BlogIndex extends React.Component<IBlogIndex, {}> {

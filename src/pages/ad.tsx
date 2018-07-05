@@ -7,7 +7,7 @@ import SiteContainer from '../components/site-container/site-container';
 
 interface IAbout {
   data: { allMarkdownRemark: MarkdownRemarkConnection; };
-  location: any;
+  location: { pathname: string; };
 }
 
 const About = (props: IAbout) =>(

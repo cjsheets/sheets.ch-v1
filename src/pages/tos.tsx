@@ -7,13 +7,14 @@ import SiteContainer from '../components/site-container/site-container';
 
 interface ITermsOfService {
   data: { allMarkdownRemark: MarkdownRemarkConnection; };
-  location: any;
+  location: { pathname: string; };
 }
 
-const TermsOfService = (props: ITermsOfService) =>(
+const TermsOfService = (props: ITermsOfService) => (
   <SiteContainer location={props.location}>
     <div dangerouslySetInnerHTML={{__html: get(props, 'data.allMarkdownRemark.edges[0].node.html')}} />
-  </SiteContainer>)
+  </SiteContainer>
+)
 
 export default TermsOfService;
 

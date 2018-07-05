@@ -5,7 +5,7 @@ import SiteFooter from './site-footer/site-footer';
 import SiteHeader from './site-header/site-header';
 
 interface ISiteContainer {
-  location: string;
+  location: { pathname: string; };
   pageTitle?: string;
 }
 

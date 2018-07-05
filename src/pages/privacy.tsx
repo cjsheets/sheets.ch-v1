@@ -7,7 +7,7 @@ import SiteContainer from '../components/site-container/site-container';
 
 interface IPrivacy {
   data: { allMarkdownRemark: MarkdownRemarkConnection; };
-  location: any;
+  location: { pathname: string; };
 }
 
 const Privacy = (props: IPrivacy) =>(
