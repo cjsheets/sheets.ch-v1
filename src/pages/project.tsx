@@ -1,3 +1,4 @@
+import { graphql, Link } from 'gatsby';
 import get from 'lodash/get';
 import * as React from 'react';
 
@@ -57,7 +58,6 @@ class ProjectsPage extends React.Component<IProjectsPage, {}> {
 export default ProjectsPage;
 export const pageQuery = graphql`
 query ProjectsPageMarkdown {
-  # Get posts
   projects: allMarkdownRemark(
     sort: { order: DESC, fields: [frontmatter___createdDate] },
     filter: {
@@ -77,19 +77,7 @@ query ProjectsPageMarkdown {
         frontmatter {
           title
           createdDate(formatString: "DD MMMM, YYYY")
-          author {
-            id
-            avatar {
-              children {
-                ... on ImageSharp {
-                  responsiveResolution(width: 35, height: 35) {
-                    src
-                    srcSet
-                  }
-                }
-              }
-            }
-          }
+          author
         }
       }
     }
