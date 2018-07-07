@@ -13,7 +13,7 @@ interface IBlogIndex {
 class BlogIndex extends React.Component<IBlogIndex, {}> {
   render() {
     const pageTitle = get(this, 'props.data.site.siteMetadata.title');
-    const posts = get(this, 'props.data.allMarkdownRemark.edges');
+    const posts = get(this, 'props.data.posts.edges');
 
     return (
       <SiteContainer location={this.props.location} pageTitle={pageTitle}>
@@ -46,7 +46,13 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    posts: allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC },
+    filter: {
+      frontmatter: { draft: { ne: true } },
+      fileAbsolutePath: { regex: "/post/|/project/" }
+    },
+    ) {
       edges {
         node {
           excerpt

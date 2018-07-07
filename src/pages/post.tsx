@@ -9,35 +9,35 @@ import SiteContainer from '../components/site-container/site-container';
 import * as styles from '../styles/pages/post.scss';
 // import * as sharedStyles from '../styles/shared.module.scss';
 
-interface IProjectsPage {
+interface IPostPage {
   data: {
     tags: MarkdownRemarkConnection;
-    projects: MarkdownRemarkConnection;
+    posts: MarkdownRemarkConnection;
   };
   pathContext: { tag?: string; };
   location: { pathname: string; };
 }
 
-class ProjectPage extends React.Component<IProjectsPage, {}> {
+class PostPage extends React.Component<IPostPage, {}> {
   render() {
-  const projects = this.props.data.projects.edges.map((edge) => {
+  const posts = this.props.data.posts.edges.map((edge) => {
     const { frontmatter, timeToRead, fields: { slug }, excerpt } = edge.node;
     return ({frontmatter, timeToRead, slug, excerpt});
   });
 
   return (
     <SiteContainer location={this.props.location}>
-      {projects.map(project => {
-        const title = get(project, 'frontmatter.title') || project.slug;
+      {posts.map(post => {
+        const title = get(post, 'frontmatter.title') || post.slug;
         return (
-          <div key={project.slug}>
+          <div key={post.slug}>
             <h3>
-              <Link style={{ boxShadow: 'none' }} to={project.slug}>
+              <Link style={{ boxShadow: 'none' }} to={post.slug}>
                 {title}
               </Link>
             </h3>
-            <small>{project.frontmatter.date}</small>
-            <p dangerouslySetInnerHTML={{ __html: project.excerpt }} />
+            <small>{post.frontmatter.date}</small>
+            <p dangerouslySetInnerHTML={{ __html: post.excerpt }} />
           </div>
         );
       })}
@@ -47,15 +47,15 @@ class ProjectPage extends React.Component<IProjectsPage, {}> {
   }
 }
 
-export default ProjectPage;
+export default PostPage;
 
 export const pageQuery = graphql`
-query ProjectsPageMarkdown {
-  projects: allMarkdownRemark(
+query PostPageMarkdown {
+  posts: allMarkdownRemark(
     sort: { order: DESC, fields: [frontmatter___createdDate] },
     filter: {
       frontmatter: { draft: { ne: true } },
-      fileAbsolutePath: { regex: "/project/" }
+      fileAbsolutePath: { regex: "/post/" }
     },
     limit: 10
   ) {
