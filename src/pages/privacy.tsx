@@ -1,32 +1,25 @@
-import * as React from 'react';
+import { graphql } from 'gatsby'
+import get from 'lodash/get';
+import React from 'react';
 
 import { MarkdownRemarkConnection } from '../../@types/graphql-types';
+import SiteContainer from '../components/site-container/site-container';
 
-import * as sharedStyles from '../styles/shared.scss';
-
-interface IPrivacyPage {
-  data: { home: MarkdownRemarkConnection; };
+interface IPrivacy {
+  data: { allMarkdownRemark: MarkdownRemarkConnection; };
   location: { pathname: string; };
 }
 
-class PrivacyPage extends React.Component<IPrivacyPage, {}> {
+const Privacy = (props: IPrivacy) =>(
+  <SiteContainer location={props.location}>
+    <div dangerouslySetInnerHTML={{__html: get(props, 'data.allMarkdownRemark.edges[0].node.html')}} />
+  </SiteContainer>)
 
-  render() {
-    const content = this.props.data.home.edges[0].node.html;
-    return (
-      <div className={`${sharedStyles.contentBody} ${sharedStyles.contentPadding}`}>
-        <div dangerouslySetInnerHTML={{__html: content}} />
-      </div>
-    );
-  }
-}
+export default Privacy;
 
-export default PrivacyPage;
 export const pageQuery = graphql`
   query PrivacyMarkdown {
-    home: allMarkdownRemark(
-      filter: {id: {regex: "//home/privacy/"}}
-    ) {
+    allMarkdownRemark(filter: {fields: {slug: {eq: "/privacy"}}}) {
       edges {
         node {
           frontmatter {

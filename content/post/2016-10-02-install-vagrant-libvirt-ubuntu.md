@@ -1,6 +1,7 @@
 ---
 title: 'Install Vagrant + libvirt on Ubuntu 16.04'
 createdDate: '2016-10-02'
+date: "2015-05-06T23:46:37.121Z"
 author: Chad Sheets
 tags:
   - starter

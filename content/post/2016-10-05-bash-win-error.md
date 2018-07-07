@@ -1,6 +1,7 @@
 ---
 title: 'Fixing Bash on Windows Error: 0x80070002'
 createdDate: '2016-10-05'
+date: "2015-05-06T23:46:37.121Z"
 author: Chad Sheets
 tags:
   - starter

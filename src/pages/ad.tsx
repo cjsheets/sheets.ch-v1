@@ -1,32 +1,25 @@
-import * as React from 'react';
+import { graphql } from 'gatsby'
+import get from 'lodash/get';
+import React from 'react';
 
 import { MarkdownRemarkConnection } from '../../@types/graphql-types';
+import SiteContainer from '../components/site-container/site-container';
 
-import * as sharedStyles from '../styles/shared.scss';
-
-interface IAboutMePage {
-  data: { home: MarkdownRemarkConnection; };
+interface IAbout {
+  data: { allMarkdownRemark: MarkdownRemarkConnection; };
   location: { pathname: string; };
 }
 
-class AboutMePage extends React.Component<IAboutMePage, {}> {
+const About = (props: IAbout) =>(
+  <SiteContainer location={props.location}>
+    <div dangerouslySetInnerHTML={{__html: get(props, 'data.allMarkdownRemark.edges[0].node.html')}} />
+  </SiteContainer>)
 
-  render() {
-    const content = this.props.data.home.edges[0].node.html;
-    return (
-      <div className={`${sharedStyles.contentBody} ${sharedStyles.contentPadding}`}>
-        <div dangerouslySetInnerHTML={{__html: content}} />
-      </div>
-    );
-  }
-}
+export default About;
 
-export default AboutMePage;
 export const pageQuery = graphql`
-  query AboutMeMarkdown {
-    home: allMarkdownRemark(
-      filter: {id: {regex: "//home/about/"}}
-    ) {
+  query AboutMarkdown {
+    allMarkdownRemark(filter: {fields: {slug: {eq: "/about"}}}) {
       edges {
         node {
           frontmatter {

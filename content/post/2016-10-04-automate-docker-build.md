@@ -1,6 +1,7 @@
 ---
 title: 'Automate Docker Hub Builds with GitHub'
 createdDate: '2016-10-04'
+date: "2015-05-06T23:46:37.121Z"
 author: Chad Sheets
 tags:
   - starter

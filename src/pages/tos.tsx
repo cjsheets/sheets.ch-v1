@@ -1,32 +1,26 @@
-import * as React from 'react';
+import { graphql } from 'gatsby'
+import get from 'lodash/get';
+import React from 'react';
 
 import { MarkdownRemarkConnection } from '../../@types/graphql-types';
+import SiteContainer from '../components/site-container/site-container';
 
-import * as sharedStyles from '../styles/shared.scss';
-
-interface ITosPage {
-  data: { home: MarkdownRemarkConnection; };
+interface ITermsOfService {
+  data: { allMarkdownRemark: MarkdownRemarkConnection; };
   location: { pathname: string; };
 }
 
-class TosPage extends React.Component<ITosPage, {}> {
+const TermsOfService = (props: ITermsOfService) => (
+  <SiteContainer location={props.location}>
+    <div dangerouslySetInnerHTML={{__html: get(props, 'data.allMarkdownRemark.edges[0].node.html')}} />
+  </SiteContainer>
+)
 
-  render() {
-    const content = this.props.data.home.edges[0].node.html;
-    return (
-      <div className={`${sharedStyles.contentBody} ${sharedStyles.contentPadding}`}>
-        <div dangerouslySetInnerHTML={{__html: content}} />
-      </div>
-    );
-  }
-}
+export default TermsOfService;
 
-export default TosPage;
 export const pageQuery = graphql`
   query TosMarkdown {
-    home: allMarkdownRemark(
-      filter: {id: {regex: "//home/tos/"}}
-    ) {
+    allMarkdownRemark(filter: {fields: {slug: {eq: "/tos"}}}) {
       edges {
         node {
           frontmatter {
