@@ -2,7 +2,7 @@ import { graphql, Link } from 'gatsby';
 import get from 'lodash/get';
 import React from 'react';
 
-import Bio from '../components/Bio';
+import AuthorBio from '../components/author-bio/author-bio';
 import SiteContainer from '../components/site-container/site-container';
 
 interface IBlogIndex {
@@ -31,7 +31,7 @@ class BlogIndex extends React.Component<IBlogIndex, {}> {
             </div>
           );
         })}
-        <Bio />
+        <AuthorBio />
       </SiteContainer>
     );
   }

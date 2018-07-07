@@ -3,16 +3,16 @@ import get from 'lodash/get';
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import Bio from '../components/Bio';
+import AuthorBio from '../components/author-bio/author-bio';
 import SiteContainer from '../components/site-container/site-container';
 
-interface IBlogPostTemplate {
+interface IPostTemplate {
   data: any;
   location: string;
   pageContext: string;
 }
 
-class BlogPostTemplate extends React.Component<IBlogPostTemplate, {}> {
+class PostTemplate extends React.Component<IPostTemplate, {}> {
   render() {
     const post = this.props.data.markdownRemark;
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
@@ -31,7 +31,7 @@ class BlogPostTemplate extends React.Component<IBlogPostTemplate, {}> {
         </p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr />
-        <Bio />
+        <AuthorBio />
 
         <ul
           style={{
@@ -63,7 +63,7 @@ class BlogPostTemplate extends React.Component<IBlogPostTemplate, {}> {
   }
 }
 
-export default BlogPostTemplate;
+export default PostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {

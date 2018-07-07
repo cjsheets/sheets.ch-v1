@@ -3,7 +3,7 @@ import get from 'lodash/get';
 import * as React from 'react';
 
 import { ImageSharp, MarkdownRemarkConnection, MarkdownRemarkEdge } from '../../@types/graphql-types';
-import Bio from '../components/Bio';
+import AuthorBio from '../components/author-bio/author-bio';
 import SiteContainer from '../components/site-container/site-container';
 
 import * as styles from '../styles/pages/post.scss';
@@ -41,7 +41,7 @@ class ProjectPage extends React.Component<IProjectsPage, {}> {
           </div>
         );
       })}
-      <Bio />
+      <AuthorBio />
     </SiteContainer>
   );
   }
