@@ -1,40 +1,14 @@
-import * as React from 'react';
+import React from 'react';
 
-import { MarkdownRemarkConnection } from '../../@types/graphql-types';
+import SiteContainer from '../components/site-container/site-container';
 
-import * as sharedStyles from '../styles/shared.scss';
-
-interface IThanksPage {
-  data: { home: MarkdownRemarkConnection; };
-  location: { pathname: string; };
-}
-
-class ThanksPage extends React.Component<IThanksPage, {}> {
-
-  render() {
-    const content = this.props.data.home.edges[0].node.html;
-    return (
-      <div className={`${sharedStyles.contentBody} ${sharedStyles.contentPadding}`}>
-        <div dangerouslySetInnerHTML={{__html: content}} />
-      </div>
-    );
-  }
-}
+const ThanksPage = () => (
+  <SiteContainer location={{pathname: '/'}}>
+    <h1>{'Thanks!'}</h1>
+    <p>
+      {'Thanks for thaking the time to touch base.'}
+    </p>
+  </SiteContainer>
+)
 
 export default ThanksPage;
-export const pageQuery = graphql`
-  query ThanksMarkdown {
-    home: allMarkdownRemark(
-      filter: {id: {regex: "//home/thanks/"}}
-    ) {
-      edges {
-        node {
-          frontmatter {
-            title
-          }
-          html
-        }
-      }
-    }
-  }
-`;

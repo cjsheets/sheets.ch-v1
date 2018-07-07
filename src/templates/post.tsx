@@ -1,80 +1,85 @@
-import Link from 'gatsby-link';
-import * as React from 'react';
+import { Link } from 'gatsby';
+import get from 'lodash/get';
+import React from 'react';
+import Helmet from 'react-helmet';
 
-import { ImageSharp, MarkdownRemark } from '../../@types/graphql-types';
-import PostFooter from '../components/post-footer/post-footer';
-import PostHeader from '../components/post-header';
-
-import * as sharedStyles from '../styles/shared.scss';
+import AuthorBio from '../components/author-bio/author-bio';
+import SiteContainer from '../components/site-container/site-container';
 
 interface IPostTemplate {
-  data: {
-    post: MarkdownRemark;
-  };
+  data: any;
+  location: string;
+  pageContext: string;
 }
 
 class PostTemplate extends React.Component<IPostTemplate, {}> {
   render() {
-    const { frontmatter, html } = this.props.data.post;
-    const avatar = frontmatter.author.avatar.children && frontmatter.author.avatar.children[0] as ImageSharp;
-
-    const tags = this.props.data.post.frontmatter.tags
-      .map((tag) => <div key={tag}><Link to={`/post/tags/${tag}/`}>{tag}</Link></div>);
+    const post = this.props.data.markdownRemark;
+    const siteTitle = get(this.props, 'data.site.siteMetadata.title');
+    const { previous, next } = this.props.pageContext;
 
     return (
-      <div className={sharedStyles.pageBody}>
-        <div className={sharedStyles.contentPadding}>
-          <PostHeader title={frontmatter.title} />
-          <div
-            style={{ border: 'none' }}
-            dangerouslySetInnerHTML={{
-              __html: html
-            }}
-          />
-          <div>
-            {tags}
-          </div>
-          <PostFooter
-            avatar={avatar}
-            authorName={frontmatter.author.id}
-            authorBio={frontmatter.author.bio}
-          />
-        </div>
-      </div>
+      <SiteContainer location={this.props.location}>
+        <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
+        <h1>{post.frontmatter.title}</h1>
+        <p
+          style={{
+            display: 'block',
+          }}
+        >
+          {post.frontmatter.date}
+        </p>
+        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <hr />
+        <AuthorBio />
+
+        <ul
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'space-between',
+            listStyle: 'none',
+            padding: 0,
+          }}
+        >
+          {previous && (
+            <li>
+              <Link to={previous.fields.slug} rel="prev">
+                ← {previous.frontmatter.title}
+              </Link>
+            </li>
+          )}
+
+          {next && (
+            <li>
+              <Link to={next.fields.slug} rel="next">
+                {next.frontmatter.title} →
+              </Link>
+            </li>
+          )}
+        </ul>
+      </SiteContainer>
     );
   }
 }
 
 export default PostTemplate;
+
 export const pageQuery = graphql`
-  query PostTemplateMarkdown($slug: String!) {
-  post: markdownRemark(fields: {slug: {eq: $slug}}) {
-    html
-    excerpt
-    timeToRead
-    fields {
-      slug
-    }
-    frontmatter {
-      tags
-      author {
-        id
-        bio
-        twitter
-        avatar {
-          children {
-            ... on ImageSharp {
-              responsiveResolution(width: 80, height: 80, quality: 100) {
-                src
-                srcSet
-              }
-            }
-          }
-        }
+  query BlogPostBySlug($slug: String!) {
+    site {
+      siteMetadata {
+        title
+        author
       }
-      title
-      createdDate(formatString: "MMM D, YYYY")
+    }
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      id
+      html
+      frontmatter {
+        title
+        date(formatString: "MMMM DD, YYYY")
+      }
     }
   }
-}
 `;

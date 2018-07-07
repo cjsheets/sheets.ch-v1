@@ -1,6 +1,7 @@
 ---
 title: 'Improving the Simplenote Web Client'
 createdDate: '2016-08-01'
+date: "2015-05-06T23:46:37.121Z"
 author: Chad Sheets
 tags:
   - starter

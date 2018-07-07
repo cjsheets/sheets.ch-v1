@@ -8,11 +8,10 @@ html, body {
 }
 
 body {
-	background-color: $blue_light;
 	color: $font_color_body;
 	font-family: $font_family_body;
 	font-size: $font_size_body;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -87,7 +86,6 @@ blockquote {
 
 img {
 	display: block;
-	margin: 10px 0;
 	width: auto;
 	max-width: 100%;
 
@@ -128,4 +126,48 @@ hr {
 	border-bottom: 1px dotted $hr_color;
 	margin: 45px 0;
 
+}
+
+
+#___gatsby {
+  display: flex;
+  flex-direction: column;
+	height: 100vh;
+}
+
+:root {
+	--content-max-width: 840px
+}
+
+@media (max-width: $viewport_small) {
+	:root {
+		font-size: 100%;
+	}
+}
+
+@media (min-width: $viewport_small) and (max-width: $viewport_medium) {
+	:root {
+		font-size: 110%;
+	}
+}
+
+@media (min-width: $viewport_medium) and (max-width: $viewport_large) {
+	:root {
+		font-size: 120%;
+		--content-max-width: 750px
+	}
+}
+
+@media (min-width: $viewport_large) and (max-width: $viewport_extra_large) {
+	:root {
+		font-size: 120%;
+		--content-max-width: 1000px
+	}
+}
+
+@media (min-width: $viewport_extra_large) {
+	:root {
+		font-size: 130%;
+		--content-max-width: 1200px
+	}
 }

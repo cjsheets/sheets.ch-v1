@@ -1,17 +1,15 @@
-import * as React from 'react';
+import get from 'lodash/get';
+import React from 'react';
 
-export const ErrorPage404 = () =>
-  <div
-    style={{
-      minHeight: '700px'
-      }}
-    >
-    <div>
-      <div style={{textAlign: 'center'}}>
-        <div>You are here!</div>
-        <div>But nothing found for you #404</div>
-      </div>
-    </div>
-  </div>;
+import SiteContainer from '../components/site-container/site-container';
 
-export default ErrorPage404;
+const NotFoundPage = () => (
+  <SiteContainer location={{pathname: '/'}}>
+    <h1>{'404 - Page Not Found'}</h1>
+    <p>
+      {'Sorry, the page you requested is no longer here.'}
+    </p>
+  </SiteContainer>
+)
+
+export default NotFoundPage;
