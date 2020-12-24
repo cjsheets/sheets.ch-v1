@@ -1,55 +1,82 @@
+const config = require('./content/config');
+
 module.exports = {
+  pathPrefix: config.pathPrefix,
   siteMetadata: {
-    siteName: `Using Typescript Example`,
-    title: 'Sheets.Ch/ad',
-    author: 'Kyle Mathews',
-    description: 'A starter blog demonstrating what Gatsby can do.',
-    siteUrl: 'https://gatsbyjs.github.io/gatsby-starter-blog/',
+    siteUrl: config.siteUrl + config.pathPrefix,
+    rssMetadata: {
+      site_url: config.siteUrl + config.pathPrefix,
+      feed_url: config.siteUrl + config.siteRss,
+      title: config.siteTitle,
+      description: config.siteDescription,
+      image_url: config.siteUrl + config.siteLogo,
+      copyright: config.copyright,
+    },
   },
-  pathPrefix: '/gatsby-starter-blog',
   plugins: [
-    `gatsby-plugin-sass`,
+    'gatsby-plugin-typescript',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
+        icon: `${__dirname}/content/${config.siteLogo}`,
+      },
+    },
+    'gatsby-transformer-remark',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'posts',
         path: `${__dirname}/content`,
-        name: 'content',
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: `gatsby-remark-relative-images`,
+          },
+          {
+            resolve: 'gatsby-remark-images',
             options: {
-              maxWidth: 590,
+              maxWidth: 700,
             },
           },
           {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
+            resolve: 'gatsby-remark-responsive-iframe',
           },
-          //'gatsby-remark-prismjs',
           'gatsby-remark-copy-linked-files',
-          'gatsby-remark-smartypants',
+          'gatsby-remark-autolink-headers',
+          'gatsby-remark-prismjs',
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-typescript`,
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-catch-links',
+    'gatsby-plugin-sitemap',
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        name: config.siteTitle,
+        short_name: config.siteTitleShort,
+        description: config.siteDescription,
+        start_url: config.pathPrefix,
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
+        display: 'minimal-ui',
+        icons: [
+          {
+            src: '/icons/sheets-logo.svg',
+            sizes: '256x256',
+            type: 'image/svg',
+          },
+        ],
       },
     },
-    `gatsby-plugin-feed`,
-    `gatsby-plugin-offline`,
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-remove-trailing-slashes`,
+    'gatsby-plugin-offline',
+    // ToDo: RSS Feed
   ],
 };

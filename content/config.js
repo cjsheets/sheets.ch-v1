@@ -1,0 +1,18 @@
+module.exports = {
+  backgroundColor: '#EAEAF2',
+  copyright: 'Copyright © 2020 Chad Sheets',
+  dateFormat: 'DD/MM/YYYY',
+  dateFromFormat: 'YYYY-MM-DD',
+  pathPrefix: '/',
+  postsPerPage: 2,
+  postDirectories: ['post', 'project'],
+  siteDescription: 'Welcome to Chad Sheets personal page.',
+  siteLogo: '/icons/sheets-logo.svg',
+  siteRss: '/rss.xml',
+  siteRssTitle: 'Chad Sheets Homepage',
+  siteTitle: 'Chad Sheets Homepage',
+  siteTitleAlt: 'Chad Sheets Homepage',
+  siteTitleShort: 'Sheets.ch/ad',
+  siteUrl: 'https://sheets.ch',
+  themeColor: '#23507A',
+};

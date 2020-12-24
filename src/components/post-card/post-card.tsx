@@ -22,21 +22,17 @@ export const PostCard = (props: IPostCard) => {
   };
 
   return (
-    <div className={styles.postCardContainer}>
+    <div>
       <Link to={props.slug}>
-        <div className={styles.postCardTitle}>
-         {props.frontmatter.title}
-        </div>
-        <div className={styles.postCardDate}>
+        <div>{props.frontmatter.title}</div>
+        <div>
           {getFormattedDateString()} - {props.timeToRead} min read
         </div>
-        <div className={styles.postCardExcerpt}>
-          {props.excerpt}
-        </div>
+        <div>{props.excerpt}</div>
         <div>
-          {tags.map((tag, i) =>
+          {tags.map((tag, i) => (
             <Link key={tag + i} to="/">{`#${tag} `}</Link>
-          )}
+          ))}
         </div>
       </Link>
     </div>

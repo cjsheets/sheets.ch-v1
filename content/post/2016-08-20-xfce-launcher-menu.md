@@ -1,7 +1,7 @@
 ---
 title: 'Custom XFCE Launcher Menu Items'
 createdDate: '2016-08-20'
-date: "2015-05-06T23:46:37.121Z"
+date: '2015-05-06T23:46:37.121Z'
 author: Chad Sheets
 tags:
   - xubuntu
@@ -17,15 +17,15 @@ Below is an example of a shortcut to robomongo.
 robomongo.desktop
 
 ```bash
-    #!/usr/bin/env xdg-open  
+    #!/usr/bin/env xdg-open
     [Desktop Entry]
-    Version=1.0  
-    Terminal=false  
-    Type=Application  
-    Name=robomongo  
-    Exec=/opt/robomongo/bin/robomongo  
-    Icon=office-database  
-    Categories=Development  
+    Version=1.0
+    Terminal=false
+    Type=Application
+    Name=robomongo
+    Exec=/opt/robomongo/bin/robomongo
+    Icon=office-database
+    Categories=Development
 ```
 
 I typically identify available icon names by right-clicking a launcher item and checking what icons are available to change to.

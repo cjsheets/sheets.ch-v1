@@ -10,21 +10,29 @@ interface ISiteHeader {
 }
 
 export const SiteHeader = (props: ISiteHeader) => (
-  <div className={styles.stickyHeader}>
-    <div className={styles.headerNavigation}>
-      <Link to='/' className={styles.headerLogo}>
+  <div>
+    <div>
+      <Link to="/">
         <SvgIcon icon={Icon.sheets} width={26} height={26} inline />
-        <span className={styles.primary}>Sheets.ch</span><span>ad</span>
+        <span>Sheets.ch</span>
+        <span>ad</span>
       </Link>
-      <Link to='/post' className={styles.headerLink}><span>Posts</span></Link>
-      <Link to='/project' className={styles.headerLink}><span>Projects</span></Link>
-      <Link to='/ad' className={styles.headerLink}><span>About</span></Link>
+      <Link to="/post">
+        <span>Posts</span>
+      </Link>
+      <Link to="/project">
+        <span>Projects</span>
+      </Link>
+      <Link to="/ad">
+        <span>About</span>
+      </Link>
     </div>
-    <div className={styles.headerIconBar}>
-      <a href='https://github.com/cjsheets' className={styles.headerLink}>
+    <div>
+      <a href="https://github.com/cjsheets">
         <SvgIcon icon={Icon.github} />
       </a>
     </div>
-  </div>);
+  </div>
+);
 
 export default SiteHeader;

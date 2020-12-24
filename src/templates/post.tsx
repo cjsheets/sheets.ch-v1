@@ -1,84 +1,56 @@
-import { Link } from 'gatsby';
-import get from 'lodash/get';
 import React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
+import { graphql } from 'gatsby';
+import Layout from '../layout';
+import PostTags from '../components/PostTags/PostTags';
+import SEO from '../components/SEO/SEO';
+import Footer from '../components/Footer/Footer';
+import config from '../../content/config';
 
-import AuthorBio from '../components/author-bio/author-bio';
-import SiteContainer from '../components/site-container/site-container';
-
-interface IPostTemplate {
-  data: any;
-  location: string;
-  pageContext: string;
-}
-
-class PostTemplate extends React.Component<IPostTemplate, {}> {
-  render() {
-    const post = this.props.data.markdownRemark;
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title');
-    const { previous, next } = this.props.pageContext;
-
-    return (
-      <SiteContainer location={this.props.location}>
-        <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
-        <h1>{post.frontmatter.title}</h1>
-        <p
-          style={{
-            display: 'block',
-          }}
-        >
-          {post.frontmatter.date}
-        </p>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr />
-        <AuthorBio />
-
-        <ul
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
-            listStyle: 'none',
-            padding: 0,
-          }}
-        >
-          {previous && (
-            <li>
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            </li>
-          )}
-
-          {next && (
-            <li>
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            </li>
-          )}
-        </ul>
-      </SiteContainer>
-    );
+export default function PostTemplate({ data, pageContext }) {
+  const { slug } = pageContext;
+  const postNode = data.markdownRemark;
+  const post = postNode.frontmatter;
+  if (!post.id) {
+    post.id = slug;
   }
+
+  return (
+    <Layout>
+      <div>
+        <Helmet>
+          <title>{`${post.title} | ${config.siteTitle}`}</title>
+        </Helmet>
+        <SEO postPath={slug} postNode={postNode} postSEO />
+        <div>
+          <h1>{post.title}</h1>
+          {/* eslint-disable-next-line react/no-danger */}
+          <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+          <div className="post-meta">
+            <PostTags tags={post.tags} />
+          </div>
+          <Footer config={config} />
+        </div>
+      </div>
+    </Layout>
+  );
 }
 
-export default PostTemplate;
-
+/* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-        author
-      }
-    }
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
       html
+      timeToRead
+      excerpt
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        date
+        tags
+      }
+      fields {
+        slug
+        date
       }
     }
   }

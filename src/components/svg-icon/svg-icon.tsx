@@ -1,12 +1,10 @@
 import * as React from 'react';
 
-import * as styles from './svg-icon.scss';
-
 interface ISvgIcon {
   icon: {
-    src: any,
-    width: number,
-    height: number
+    src: any;
+    width: number;
+    height: number;
   };
   width?: number;
   height?: number;
@@ -21,7 +19,11 @@ export const Icon = {
   nodejs: { src: require('../../../content/icons/nodejs-logo.svg'), width: 100, height: 100 },
   react: { src: require('../../../content/icons/react-logo.svg'), width: 100, height: 100 },
   sheets: { src: require('../../../content/icons/sheets-logo.svg'), width: 100, height: 100 },
-  typescript: { src: require('../../../content/icons/typescript-logo.svg'), width: 100, height: 100 }
+  typescript: {
+    src: require('../../../content/icons/typescript-logo.svg'),
+    width: 100,
+    height: 100,
+  },
 };
 
 export const SvgIcon = (props: ISvgIcon) => {
@@ -29,24 +31,10 @@ export const SvgIcon = (props: ISvgIcon) => {
   const height = props.height || props.icon.height || 18;
 
   return (
-    <div
-      style={{width, height}}
-      className={[
-        props.inline && styles.inline
-      ].join(' ')}
-    >
-      <img
-        src={props.icon.src}
-        width={props.width}
-        height={props.height}
-        className={[
-          styles.svgImg,
-          props.className,
-          props.inline && styles.inline
-        ].join(' ')}
-      />
+    <div style={{ width, height }}>
+      <img src={props.icon.src} width={props.width} height={props.height} />
     </div>
-    );
+  );
 };
 
 export default SvgIcon;
