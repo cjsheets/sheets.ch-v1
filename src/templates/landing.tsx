@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
-import Layout from '../layout';
+import { Container } from '../layout';
 import PostListing from '../components/PostListing/PostListing';
 import SEO from '../components/SEO/SEO';
 import config from '../../content/config';
@@ -9,7 +9,7 @@ import config from '../../content/config';
 function Landing({ data }) {
   const postEdges = data.allMarkdownRemark.edges;
   return (
-    <Layout>
+    <Container>
       <div className="landing-container">
         <div className="posts-container">
           <Helmet title={config.siteTitle} />
@@ -17,7 +17,7 @@ function Landing({ data }) {
           <PostListing postEdges={postEdges} />
         </div>
       </div>
-    </Layout>
+    </Container>
   );
 }
 

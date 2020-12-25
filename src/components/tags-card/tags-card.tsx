@@ -8,13 +8,10 @@ interface ITagsdivProps extends React.HTMLProps<HTMLDivElement> {
   tag?: string;
 }
 
-export default (props: ITagsdivProps) => {
-  return (
+export default (props: ITagsdivProps) => (
     <div>
       <div>
-        <div>
-          Tags
-        </div>
+        <div>Tags</div>
       </div>
       <div>
         <div>
@@ -34,4 +31,3 @@ export default (props: ITagsdivProps) => {
       </div>
     </div>
   );
-};

@@ -1,13 +1,12 @@
 import { graphql, Link } from 'gatsby';
 import get from 'lodash/get';
 import React from 'react';
-
 import AuthorBio from '../components/author-bio/author-bio';
-import SiteContainer from '../components/site-container/site-container';
+import { Container } from '../layout';
 
 interface IBlogIndex {
   posts: any;
-  location: { pathname: string; };
+  location: { pathname: string };
 }
 
 class BlogIndex extends React.Component<IBlogIndex, {}> {
@@ -16,7 +15,7 @@ class BlogIndex extends React.Component<IBlogIndex, {}> {
     const posts = get(this, 'props.data.posts.edges');
 
     return (
-      <SiteContainer location={this.props.location} pageTitle={pageTitle}>
+      <Container title={pageTitle}>
         {posts.map(({ node }) => {
           const title = get(node, 'frontmatter.title') || node.fields.slug;
           return (
@@ -32,7 +31,7 @@ class BlogIndex extends React.Component<IBlogIndex, {}> {
           );
         })}
         <AuthorBio />
-      </SiteContainer>
+      </Container>
     );
   }
 }
@@ -47,11 +46,11 @@ export const pageQuery = graphql`
       }
     }
     posts: allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC },
-    filter: {
-      frontmatter: { draft: { ne: true } },
-      fileAbsolutePath: { regex: "/post/|/project/" }
-    },
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: {
+        frontmatter: { draft: { ne: true } }
+        fileAbsolutePath: { regex: "/post/|/project/" }
+      }
     ) {
       edges {
         node {

@@ -1,10 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
-import Layout from '../layout';
+import { Container } from '../layout';
 import PostTags from '../components/PostTags/PostTags';
 import SEO from '../components/SEO/SEO';
-import Footer from '../components/Footer/Footer';
 import config from '../../content/config';
 
 export default function PostTemplate({ data, pageContext }) {
@@ -16,7 +15,7 @@ export default function PostTemplate({ data, pageContext }) {
   }
 
   return (
-    <Layout>
+    <Container>
       <div>
         <Helmet>
           <title>{`${post.title} | ${config.siteTitle}`}</title>
@@ -29,10 +28,9 @@ export default function PostTemplate({ data, pageContext }) {
           <div className="post-meta">
             <PostTags tags={post.tags} />
           </div>
-          <Footer config={config} />
         </div>
       </div>
-    </Layout>
+    </Container>
   );
 }
 

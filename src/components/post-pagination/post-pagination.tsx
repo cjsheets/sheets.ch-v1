@@ -9,10 +9,10 @@ interface IPostPaginationProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 export const PostPagination = (props: IPostPaginationProps) => {
-  if (props.pageCount === 1) { return null; }
-  const activeItem = props.pathname.startsWith('/post/page/')
-    ? props.pathname.split('/')[3]
-    : '1';
+  if (props.pageCount === 1) {
+    return null;
+  }
+  const activeItem = props.pathname.startsWith('/post/page/') ? props.pathname.split('/')[3] : '1';
 
   return (
     <div>
@@ -20,22 +20,19 @@ export const PostPagination = (props: IPostPaginationProps) => {
         const pageIndex = (index + 1).toString();
 
         const rangeStep = props.pageCount < 10 ? 5 : 3;
-        const isInRange = (+pageIndex - rangeStep < +activeItem && +pageIndex + rangeStep > +activeItem);
-        const isLastPage = (+pageIndex === props.pageCount);
-        const isFirstPage = (+pageIndex === 1);
+        const isInRange =
+          +pageIndex - rangeStep < +activeItem && +pageIndex + rangeStep > +activeItem;
+        const isLastPage = +pageIndex === props.pageCount;
+        const isFirstPage = +pageIndex === 1;
         if (isInRange || isFirstPage || isLastPage) {
           return (
-            <Link
-              key={pageIndex}
-              style={{ cursor: 'pointer' }}
-              to={`/post/page/${pageIndex}/`}
-            />
+            <Link key={pageIndex} style={{ cursor: 'pointer' }} to={`/post/page/${pageIndex}/`} />
           );
-        } else {
-          return (+pageIndex === props.pageCount - 1 || +pageIndex === 2)
-            ? <div key={pageIndex}>...</div>
-            : null;
-        }
+        } 
+          return +pageIndex === props.pageCount - 1 || +pageIndex === 2 ? (
+            <div key={pageIndex}>...</div>
+          ) : null;
+        
       })}
     </div>
   );

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { ImageSharp } from '../../../@types/graphql-types';
-//import avatar from '../../../content/avatars/chadsheets.jpg';
+// import avatar from '../../../content/avatars/chadsheets.jpg';
 
 interface IAuthorBio {
   avatar?: ImageSharp;
@@ -9,8 +9,7 @@ interface IAuthorBio {
   authorBio?: string;
 }
 
-export const AuthorBio = (props: IAuthorBio) => {
-  return (
+export const AuthorBio = (props: IAuthorBio) => (
     (
       <div>
         <div>
@@ -19,12 +18,11 @@ export const AuthorBio = (props: IAuthorBio) => {
           </div>
         </div>
         <div>
-          <h3>{'Chad Sheets'}</h3>
-          <p>{'Seattle-based software engineer, linux hobbiest'}</p>
+          <h3>Chad Sheets</h3>
+          <p>Seattle-based software engineer, linux hobbiest</p>
         </div>
       </div>
     ) || null
   );
-};
 
 export default AuthorBio;

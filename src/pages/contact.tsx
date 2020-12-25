@@ -1,15 +1,8 @@
-import { graphql } from 'gatsby'
-import get from 'lodash/get';
 import React from 'react';
-
-import { MarkdownRemarkConnection } from '../../@types/graphql-types';
-import SiteContainer from '../components/site-container/site-container';
-
-import * as sharedStyles from '../styles/shared.module.scss';
-
+import { Container } from '../layout';
 
 interface IContactPageProps {
-  location: { pathname: string; };
+  location: { pathname: string };
 }
 
 interface IContactPageState {
@@ -23,50 +16,48 @@ interface IContactPageState {
 class ContactPage extends React.Component<IContactPageProps, IContactPageState> {
   render() {
     return (
-      <SiteContainer location={this.props.location}>
+      <Container>
         <h1>Contact</h1>
         <form
-          name='contact'
-          method='post'
-          action='/thanks/'
-          data-netlify='true'
-          data-netlify-honeypot='bot-field'
+          name="contact"
+          method="post"
+          action="/thanks/"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
           onSubmit={this.handleSubmit}
         >
           <p hidden>
             <label>
-              Leave this empty: <input name='bot-field' />
+              Leave this empty: <input name="bot-field" />
             </label>
           </p>
           <p>
             <label>Your name:</label>
-            <input type='text' name='name' onChange={this.handleChange}/>
-
+            <input type="text" name="name" onChange={this.handleChange} />
           </p>
           <p>
             <label>Your email:</label>
-              <input type='email' name='email' onChange={this.handleChange}/>
-
+            <input type="email" name="email" onChange={this.handleChange} />
           </p>
           <p>
             <label> Message:</label>
-            <textarea name='message' onChange={this.handleChange}/>
+            <textarea name="message" onChange={this.handleChange} />
           </p>
           <p>
-            <button type='submit'>Send</button>
+            <button type="submit">Send</button>
           </p>
         </form>
-      </SiteContainer>
+      </Container>
     );
   }
 
   handleChange = (ev: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     this.setState({
       contactForm: {
-        [ev.target.name]: ev.target.value
-      }
+        [ev.target.name]: ev.target.value,
+      },
     });
-  }
+  };
 
   handleSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
@@ -75,21 +66,19 @@ class ContactPage extends React.Component<IContactPageProps, IContactPageState> 
         email: this.state.contactForm.email,
         'form-name': 'contact',
         message: this.state.contactForm.message,
-        name: this.state.contactForm.name
+        name: this.state.contactForm.name,
       }),
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      method: 'POST'
+      method: 'POST',
     })
       .then(() => alert('Success!'))
-      .catch(error => alert(error));
+      .catch((error) => alert(error));
+  };
 
-  }
-
-  encodeBody = (data: any) => {
-    return Object.keys(data)
-      .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+  encodeBody = (data: any) =>
+    Object.keys(data)
+      .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
       .join('&');
-  }
 }
 
 export default ContactPage;

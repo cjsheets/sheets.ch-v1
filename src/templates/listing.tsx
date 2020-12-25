@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql, Link } from 'gatsby';
-import Layout from '../layout';
+import { Container } from '../layout';
 import PostListing from '../components/PostListing/PostListing';
 import SEO from '../components/SEO/SEO';
 import config from '../../content/config';
@@ -34,7 +34,7 @@ function Listing({ pageContext, data }) {
   const postEdges = data.allMarkdownRemark.edges;
 
   return (
-    <Layout>
+    <Container>
       <div className="listing-container">
         <div className="posts-container">
           <Helmet title={config.siteTitle} />
@@ -43,7 +43,7 @@ function Listing({ pageContext, data }) {
         </div>
         {renderPaging()}
       </div>
-    </Layout>
+    </Container>
   );
 }
 
