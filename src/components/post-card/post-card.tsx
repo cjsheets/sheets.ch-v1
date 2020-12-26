@@ -1,37 +1,31 @@
 import Link from 'gatsby-link';
 import * as React from 'react';
 
-import { frontmatter_2, ImageSharp } from '../../../@types/graphql-types';
-import { getMonthAbbreviation } from '../../utility/date';
-
-import * as styles from './post-card.scss';
-
 interface IPostCard extends React.HTMLProps<HTMLDivElement> {
-  avatar: ImageSharp;
   excerpt: string;
-  frontmatter: frontmatter_2;
+  frontmatter: any;
   slug: string;
   timeToRead: number;
 }
 
-export const PostCard = (props: IPostCard) => {
-  const tags = props.frontmatter.tags || [];
+export const PostCard = ({ slug, frontmatter, timeToRead, excerpt }: IPostCard) => {
+  const tags = frontmatter.tags || [];
   const getFormattedDateString = () => {
-    const date = new Date(props.frontmatter.createdDate);
-    return `${date.getDate()}-${getMonthAbbreviation(date)}-${date.getFullYear()}`;
+    const date = new Date(frontmatter.createdDate);
+    return `${date.getDate()}-${date}-${date.getFullYear()}`;
   };
 
   return (
     <div>
-      <Link to={props.slug}>
-        <div>{props.frontmatter.title}</div>
+      <Link to={slug}>
+        <div>{frontmatter.title}</div>
         <div>
-          {getFormattedDateString()} - {props.timeToRead} min read
+          {getFormattedDateString()} - {timeToRead} min read
         </div>
-        <div>{props.excerpt}</div>
+        <div>{excerpt}</div>
         <div>
-          {tags.map((tag, i) => (
-            <Link key={tag + i} to="/">{`#${tag} `}</Link>
+          {tags.map((tag) => (
+            <Link key={tag} to="/">{`#${tag} `}</Link>
           ))}
         </div>
       </Link>

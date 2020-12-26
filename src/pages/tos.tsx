@@ -1,11 +1,11 @@
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import React from 'react';
-import { Container } from '../layout';
+import Container from '../layout';
 
 interface ITermsOfService {}
 
-export function TermsOfService(props: ITermsOfService) {
+export default function TermsOfService(props: ITermsOfService) {
   return (
     <Container>
       <div

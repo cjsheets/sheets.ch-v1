@@ -3,7 +3,7 @@ import get from 'lodash/get';
 import * as React from 'react';
 import { MarkdownRemarkConnection } from '../../@types/graphql-types';
 import { AuthorBio } from '../components/author-bio/author-bio';
-import { Container } from '../layout';
+import Container from '../layout';
 
 import '../styles/prism-vs.css';
 
@@ -14,7 +14,7 @@ interface IPostPage {
   };
 }
 
-export function PostPage({ data }: IPostPage) {
+export default function PostPage({ data }: IPostPage) {
   const posts = data.posts.edges.map((edge) => {
     const {
       frontmatter,

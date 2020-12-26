@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import config from '../../content/config';
-import { GlobalStyle } from './index.style';
+import GlobalStyle, { BodyContainer } from './index.style';
 import Header from './header';
 import Footer from './footer';
 
@@ -12,7 +12,7 @@ interface IProps {
 
 export default function Container({ title, children }: IProps) {
   return (
-    <div className="layout-container">
+    <BodyContainer>
       <GlobalStyle />
       <Helmet>
         <html lang="en" />
@@ -27,6 +27,6 @@ export default function Container({ title, children }: IProps) {
       <Header />
       {children}
       <Footer />
-    </div>
+    </BodyContainer>
   );
 }

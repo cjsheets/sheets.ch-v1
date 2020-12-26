@@ -2,15 +2,15 @@ import { graphql, Link } from 'gatsby';
 import get from 'lodash/get';
 import React from 'react';
 import { AuthorBio } from '../components/author-bio/author-bio';
-import { Container } from '../layout';
+import Container from '../layout';
 
-export function BlogIndex() {
+export default function BlogIndex() {
   const pageTitle = get(this, 'props.data.site.siteMetadata.title');
   const posts = get(this, 'props.data.posts.edges');
 
   return (
     <Container title={pageTitle}>
-      {posts.map(({ node }) => {
+      {posts?.map(({ node }) => {
         const title = get(node, 'frontmatter.title') || node.fields.slug;
         return (
           <div key={node.fields.slug}>

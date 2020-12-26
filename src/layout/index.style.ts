@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
 const GlobalStyle = createGlobalStyle`
@@ -14,13 +14,13 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     min-width: 100vw;
   }
+`;
 
-  .layout-container {
-    min-height: 100vh;
-    min-width: 100vw;
-    display: flex;
-    padding: 20px;
-  }
+export const BodyContainer = styled.div`
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  padding: 20px;
 `;
 
 export default GlobalStyle;

@@ -1,11 +1,11 @@
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import React from 'react';
-import { Container } from '../layout';
+import Container from '../layout';
 
 interface IAbout {}
 
-export function About(props: IAbout) {
+export default function About(props: IAbout) {
   return (
     <Container>
       <div

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
-import { Container } from '../layout';
+import Container from '../layout';
 import PostListing from '../components/PostListing/PostListing';
 import config from '../../content/config';
 

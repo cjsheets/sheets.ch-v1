@@ -3,7 +3,7 @@ import get from 'lodash/get';
 import * as React from 'react';
 import { MarkdownRemarkConnection } from '../../@types/graphql-types';
 import { AuthorBio } from '../components/author-bio/author-bio';
-import { Container } from '../layout';
+import Container from '../layout';
 
 interface IProjectsPage {
   data: {
@@ -12,7 +12,7 @@ interface IProjectsPage {
   };
 }
 
-export function ProjectPage({ data }: IProjectsPage) {
+export default function ProjectPage({ data }: IProjectsPage) {
   const projects = data.projects.edges.map((edge) => {
     const {
       frontmatter,

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { Container } from '../layout';
+import Container from '../layout';
 
 export default function ContactPage() {
   const handleChange = () => null;

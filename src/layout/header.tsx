@@ -1,13 +1,13 @@
 import Link from 'gatsby-link';
 import * as React from 'react';
-import { Icon, SvgIcon } from '../components/svg-icon/svg-icon';
+import SvgIcon, { Icon } from '../components/svg-icon/svg-icon';
 
 export default function Header() {
   return (
     <div>
       <div>
         <Link to="/">
-          <SvgIcon icon={Icon.sheets} width={26} height={26} inline />
+          <SvgIcon icon={Icon.sheets} width={26} height={26} />
           <span>Sheets.ch</span>
           <span>ad</span>
         </Link>

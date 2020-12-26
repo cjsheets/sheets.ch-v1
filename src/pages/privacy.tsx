@@ -1,11 +1,11 @@
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import React from 'react';
-import { Container } from '../layout';
+import Container from '../layout';
 
 interface IPrivacy {}
 
-export function Privacy(props: IPrivacy) {
+export default function Privacy(props: IPrivacy) {
   return (
     <Container>
       <div

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from '../layout';
+import Container from '../layout';
 
 export default function NotFoundPage() {
   return (
