@@ -1,12 +1,8 @@
 import { graphql, Link } from 'gatsby';
 import get from 'lodash/get';
 import * as React from 'react';
-import {
-  ImageSharp,
-  MarkdownRemarkConnection,
-  MarkdownRemarkEdge,
-} from '../../@types/graphql-types';
-import AuthorBio from '../components/author-bio/author-bio';
+import { MarkdownRemarkConnection } from '../../@types/graphql-types';
+import { AuthorBio } from '../components/author-bio/author-bio';
 import { Container } from '../layout';
 
 interface IProjectsPage {
@@ -14,45 +10,39 @@ interface IProjectsPage {
     tags: MarkdownRemarkConnection;
     projects: MarkdownRemarkConnection;
   };
-  pathContext: { tag?: string };
-  location: { pathname: string };
 }
 
-class ProjectPage extends React.Component<IProjectsPage, {}> {
-  render() {
-    const projects = this.props.data.projects.edges.map((edge) => {
-      const {
-        frontmatter,
-        timeToRead,
-        fields: { slug },
-        excerpt,
-      } = edge.node;
-      return { frontmatter, timeToRead, slug, excerpt };
-    });
+export function ProjectPage({ data }: IProjectsPage) {
+  const projects = data.projects.edges.map((edge) => {
+    const {
+      frontmatter,
+      timeToRead,
+      fields: { slug },
+      excerpt,
+    } = edge.node;
+    return { frontmatter, timeToRead, slug, excerpt };
+  });
 
-    return (
-      <Container location={this.props.location}>
-        {projects.map((project) => {
-          const title = get(project, 'frontmatter.title') || project.slug;
-          return (
-            <div key={project.slug}>
-              <h3>
-                <Link style={{ boxShadow: 'none' }} to={project.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{project.frontmatter.date}</small>
-              <p dangerouslySetInnerHTML={{ __html: project.excerpt }} />
-            </div>
-          );
-        })}
-        <AuthorBio />
-      </Container>
-    );
-  }
+  return (
+    <Container>
+      {projects.map((project) => {
+        const title = get(project, 'frontmatter.title') || project.slug;
+        return (
+          <div key={project.slug}>
+            <h3>
+              <Link style={{ boxShadow: 'none' }} to={project.slug}>
+                {title}
+              </Link>
+            </h3>
+            <small>{project.frontmatter.date}</small>
+            <p dangerouslySetInnerHTML={{ __html: project.excerpt }} />
+          </div>
+        );
+      })}
+      <AuthorBio />
+    </Container>
+  );
 }
-
-export default ProjectPage;
 
 export const pageQuery = graphql`
   query ProjectsPageMarkdown {

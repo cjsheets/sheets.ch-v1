@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import moment from 'moment';
 import config from '../../../content/config';
 
-function SEO({ postNode, postPath, postSEO }) {
+export default function SEO({ postNode, postPath, postSEO }) {
   let title;
   let description;
   let image;
@@ -14,7 +14,6 @@ function SEO({ postNode, postPath, postSEO }) {
     ({ title } = postMeta);
     description = postMeta.description ? postMeta.description : postNode.excerpt;
     postURL = config.siteUrl + postPath;
-    console.log('postUrl', postURL);
   } else {
     title = config.siteTitle;
     description = config.siteDescription;
@@ -39,7 +38,6 @@ function SEO({ postNode, postPath, postSEO }) {
   };
 
   image = getImagePath(image);
-  console.log('image', image);
 
   const datePublished = getPublicationDate();
 
@@ -56,7 +54,6 @@ function SEO({ postNode, postPath, postSEO }) {
   };
 
   const blogURL = config.siteUrl + config.pathPrefix;
-  console.log('blogURL', image);
   const schemaOrgJSONLD = [
     {
       '@context': 'http://schema.org',
@@ -118,15 +115,6 @@ function SEO({ postNode, postPath, postSEO }) {
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
       <meta property="fb:app_id" content={config.siteFBAppID ? config.siteFBAppID : ''} />
-
-      {/* Twitter Card tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:creator" content={config.userTwitter ? config.userTwitter : ''} />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
     </Helmet>
   );
 }
-
-export default SEO;

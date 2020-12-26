@@ -1,9 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql, Link } from 'gatsby';
-import { Container } from '../layout';
+import Container from '../layout';
 import PostListing from '../components/PostListing/PostListing';
-import SEO from '../components/SEO/SEO';
+import SEO from '../components/seo/seo';
 import config from '../../content/config';
 import './listing.css';
 

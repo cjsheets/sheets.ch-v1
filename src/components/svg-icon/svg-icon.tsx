@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import * as React from 'react';
 
 interface ISvgIcon {
@@ -8,8 +9,7 @@ interface ISvgIcon {
   };
   width?: number;
   height?: number;
-  inline?: boolean;
-  className?: string;
+  alt?: string;
 }
 
 export const Icon = {
@@ -26,15 +26,13 @@ export const Icon = {
   },
 };
 
-export const SvgIcon = (props: ISvgIcon) => {
-  const width = props.width || props.icon.width || 18;
-  const height = props.height || props.icon.height || 18;
+export default function SvgIcon({ width: _width, height: _height, icon, alt }: ISvgIcon) {
+  const width = _width || icon.width || 18;
+  const height = _height || icon.height || 18;
 
   return (
     <div style={{ width, height }}>
-      <img src={props.icon.src} width={props.width} height={props.height} />
+      <img src={icon.src} width={width} height={height} alt={alt} />
     </div>
   );
-};
-
-export default SvgIcon;
+}

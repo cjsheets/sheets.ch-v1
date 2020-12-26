@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   ${normalize}
  
   body {
@@ -22,3 +22,5 @@ export const GlobalStyle = createGlobalStyle`
     padding: 20px;
   }
 `;
+
+export default GlobalStyle;

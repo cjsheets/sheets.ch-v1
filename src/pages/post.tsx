@@ -2,7 +2,7 @@ import { graphql, Link } from 'gatsby';
 import get from 'lodash/get';
 import * as React from 'react';
 import { MarkdownRemarkConnection } from '../../@types/graphql-types';
-import AuthorBio from '../components/author-bio/author-bio';
+import { AuthorBio } from '../components/author-bio/author-bio';
 import { Container } from '../layout';
 
 import '../styles/prism-vs.css';
@@ -12,45 +12,39 @@ interface IPostPage {
     tags: MarkdownRemarkConnection;
     posts: MarkdownRemarkConnection;
   };
-  pathContext: { tag?: string };
-  location: { pathname: string };
 }
 
-class PostPage extends React.Component<IPostPage, {}> {
-  render() {
-    const posts = this.props.data.posts.edges.map((edge) => {
-      const {
-        frontmatter,
-        timeToRead,
-        fields: { slug },
-        excerpt,
-      } = edge.node;
-      return { frontmatter, timeToRead, slug, excerpt };
-    });
+export function PostPage({ data }: IPostPage) {
+  const posts = data.posts.edges.map((edge) => {
+    const {
+      frontmatter,
+      timeToRead,
+      fields: { slug },
+      excerpt,
+    } = edge.node;
+    return { frontmatter, timeToRead, slug, excerpt };
+  });
 
-    return (
-      <Container>
-        {posts.map((post) => {
-          const title = get(post, 'frontmatter.title') || post.slug;
-          return (
-            <div key={post.slug}>
-              <h3>
-                <Link style={{ boxShadow: 'none' }} to={post.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{post.frontmatter.date}</small>
-              <p dangerouslySetInnerHTML={{ __html: post.excerpt }} />
-            </div>
-          );
-        })}
-        <AuthorBio />
-      </Container>
-    );
-  }
+  return (
+    <Container>
+      {posts.map((post) => {
+        const title = get(post, 'frontmatter.title') || post.slug;
+        return (
+          <div key={post.slug}>
+            <h3>
+              <Link style={{ boxShadow: 'none' }} to={post.slug}>
+                {title}
+              </Link>
+            </h3>
+            <small>{post.frontmatter.date}</small>
+            <p dangerouslySetInnerHTML={{ __html: post.excerpt }} />
+          </div>
+        );
+      })}
+      <AuthorBio />
+    </Container>
+  );
 }
-
-export default PostPage;
 
 export const pageQuery = graphql`
   query PostPageMarkdown {

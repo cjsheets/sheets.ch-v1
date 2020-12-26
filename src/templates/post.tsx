@@ -1,9 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
-import { Container } from '../layout';
+import Container from '../layout';
 import PostTags from '../components/PostTags/PostTags';
-import SEO from '../components/SEO/SEO';
+import SEO from '../components/seo/seo';
 import config from '../../content/config';
 
 export default function PostTemplate({ data, pageContext }) {
