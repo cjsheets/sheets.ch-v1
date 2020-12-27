@@ -8,6 +8,9 @@ export const defaultTheme = {
   fontWeightRegular: '400',
   fontWeightBold: '600',
 
+  fontSizeXLarge: '1.8rem',
+  fontSizeLarge: '1.6rem',
+
   blue1: '#23507A',
   blue2: '#2467A5',
   blue3: '#7FB9EF',
@@ -37,56 +40,23 @@ export const GlobalStyle = createGlobalStyle`
 h1, h2, h3, h4, h5, h6 {
 	color: ${defaultTheme.fontFamily};
 	text-decoration: none;
+	font-size: ${defaultTheme.fontSizeLarge};
 	font-weight: ${defaultTheme.fontWeightRegular};
 	text-transform: none;
+	margin: 1rem 0;
 }
 
 h1 {
-	font-size: $font_size_h1;
+	font-size: ${defaultTheme.fontSizeXLarge};
 	margin: 0.5em 0em 0.5em;
 }
 
-h2 {
-	font-size: $font_size_h2;
-	margin-bottom: $hr_margin;
-	margin-top: $hr_margin;
-	padding-top: $hr_margin;
-}
-
-h3 {
-	font-size: $font_size_h3;
-	font-weight: $font_weight_light;
-	margin-bottom: $hr_margin;
-	margin-top: $hr_margin; 
-	padding-top: $hr_margin;
-}
-
-h4 {
-	font-size:$font_size_h2;
-	margin-bottom: $hr_margin;
-	margin-top: $hr_margin;
-	padding-top: $hr_margin;
-}
-
-h5 {
-	font-size: $font_size_h3;
-	margin-bottom: $hr_margin;
-	margin-top: $hr_margin;
-	padding-top: $hr_margin;
-}
-
-h6 {
-	font-size: 14px;
-	margin-bottom: 12px;
-}
-
 p {
-	line-height: $line_height_body;
-	margin: 0 0 $paragraph_bottom_margin;
+	margin: 0 0 1.2rem;
 }
 
 a {
-	color: $blue_medium_dark;
+	color: ${defaultTheme.blue1};
 	text-decoration: none;
 }
 
