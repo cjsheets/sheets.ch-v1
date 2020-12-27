@@ -2,19 +2,20 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { ThemeProvider } from 'styled-components';
 import config from '../../content/config';
-import { GlobalStyle, defaultTheme, BodyContainer } from './index.style';
+import { GlobalStyle, BodyContainer, PageContainer } from './index.style';
 import Header from './header';
 import Footer from './footer';
+import theme from '../styles/default-theme';
 
 interface IProps {
   title?: string;
   children: React.ReactNode;
 }
 
-export default function Container({ title, children }: IProps) {
+export default function LayoutContainer({ title, children }: IProps) {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <BodyContainer>
+    <ThemeProvider theme={theme}>
+      <PageContainer>
         <GlobalStyle />
         <Helmet>
           <html lang="en" />
@@ -27,9 +28,9 @@ export default function Container({ title, children }: IProps) {
           />
         </Helmet>
         <Header />
-        {children}
+        <BodyContainer>{children}</BodyContainer>
         <Footer />
-      </BodyContainer>
+      </PageContainer>
     </ThemeProvider>
   );
 }

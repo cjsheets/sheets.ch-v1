@@ -20,6 +20,9 @@ export const NavigationContainer = styled.nav`
   a {
     font-weight: ${(props) => props.theme.fontWeightLight};
     color: ${(props) => props.theme.gray1};
-    padding-left: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
   }
 `;

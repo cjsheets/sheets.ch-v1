@@ -15,15 +15,9 @@ export default function Header() {
         </Link>
       </LogoContainer>
       <NavigationContainer>
-        <Link to="/post">
-          <span>Posts</span>
-        </Link>
-        <Link to="/project">
-          <span>Projects</span>
-        </Link>
-        <Link to="/ad">
-          <span>About</span>
-        </Link>
+        <Link to="/post">Posts</Link>
+        <Link to="/project">Projects</Link>
+        <Link to="/ad">About</Link>
         <a href="https://github.com/cjsheets">
           <GitHubLogo width={26} height={26} />
         </a>

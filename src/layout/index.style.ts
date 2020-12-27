@@ -1,31 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
-
-export const defaultTheme = {
-  fontFamily: "'Open Sans', sans-serif;",
-
-  fontWeightLight: '300',
-  fontWeightRegular: '400',
-  fontWeightBold: '600',
-
-  fontSizeXLarge: '1.8rem',
-  fontSizeLarge: '1.6rem',
-
-  blue1: '#23507A',
-  blue2: '#2467A5',
-  blue3: '#7FB9EF',
-  gray1: '#35383A',
-  gray2: '#464D53',
-  gray3: '#6E7781',
-  gray4: '#98989F',
-  gray5: '#D8D8E0',
-  gray6: '#EAEAF2',
-
-  viewportSmall: 600,
-  viewportMedium: 800,
-  viewportLarge: 1100,
-  viewportXLarge: 1400,
-};
+import theme from '../styles/default-theme';
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -34,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     min-height: 100%;
     min-width: 100%;
-    font-family: ${defaultTheme.fontFamily}
+    font-family: ${theme.fontFamily}
   }
 
   #___gatsby #gatsby-focus-wrapper {
@@ -43,16 +18,16 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 h1, h2, h3, h4, h5, h6 {
-	color: ${defaultTheme.fontFamily};
+	color: ${theme.fontFamily};
 	text-decoration: none;
-	font-size: ${defaultTheme.fontSizeLarge};
-	font-weight: ${defaultTheme.fontWeightRegular};
+	font-size: ${theme.fontSizeLarge};
+	font-weight: ${theme.fontWeightRegular};
 	text-transform: none;
 	margin: 1rem 0;
 }
 
 h1 {
-	font-size: ${defaultTheme.fontSizeXLarge};
+	font-size: ${theme.fontSizeXLarge};
 	margin: 0.5em 0em 0.5em;
 }
 
@@ -61,15 +36,15 @@ p {
 }
 
 a {
-	color: ${defaultTheme.blue1};
+	color: ${theme.blue1};
 	text-decoration: none;
 }
 
 blockquote {
-	border-left: 3px solid ${defaultTheme.blue2};
+	border-left: 3px solid ${theme.blue2};
 	margin: 25px 0;
 	padding: 5px 15px;
-	background-color: ${defaultTheme.blue3};
+	background-color: ${theme.blue3};
 
 	p {
 		display: block;
@@ -92,7 +67,7 @@ pre {
 	border-left: 1px solid #DDDBCC;
 	margin: 0 0 40px;
 	padding: 15px 0px;
-	font-size: 0.75rem
+	font-size: 0.75rem;
 	line-height: 16.8px;
 
 }
@@ -117,7 +92,7 @@ pre ol li {
 
 hr {
 	border: none;
-	border-bottom: 1px dotted ${defaultTheme.gray2};
+	border-bottom: 1px dotted ${theme.gray2};
 	margin: 45px 0;
 
 }
@@ -125,33 +100,33 @@ hr {
 :root {
 	--content-max-width: 840px
 }
-  @media (max-width: ${defaultTheme.viewportSmall}) {
+  @media (max-width: ${theme.viewportSmall}) {
     :root {
       font-size: 100%;
     }
   }
 
-  @media (min-width: ${defaultTheme.viewportSmall}) and (max-width: ${defaultTheme.viewportMedium}) {
+  @media (min-width: ${theme.viewportSmall}) and (max-width: ${theme.viewportMedium}) {
     :root {
       font-size: 110%;
     }
   }
 
-  @media (min-width: ${defaultTheme.viewportMedium}) and (max-width: ${defaultTheme.viewportLarge}) {
+  @media (min-width: ${theme.viewportMedium}) and (max-width: ${theme.viewportLarge}) {
     :root {
       font-size: 120%;
       --content-max-width: 750px
     }
   }
 
-  @media (min-width: ${defaultTheme.viewportLarge}) and (max-width: ${defaultTheme.viewportXLarge}) {
+  @media (min-width: ${theme.viewportLarge}) and (max-width: ${theme.viewportXLarge}) {
     :root {
       font-size: 120%;
       --content-max-width: 1000px
     }
   }
 
-  @media (min-width: ${defaultTheme.viewportXLarge}) {
+  @media (min-width: ${theme.viewportXLarge}) {
     :root {
       font-size: 130%;
       --content-max-width: 1200px
@@ -159,9 +134,15 @@ hr {
   }
 `;
 
-export const BodyContainer = styled.div`
+export const PageContainer = styled.div`
   min-height: 100vh;
   min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const BodyContainer = styled.div`
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
 `;
