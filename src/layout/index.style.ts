@@ -20,6 +20,11 @@ export const defaultTheme = {
   gray4: '#98989F',
   gray5: '#D8D8E0',
   gray6: '#EAEAF2',
+
+  viewportSmall: 600,
+  viewportMedium: 800,
+  viewportLarge: 1100,
+  viewportXLarge: 1400,
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -61,10 +66,10 @@ a {
 }
 
 blockquote {
-	border-left: 3px solid $blue_medium;
+	border-left: 3px solid ${defaultTheme.blue2};
 	margin: 25px 0;
 	padding: 5px 15px;
-	background-color: $blue_light;
+	background-color: ${defaultTheme.blue3};
 
 	p {
 		display: block;
@@ -87,7 +92,7 @@ pre {
 	border-left: 1px solid #DDDBCC;
 	margin: 0 0 40px;
 	padding: 15px 0px;
-	font-size: $font_size_code;
+	font-size: 0.75rem
 	line-height: 16.8px;
 
 }
@@ -112,7 +117,7 @@ pre ol li {
 
 hr {
 	border: none;
-	border-bottom: 1px dotted $hr_color;
+	border-bottom: 1px dotted ${defaultTheme.gray2};
 	margin: 45px 0;
 
 }
@@ -120,33 +125,33 @@ hr {
 :root {
 	--content-max-width: 840px
 }
-  @media (max-width: $viewport_small) {
+  @media (max-width: ${defaultTheme.viewportSmall}) {
     :root {
       font-size: 100%;
     }
   }
 
-  @media (min-width: $viewport_small) and (max-width: $viewport_medium) {
+  @media (min-width: ${defaultTheme.viewportSmall}) and (max-width: ${defaultTheme.viewportMedium}) {
     :root {
       font-size: 110%;
     }
   }
 
-  @media (min-width: $viewport_medium) and (max-width: $viewport_large) {
+  @media (min-width: ${defaultTheme.viewportMedium}) and (max-width: ${defaultTheme.viewportLarge}) {
     :root {
       font-size: 120%;
       --content-max-width: 750px
     }
   }
 
-  @media (min-width: $viewport_large) and (max-width: $viewport_extra_large) {
+  @media (min-width: ${defaultTheme.viewportLarge}) and (max-width: ${defaultTheme.viewportXLarge}) {
     :root {
       font-size: 120%;
       --content-max-width: 1000px
     }
   }
 
-  @media (min-width: $viewport_extra_large) {
+  @media (min-width: ${defaultTheme.viewportXLarge}) {
     :root {
       font-size: 130%;
       --content-max-width: 1200px

@@ -1,6 +1,7 @@
 import Link from 'gatsby-link';
 import * as React from 'react';
-import SvgIcon, { Icon } from '../components/svg-icon/svg-icon';
+import SheetsLogo from '../../assets/icons/sheets-logo.svg';
+import GitHubLogo from '../../assets/icons/github.svg';
 import { HeaderContainer, LogoContainer, NavigationContainer } from './header.style';
 
 export default function Header() {
@@ -8,7 +9,7 @@ export default function Header() {
     <HeaderContainer>
       <LogoContainer>
         <Link to="/">
-          <SvgIcon icon={Icon.sheets} width={26} height={26} />
+          <SheetsLogo width={26} height={26} />
           <span>Sheets.ch</span>
           <span>ad</span>
         </Link>
@@ -24,7 +25,7 @@ export default function Header() {
           <span>About</span>
         </Link>
         <a href="https://github.com/cjsheets">
-          <SvgIcon icon={Icon.github} />
+          <GitHubLogo width={26} height={26} />
         </a>
       </NavigationContainer>
     </HeaderContainer>

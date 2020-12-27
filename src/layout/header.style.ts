@@ -16,4 +16,10 @@ export const NavigationContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
+  a {
+    font-weight: ${(props) => props.theme.fontWeightLight};
+    color: ${(props) => props.theme.gray1};
+    padding-left: 40px;
+  }
 `;

@@ -1,7 +1,7 @@
 import { graphql, Link } from 'gatsby';
 import get from 'lodash/get';
 import * as React from 'react';
-import { MarkdownRemarkConnection } from '../../@types/graphql-types';
+import { MarkdownRemarkConnection } from '../graphql-types';
 import { AuthorBio } from '../components/author-bio/author-bio';
 import Container from '../layout';
 

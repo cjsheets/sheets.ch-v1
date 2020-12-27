@@ -17,12 +17,20 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /assets/,
+        },
+      },
+    },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: `${__dirname}/content/${config.siteLogo}`,
+        icon: `${__dirname}/assets/${config.siteLogo}`,
       },
     },
     'gatsby-transformer-remark',

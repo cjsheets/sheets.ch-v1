@@ -1,6 +1,6 @@
 import { GatsbyLinkProps } from 'gatsby';
 import * as React from 'react';
-import { markdownRemarkGroupConnectionConnection } from '../../../@types/graphql-types';
+import { markdownRemarkGroupConnectionConnection } from '../../graphql-types';
 
 interface ITagsdivProps extends React.HTMLProps<HTMLDivElement> {
   tags: markdownRemarkGroupConnectionConnection[];
