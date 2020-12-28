@@ -1,15 +1,34 @@
 import { graphql, Link } from 'gatsby';
 import get from 'lodash/get';
 import React from 'react';
-import { AuthorBio } from '../components/author-bio/author-bio';
 import Container from '../layout';
+import SEO from '../components/seo/seo';
+import {
+  Card,
+  CardContainer,
+  HeroContainer,
+  Illustration,
+  SiteTitle,
+  SubtextContainer,
+} from './index.style';
+import theme from '../styles/default-theme';
+import Heart from '../../assets/icons/heart.svg';
+import Checkmark from '../../assets/icons/checkmark.svg';
+import Lightning from '../../assets/icons/lightning.svg';
 
 export default function BlogIndex() {
-  const pageTitle = get(this, 'props.data.site.siteMetadata.title');
   const posts = get(this, 'props.data.posts.edges');
 
   return (
-    <Container title={pageTitle}>
+    <Container>
+      <HeroContainer>
+        <SiteTitle>
+          <h1>Hey, I’m Chad.</h1>
+          <h2>Web Developer. Linux Enthusiast.</h2>
+        </SiteTitle>
+        <Illustration>60ms</Illustration>
+      </HeroContainer>
+      <SubtextContainer>building experiences that are...</SubtextContainer>
       {posts?.map(({ node }) => {
         const title = get(node, 'frontmatter.title') || node.fields.slug;
         return (
@@ -24,7 +43,34 @@ export default function BlogIndex() {
           </div>
         );
       })}
-      <AuthorBio />
+      <CardContainer>
+        <Card>
+          <div>
+            <h3 style={{ color: theme.red1 }}>
+              <Heart /> Accessible
+            </h3>
+            Technology can both enable and inhibit engagement. I advocate for mindful technical
+            choices.
+          </div>
+        </Card>
+        <Card>
+          <div>
+            <h3 style={{ color: theme.green1 }}>
+              <Checkmark /> Intuitive
+            </h3>
+            Simplicity is a virtue in life, design and programming.
+          </div>
+        </Card>
+        <Card>
+          <div>
+            <h3 style={{ color: theme.purple1 }}>
+              <Lightning /> Performant
+            </h3>
+            Speed matters. This page was delivered in 0.06 seconds! Click here to see how.
+          </div>
+        </Card>
+      </CardContainer>
+      <SEO title="Chad Sheets - Web Developer" />
     </Container>
   );
 }

@@ -3,8 +3,15 @@ import { Helmet } from 'react-helmet';
 import moment from 'moment';
 import config from '../../../content/config';
 
-export default function SEO({ postNode, postPath, postSEO }) {
-  let title;
+interface ISEO {
+  postNode?: any;
+  postPath?: any;
+  postSEO?: boolean;
+  title?: string;
+}
+
+export default function SEO({ postNode, postPath, postSEO, title: titleOverride }: ISEO) {
+  let title = titleOverride;
   let description;
   let image;
   let postURL;
@@ -101,6 +108,7 @@ export default function SEO({ postNode, postPath, postSEO }) {
   }
   return (
     <Helmet>
+      <title>{title}</title>
       {/* General tags */}
       <meta name="description" content={description} />
       <meta name="image" content={image} />
