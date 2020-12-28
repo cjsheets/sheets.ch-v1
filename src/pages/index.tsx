@@ -1,5 +1,4 @@
 import { graphql, Link } from 'gatsby';
-import get from 'lodash/get';
 import React from 'react';
 import Container from '../layout';
 import SEO from '../components/seo/seo';
@@ -8,6 +7,7 @@ import {
   CardContainer,
   HeroContainer,
   Illustration,
+  PostContainer,
   SiteTitle,
   SubtextContainer,
 } from './index.style';
@@ -15,9 +15,38 @@ import theme from '../styles/default-theme';
 import Heart from '../../assets/icons/heart.svg';
 import Checkmark from '../../assets/icons/checkmark.svg';
 import Lightning from '../../assets/icons/lightning.svg';
+import Pencil from '../../assets/icons/pencil.svg';
+import Code from '../../assets/icons/code.svg';
+import IconCircle from '../components/icon-circle/icon-circle';
+import { MarkdownRemarkConnection } from '../graphql-types';
 
-export default function BlogIndex() {
-  const posts = get(this, 'props.data.posts.edges');
+interface IBlogIndex {
+  data: {
+    posts: MarkdownRemarkConnection;
+    projects: MarkdownRemarkConnection;
+  };
+}
+
+export default function BlogIndex({ data }: IBlogIndex) {
+  const posts = data.posts.edges.map((edge) => {
+    const {
+      frontmatter,
+      timeToRead,
+      fields: { slug },
+      excerpt,
+    } = edge.node;
+    return { frontmatter, timeToRead, slug, excerpt };
+  });
+
+  const projects = data.projects.edges.map((edge) => {
+    const {
+      frontmatter,
+      timeToRead,
+      fields: { slug },
+      excerpt,
+    } = edge.node;
+    return { frontmatter, timeToRead, slug, excerpt };
+  });
 
   return (
     <Container>
@@ -29,20 +58,6 @@ export default function BlogIndex() {
         <Illustration>60ms</Illustration>
       </HeroContainer>
       <SubtextContainer>building experiences that are...</SubtextContainer>
-      {posts?.map(({ node }) => {
-        const title = get(node, 'frontmatter.title') || node.fields.slug;
-        return (
-          <div key={node.fields.slug}>
-            <h3>
-              <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
-                {title}
-              </Link>
-            </h3>
-            <small>{node.frontmatter.date}</small>
-            <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-          </div>
-        );
-      })}
       <CardContainer>
         <Card>
           <div>
@@ -70,6 +85,20 @@ export default function BlogIndex() {
           </div>
         </Card>
       </CardContainer>
+      <PostContainer>
+        <div>
+          <IconCircle style={{ margin: 'auto' }}>
+            <Pencil />
+          </IconCircle>
+          <h4>Latest Posts</h4>
+        </div>
+        <div>
+          <IconCircle style={{ margin: 'auto' }}>
+            <Code />
+          </IconCircle>
+          <h4>Latest Projects</h4>
+        </div>
+      </PostContainer>
       <SEO title="Chad Sheets - Web Developer" />
     </Container>
   );
@@ -84,10 +113,24 @@ export const pageQuery = graphql`
     }
     posts: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: {
-        frontmatter: { draft: { ne: true } }
-        fileAbsolutePath: { regex: "/post/|/project/" }
+      filter: { frontmatter: { draft: { ne: true } }, fileAbsolutePath: { regex: "/post/" } }
+    ) {
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            date(formatString: "DD MMMM, YYYY")
+            title
+          }
+        }
       }
+    }
+    projects: allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { draft: { ne: true } }, fileAbsolutePath: { regex: "/project/" } }
     ) {
       edges {
         node {

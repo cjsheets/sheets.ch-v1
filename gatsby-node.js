@@ -1,6 +1,5 @@
 const path = require('path');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const _ = require('lodash');
 const moment = require('moment');
 const config = require('./content/config');
 
@@ -115,7 +114,7 @@ exports.createPages = async ({ graphql, actions }) => {
   //  Create tag pages
   tagSet.forEach((tag) => {
     createPage({
-      path: `/tags/${_.kebabCase(tag)}/`,
+      path: `/tags/${toKebabCase(tag)}/`,
       component: tagPage,
       context: { tag },
     });
@@ -130,7 +129,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     const parsedFilePath = path.parse(fileNode.relativePath);
 
     if (node.frontmatter && node.frontmatter.title) {
-      slug = `/${_.kebabCase(node.frontmatter.title)}`;
+      slug = `/${toKebabCase(node.frontmatter.title)}`;
     } else if (parsedFilePath.name !== '') {
       slug = `/${parsedFilePath.name}`;
     } else {
@@ -142,7 +141,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     }
 
     if (node.frontmatter && node.frontmatter.slug) {
-      slug = `/${_.kebabCase(node.frontmatter.slug)}`;
+      slug = `/${toKebabCase(node.frontmatter.slug)}`;
     }
 
     if (node.frontmatter && node.frontmatter.date) {
@@ -158,3 +157,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({ node, name: 'slug', value: slug });
   }
 };
+
+function toKebabCase(str) {
+  return str
+    .replace(/([A-Z])([A-Z])/g, '$1-$2')
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .replace(/[\s_]+/g, '-')
+    .toLowerCase();
+}

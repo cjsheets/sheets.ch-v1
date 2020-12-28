@@ -65,8 +65,7 @@ export const Card = styled.li`
   }
 
   svg {
-    margin-right: 0.5rem;
-    margin-bottom: -2px;
+    margin: 0 0.75rem -0.125rem -0.75rem;
   }
 
   div {
@@ -76,5 +75,15 @@ export const Card = styled.li`
     padding: 1.5rem;
     border-radius: 20px;
     box-shadow: 0 8px 20px 6px rgba(0, 0, 0, 0.06);
+  }
+`;
+
+export const PostContainer = styled.section`
+  flex: 1 1 auto;
+  display: flex;
+
+  > div {
+    flex: 1 1 50%;
+    text-align: center;
   }
 `;
