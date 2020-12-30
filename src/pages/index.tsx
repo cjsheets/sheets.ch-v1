@@ -1,6 +1,6 @@
 import { graphql, Link } from 'gatsby';
 import React from 'react';
-import Container from '../layout';
+import LayoutContainer from '../components/layout/layout';
 import SEO from '../components/seo/seo';
 import {
   Card,
@@ -33,7 +33,7 @@ export default function BlogIndex({ data }: IBlogIndex) {
   const projectEdges = data.projects.edges;
 
   return (
-    <Container fullScreen>
+    <LayoutContainer fullScreen>
       <HeroContainer>
         <SiteTitle>
           <h1>Hey, I’m Chad.</h1>
@@ -86,7 +86,7 @@ export default function BlogIndex({ data }: IBlogIndex) {
         </div>
       </PostContainer>
       <SEO title="Chad Sheets - Web Developer" />
-    </Container>
+    </LayoutContainer>
   );
 }
 

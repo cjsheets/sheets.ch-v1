@@ -1,24 +1,26 @@
 import { graphql } from 'gatsby';
-import get from 'lodash/get';
 import React from 'react';
-import Container from '../layout';
+import { MarkdownRemarkConnection } from '../graphql-types';
+import LayoutContainer from '../components/layout/layout';
 
-interface ITermsOfService {}
+interface ITermsOfService {
+  data: {
+    allMarkdownRemark: MarkdownRemarkConnection;
+  };
+}
 
-export default function TermsOfService(props: ITermsOfService) {
+export default function TermsOfService({ data }: ITermsOfService) {
+  const { node } = data.allMarkdownRemark.edges[0];
+
   return (
-    <Container>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: get(props, 'data.allMarkdownRemark.edges[0].node.html'),
-        }}
-      />
-    </Container>
+    <LayoutContainer title={node.frontmatter.title}>
+      <div dangerouslySetInnerHTML={{ __html: node.html }} />
+    </LayoutContainer>
   );
 }
 
 export const pageQuery = graphql`
-  query TosMarkdown {
+  query TermsOfServiceMarkdown {
     allMarkdownRemark(filter: { fields: { slug: { eq: "/tos" } } }) {
       edges {
         node {

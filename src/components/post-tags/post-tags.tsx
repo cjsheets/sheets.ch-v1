@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import { Link } from 'gatsby';
 import toKebabCase from '../../utility/toKebabCase';
 

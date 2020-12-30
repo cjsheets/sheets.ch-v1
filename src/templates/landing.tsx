@@ -1,20 +1,19 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
-import Container from '../layout';
-import PostListing from '../components/PostListing/PostListing';
+import Container from '../components/layout/layout';
 import SEO from '../components/seo/seo';
 import config from '../../content/config';
 
 function Landing({ data }) {
-  const postEdges = data.allMarkdownRemark.edges;
+  // const postEdges = data.allMarkdownRemark.edges;
   return (
     <Container>
       <div className="landing-container">
         <div className="posts-container">
           <Helmet title={config.siteTitle} />
           <SEO />
-          <PostListing postEdges={postEdges} />
+          {/* <PostListing postEdges={postEdges} /> */}
         </div>
       </div>
     </Container>

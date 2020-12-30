@@ -1,19 +1,21 @@
 import { graphql } from 'gatsby';
-import get from 'lodash/get';
 import React from 'react';
-import Container from '../layout';
+import { MarkdownRemarkConnection } from '../graphql-types';
+import LayoutContainer from '../components/layout/layout';
 
-interface IAbout {}
+interface IAbout {
+  data: {
+    allMarkdownRemark: MarkdownRemarkConnection;
+  };
+}
 
-export default function About(props: IAbout) {
+export default function About({ data }: IAbout) {
+  const { node } = data.allMarkdownRemark.edges[0];
+
   return (
-    <Container>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: get(props, 'data.allMarkdownRemark.edges[0].node.html'),
-        }}
-      />
-    </Container>
+    <LayoutContainer title={node.frontmatter.title}>
+      <div dangerouslySetInnerHTML={{ __html: node.html }} />
+    </LayoutContainer>
   );
 }
 

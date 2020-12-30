@@ -1,19 +1,19 @@
 import { graphql, Link } from 'gatsby';
-import get from 'lodash/get';
 import * as React from 'react';
 import { MarkdownRemarkConnection } from '../graphql-types';
-import { AuthorBio } from '../components/author-bio/author-bio';
-import Container from '../layout';
+import LayoutContainer from '../components/layout/layout';
 
-interface IProjectsPage {
+import '../styles/prism-vs.css';
+
+interface IPostPage {
   data: {
     tags: MarkdownRemarkConnection;
-    projects: MarkdownRemarkConnection;
+    posts: MarkdownRemarkConnection;
   };
 }
 
-export default function ProjectPage({ data }: IProjectsPage) {
-  const projects = data.projects.edges.map((edge) => {
+export default function PostPage({ data }: IPostPage) {
+  const posts = data.posts.edges.map((edge) => {
     const {
       frontmatter,
       timeToRead,
@@ -24,31 +24,30 @@ export default function ProjectPage({ data }: IProjectsPage) {
   });
 
   return (
-    <Container>
-      {projects.map((project) => {
-        const title = get(project, 'frontmatter.title') || project.slug;
+    <LayoutContainer>
+      {posts.map((post) => {
+        const title = post.frontmatter.title || post.slug;
         return (
-          <div key={project.slug}>
+          <div key={post.slug}>
             <h3>
-              <Link style={{ boxShadow: 'none' }} to={project.slug}>
+              <Link style={{ boxShadow: 'none' }} to={post.slug}>
                 {title}
               </Link>
             </h3>
-            <small>{project.frontmatter.date}</small>
-            <p dangerouslySetInnerHTML={{ __html: project.excerpt }} />
+            <small>{post.frontmatter.date}</small>
+            <p dangerouslySetInnerHTML={{ __html: post.excerpt }} />
           </div>
         );
       })}
-      <AuthorBio />
-    </Container>
+    </LayoutContainer>
   );
 }
 
 export const pageQuery = graphql`
-  query ProjectsPageMarkdown {
-    projects: allMarkdownRemark(
+  query PostPageMarkdown {
+    posts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___createdDate] }
-      filter: { frontmatter: { draft: { ne: true } }, fileAbsolutePath: { regex: "/project/" } }
+      filter: { frontmatter: { draft: { ne: true } }, fileAbsolutePath: { regex: "/post/" } }
       limit: 10
     ) {
       totalCount

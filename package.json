@@ -61,7 +61,6 @@
     "gatsby-source-filesystem": "^2.8.1",
     "gatsby-transformer-remark": "^2.13.1",
     "gatsby-transformer-sharp": "^2.9.0",
-    "lodash": "^4.17.20",
     "moment": "^2.29.1",
     "prismjs": "^1.22.0",
     "react": "^16.13.1",

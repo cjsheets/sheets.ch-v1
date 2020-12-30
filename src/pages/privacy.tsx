@@ -1,19 +1,21 @@
 import { graphql } from 'gatsby';
-import get from 'lodash/get';
 import React from 'react';
-import Container from '../layout';
+import { MarkdownRemarkConnection } from '../graphql-types';
+import LayoutContainer from '../components/layout/layout';
 
-interface IPrivacy {}
+interface IPrivacy {
+  data: {
+    allMarkdownRemark: MarkdownRemarkConnection;
+  };
+}
 
-export default function Privacy(props: IPrivacy) {
+export default function Privacy({ data }: IPrivacy) {
+  const { node } = data.allMarkdownRemark.edges[0];
+
   return (
-    <Container>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: get(props, 'data.allMarkdownRemark.edges[0].node.html'),
-        }}
-      />
-    </Container>
+    <LayoutContainer title={node.frontmatter.title}>
+      <div dangerouslySetInnerHTML={{ __html: node.html }} />
+    </LayoutContainer>
   );
 }
 

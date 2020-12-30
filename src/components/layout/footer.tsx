@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import config from '../../content/config';
+import config from '../../../content/config';
 import { Copyright, ExternalLinks, FooterContainer, Terms } from './footer.style';
-import GitHubLogo from '../../assets/icons/github.svg';
+import GitHubLogo from '../../../assets/icons/github.svg';
 
 export default function Footer() {
   return (

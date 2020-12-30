@@ -1,10 +1,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyle, BodyContainer, PageContainer } from './index.style';
+import { GlobalStyle, BodyContainer, PageContainer } from './layout.style';
 import Header from './header';
 import Footer from './footer';
-import theme from '../styles/default-theme';
+import theme from '../../styles/default-theme';
 
 interface IProps {
   title?: string;
