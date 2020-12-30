@@ -97,38 +97,39 @@ hr {
 
 }
 
+
 :root {
 	--content-max-width: 840px
 }
+
   @media (max-width: ${theme.viewportSmall}) {
     :root {
-      font-size: 100%;
+      font-size: 80%;
     }
   }
 
   @media (min-width: ${theme.viewportSmall}) and (max-width: ${theme.viewportMedium}) {
     :root {
-      font-size: 110%;
+      font-size: 80%;
     }
   }
 
   @media (min-width: ${theme.viewportMedium}) and (max-width: ${theme.viewportLarge}) {
     :root {
-      font-size: 120%;
+      font-size: 90%;
       --content-max-width: 750px
     }
   }
 
   @media (min-width: ${theme.viewportLarge}) and (max-width: ${theme.viewportXLarge}) {
     :root {
-      font-size: 120%;
+      font-size: 100%;
       --content-max-width: 1000px
     }
   }
 
   @media (min-width: ${theme.viewportXLarge}) {
     :root {
-      font-size: 130%;
       --content-max-width: 1200px
     }
   }

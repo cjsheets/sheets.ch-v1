@@ -9,6 +9,7 @@ export const LogoContainer = styled.div`
   flex: 1 1 auto;
   display: flex;
   align-items: center;
+  font-size: 28px;
 `;
 
 export const NavigationContainer = styled.nav`

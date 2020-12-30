@@ -26,10 +26,10 @@ const defaultTheme = {
   red1: '#EB5757',
   yellow1: '#F2C94C',
 
-  viewportSmall: 600,
-  viewportMedium: 800,
-  viewportLarge: 1100,
-  viewportXLarge: 1400,
+  viewportSmall: '600px',
+  viewportMedium: '800px',
+  viewportLarge: '1100px',
+  viewportXLarge: '1400px',
 };
 
 export default defaultTheme;

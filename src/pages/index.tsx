@@ -19,6 +19,7 @@ import Pencil from '../../assets/icons/pencil.svg';
 import Code from '../../assets/icons/code.svg';
 import IconCircle from '../components/icon-circle/icon-circle';
 import { MarkdownRemarkConnection } from '../graphql-types';
+import PostListing from '../components/post-listing/post-listing';
 
 interface IBlogIndex {
   data: {
@@ -28,28 +29,11 @@ interface IBlogIndex {
 }
 
 export default function BlogIndex({ data }: IBlogIndex) {
-  const posts = data.posts.edges.map((edge) => {
-    const {
-      frontmatter,
-      timeToRead,
-      fields: { slug },
-      excerpt,
-    } = edge.node;
-    return { frontmatter, timeToRead, slug, excerpt };
-  });
-
-  const projects = data.projects.edges.map((edge) => {
-    const {
-      frontmatter,
-      timeToRead,
-      fields: { slug },
-      excerpt,
-    } = edge.node;
-    return { frontmatter, timeToRead, slug, excerpt };
-  });
+  const postEdges = data.posts.edges;
+  const projectEdges = data.projects.edges;
 
   return (
-    <Container>
+    <Container fullScreen>
       <HeroContainer>
         <SiteTitle>
           <h1>Hey, I’m Chad.</h1>
@@ -91,12 +75,14 @@ export default function BlogIndex({ data }: IBlogIndex) {
             <Pencil />
           </IconCircle>
           <h4>Latest Posts</h4>
+          <PostListing postEdge={postEdges[0]} />
         </div>
         <div>
           <IconCircle style={{ margin: 'auto' }}>
             <Code />
           </IconCircle>
           <h4>Latest Projects</h4>
+          <PostListing postEdge={projectEdges[0]} />
         </div>
       </PostContainer>
       <SEO title="Chad Sheets - Web Developer" />
@@ -141,6 +127,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "DD MMMM, YYYY")
             title
+            author
           }
         }
       }

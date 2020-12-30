@@ -8,10 +8,13 @@ import theme from '../styles/default-theme';
 
 interface IProps {
   title?: string;
+  fullScreen?: boolean;
   children: React.ReactNode;
 }
 
-export default function LayoutContainer({ title, children }: IProps) {
+export default function LayoutContainer({ title, fullScreen, children }: IProps) {
+  const bodyStyle = fullScreen ? {} : { maxWidth: 'var(--content-max-width)', margin: 'auto' };
+
   return (
     <ThemeProvider theme={theme}>
       <PageContainer>
@@ -26,7 +29,7 @@ export default function LayoutContainer({ title, children }: IProps) {
           />
         </Helmet>
         <Header />
-        <BodyContainer>{children}</BodyContainer>
+        <BodyContainer style={bodyStyle}>{children}</BodyContainer>
         <Footer />
       </PageContainer>
     </ThemeProvider>
