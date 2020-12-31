@@ -3,7 +3,9 @@ import styled from 'styled-components';
 export const HeaderContainer = styled.header`
   flex: 0 0 60px;
   display: flex;
-  margin: 0 2rem;
+  width: 100%;
+  max-width: ${(props) => props.theme.maxWidth};
+  margin: auto;
 `;
 
 export const LogoContainer = styled.div`
@@ -12,6 +14,7 @@ export const LogoContainer = styled.div`
   align-items: center;
   font-size: 28px;
   font-weight: ${(props) => props.theme.fontWeightBold};
+  margin-left: 2rem;
 
   svg {
     margin-right: 1rem;
@@ -31,6 +34,7 @@ export const NavigationContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  margin-right: 2rem;
 
   a {
     height: 100%;

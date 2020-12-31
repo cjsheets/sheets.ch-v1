@@ -1,47 +1,49 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { graphql, Link } from 'gatsby';
 import LayoutContainer from '../components/layout/layout';
 import SEO from '../components/seo/seo';
-import config from '../config';
+import PostListing from '../components/post-listing/post-listing';
+import { ListContainer, PaginationContainer } from './list-posts.style';
 
 function Listing({ pageContext, data }) {
-  function renderPaging() {
-    const { currentPageNum, pageCount } = pageContext;
-    const prevPage = currentPageNum - 1 === 1 ? '/' : `/${currentPageNum - 1}/`;
-    const nextPage = `/${currentPageNum + 1}/`;
-    const isFirstPage = currentPageNum === 1;
-    const isLastPage = currentPageNum === pageCount;
+  function Pagination() {
+    const { currentPageNum, pageCount, contentGroup } = pageContext;
+    const rootUrl = `/${contentGroup}`;
+    const prevPageUrl = currentPageNum - 1 === 1 ? rootUrl : `${rootUrl}/${currentPageNum - 1}`;
+    const nextPageUrl = `${rootUrl}/${currentPageNum + 1}`;
 
-    return (
-      <div className="paging-container">
-        {!isFirstPage && <Link to={prevPage}>Previous</Link>}
+    return pageCount === 1 ? null : (
+      <PaginationContainer>
+        {currentPageNum !== 1 && <Link to={prevPageUrl}>&lsaquo;</Link>}
         {[...Array(pageCount)].map((_val, index) => {
           const pageNum = index + 1;
           return (
-            <Link key={`listing-page-${pageNum}`} to={pageNum === 1 ? '/' : `/${pageNum}/`}>
+            <Link
+              key={`listing-page-${pageNum}`}
+              to={pageNum === 1 ? '/posts' : `/posts/${pageNum}`}
+            >
               {pageNum}
             </Link>
           );
         })}
-        {!isLastPage && <Link to={nextPage}>Next</Link>}
-      </div>
+        {currentPageNum !== pageCount && <Link to={nextPageUrl}>&rsaquo;</Link>}
+      </PaginationContainer>
     );
   }
 
-  // const postEdges = data.allMarkdownRemark.edges;
+  const postEdges = data.allMarkdownRemark.edges;
+  const pageTitle = pageContext.contentGroup;
 
   return (
-    <LayoutContainer>
-      <div className="listing-container">
-        <div className="posts-container">
-          <Helmet title={config.siteTitle} />
-          <SEO />
-          Listing
-          {/* <PostListing postEdges={postEdges} /> */}
-        </div>
-        {renderPaging()}
-      </div>
+    <LayoutContainer title={`Chad Sheets - ${pageTitle}`}>
+      <SEO />
+      <ListContainer>
+        <h1>{pageTitle === 'posts' ? 'Posts' : 'Projects'}</h1>
+        {postEdges.map((edge) => (
+          <PostListing postEdge={edge} />
+        ))}
+      </ListContainer>
+      <Pagination />
     </LayoutContainer>
   );
 }
@@ -49,19 +51,29 @@ function Listing({ pageContext, data }) {
 export default Listing;
 
 /* eslint no-undef: "off" */
-export const listingQuery = graphql`
-  query ListingQuery($skip: Int!, $limit: Int!) {
-    allMarkdownRemark(sort: { fields: [fields___date], order: DESC }, limit: $limit, skip: $skip) {
+export const pageQuery = graphql`
+  query PostPageMarkdown($skip: Int!, $limit: Int!, $contentGroup: String!) {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: {
+        frontmatter: { draft: { ne: true } }
+        fields: { contentGroup: { eq: $contentGroup } }
+      }
+      limit: $limit
+      skip: $skip
+    ) {
+      totalCount
       edges {
         node {
+          excerpt
+          timeToRead
           fields {
             slug
             date
           }
-          excerpt
-          timeToRead
           frontmatter {
             title
+            author
             tags
             date
           }

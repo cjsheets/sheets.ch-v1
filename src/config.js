@@ -4,7 +4,7 @@ module.exports = {
   dateFormat: 'DD/MM/YYYY',
   dateFromFormat: 'YYYY-MM-DD',
   pathPrefix: '/',
-  postsPerPage: 2,
+  postsPerPage: 10,
   postDirectories: ['posts', 'projects'],
   siteDescription: 'Welcome to Chad Sheets personal page.',
   siteLogo: '/icons/sheets-logo.svg',

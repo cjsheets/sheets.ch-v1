@@ -25,7 +25,7 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             fields {
               slug
-              postGroup
+              contentGroup
             }
             frontmatter {
               title
@@ -47,11 +47,13 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const markdownQueryResultEdges = markdownQueryResult.data.allMarkdownRemark.edges;
   const allPostsEdges = markdownQueryResultEdges.filter(
-    (edge) => edge.node.fields.postGroup && !edge.node.frontmatter.draft
+    (edge) => edge.node.fields.contentGroup && !edge.node.frontmatter.draft
   );
 
-  config.postDirectories.forEach((postGroup) => {
-    const postsEdges = allPostsEdges.filter((edge) => edge.node.fields.postGroup === postGroup);
+  config.postDirectories.forEach((contentGroup) => {
+    const postsEdges = allPostsEdges.filter(
+      (edge) => edge.node.fields.contentGroup === contentGroup
+    );
 
     // Sort posts
     postsEdges.sort((postA, postB) => {
@@ -71,9 +73,10 @@ exports.createPages = async ({ graphql, actions }) => {
 
     [...Array(pageCount)].forEach((_val, pageNum) => {
       createPage({
-        path: `${postGroup}/${(pageNum > 0 && pageNum + 1) || ''}`,
+        path: `${contentGroup}/${(pageNum > 0 && pageNum + 1) || ''}`,
         component: listingPage,
         context: {
+          contentGroup,
           limit: postsPerPage,
           skip: pageNum * postsPerPage,
           pageCount,
@@ -137,13 +140,13 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     }
 
     if (parsedFilePath.dir && config.postDirectories.indexOf(parsedFilePath.dir) >= 0) {
-      createNodeField({ node, name: 'postGroup', value: parsedFilePath.dir });
+      createNodeField({ node, name: 'contentGroup', value: parsedFilePath.dir });
     }
 
     if (node.frontmatter && node.frontmatter.slug) {
       slug = `/${toKebabCase(node.frontmatter.slug)}`;
     }
-    console.log('createNode', slug, node.frontmatter);
+
     if (node.frontmatter && node.frontmatter.date) {
       const date = moment(node.frontmatter.date, config.dateFromFormat);
       if (!date.isValid) {

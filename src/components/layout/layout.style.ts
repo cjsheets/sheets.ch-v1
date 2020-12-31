@@ -12,6 +12,8 @@ export const BodyContainer = styled.div`
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
+  max-width: ${theme.maxWidth};
+  margin: auto;
 `;
 
 export const GlobalStyle = createGlobalStyle`
@@ -39,6 +41,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   p {
+    font-size: ${theme.fontSizeRegular};
+    line-height: 32px;
     margin: 0 0 1.2rem;
   }
 

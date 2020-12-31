@@ -7,6 +7,7 @@ const defaultTheme = {
 
   fontSizeXLarge: '1.8rem',
   fontSizeLarge: '1.6rem',
+  fontSizeRegular: '1.3rem',
 
   blue1: '#23507A',
   blue2: '#2467A5',
@@ -30,6 +31,8 @@ const defaultTheme = {
   viewportMedium: '800px',
   viewportLarge: '1100px',
   viewportXLarge: '1400px',
+
+  maxWidth: '1650px',
 };
 
 export default defaultTheme;

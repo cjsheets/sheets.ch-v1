@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const PostContainer = styled.div`
   font-size: 1.5rem;
-  font-weight: ${(props) => props.theme.fontWeightLight};
   color: ${(props) => props.theme.gray1};
   text-align: left;
 `;

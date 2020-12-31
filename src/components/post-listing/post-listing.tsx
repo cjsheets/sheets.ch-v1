@@ -27,7 +27,7 @@ export default function PostListing({ postEdge, condensed, style }: IPostListing
         <PostTitle>{frontmatter.title}</PostTitle>
       </Link>
       <PostDate>{`By ${frontmatter.author} on ${formattedDate}`}</PostDate>
-      {excerpt}
+      <p>{excerpt}</p>
       <div style={{ marginTop: 20 }}>
         <Link to={fields.slug}>Read More &rsaquo;</Link>
       </div>
