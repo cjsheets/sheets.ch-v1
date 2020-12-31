@@ -11,7 +11,7 @@ import {
   PostContainer,
   SiteTitle,
   SubtextContainer,
-} from './index.style';
+} from '../styles/index.style';
 import theme from '../styles/default-theme';
 import Heart from '../../assets/icons/heart.svg';
 import Checkmark from '../../assets/icons/checkmark.svg';
@@ -38,6 +38,10 @@ interface ILatestPostCell {
 export default function BlogIndex({ data }: IBlogIndex) {
   const postEdges = data.posts.edges;
   const projectEdges = data.projects.edges;
+  const loadTime =
+    window?.performance?.timing?.domContentLoadedEventEnd -
+      window?.performance?.timing?.navigationStart || 0;
+  const loadString = loadTime < 1000 ? `${loadTime}ms` : `${Math.round(loadTime / 10) / 100}s`;
 
   function LatestPostCell({ Icon, edge, title }: ILatestPostCell) {
     return (
@@ -58,7 +62,7 @@ export default function BlogIndex({ data }: IBlogIndex) {
           <h1>Hey, I’m Chad.</h1>
           <h2>Web Developer. Linux Enthusiast.</h2>
         </SiteTitle>
-        <Illustration>60ms</Illustration>
+        <Illustration>{loadString}</Illustration>
       </HeroContainer>
       <SubtextContainer>building experiences that are...</SubtextContainer>
       <CardContainer>
@@ -84,7 +88,7 @@ export default function BlogIndex({ data }: IBlogIndex) {
             <h3 style={{ color: theme.purple1 }}>
               <Lightning /> Performant
             </h3>
-            Speed matters. This page was delivered in 0.06 seconds! Click here to see how.
+            Speed matters. This page was delivered in {loadString}! Click here to see how.
           </div>
         </Card>
       </CardContainer>
