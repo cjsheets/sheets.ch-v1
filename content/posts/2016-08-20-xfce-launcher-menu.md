@@ -1,7 +1,6 @@
 ---
 title: 'Custom XFCE Launcher Menu Items'
-createdDate: '2016-08-20'
-date: '2015-05-06T23:46:37.121Z'
+date: '2016-08-20'
 author: Chad Sheets
 tags:
   - xubuntu

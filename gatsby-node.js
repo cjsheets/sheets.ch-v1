@@ -1,7 +1,7 @@
 const path = require('path');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const moment = require('moment');
-const config = require('./content/config');
+const config = require('./src/config');
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -14,8 +14,8 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const postPage = path.resolve('src/templates/post.tsx');
-  const tagPage = path.resolve('src/templates/tag.tsx');
-  const listingPage = path.resolve('./src/templates/listing.tsx');
+  const tagPage = path.resolve('src/templates/list-tags.tsx');
+  const listingPage = path.resolve('./src/templates/list-posts.tsx');
 
   // Get a full list of markdown posts
   const markdownQueryResult = await graphql(`
@@ -143,7 +143,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     if (node.frontmatter && node.frontmatter.slug) {
       slug = `/${toKebabCase(node.frontmatter.slug)}`;
     }
-
+    console.log('createNode', slug, node.frontmatter);
     if (node.frontmatter && node.frontmatter.date) {
       const date = moment(node.frontmatter.date, config.dateFromFormat);
       if (!date.isValid) {

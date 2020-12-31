@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import Container from '../components/layout/layout';
 import PostTags from '../components/post-tags/post-tags';
 import SEO from '../components/seo/seo';
-import config from '../../content/config';
+import config from '../config';
 
 export default function PostTemplate({ data, pageContext }) {
   const { slug } = pageContext;

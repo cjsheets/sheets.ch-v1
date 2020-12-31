@@ -1,25 +1,25 @@
 import Link from 'gatsby-link';
 import * as React from 'react';
 import SheetsLogo from '../../../assets/icons/sheets-logo.svg';
-import GitHubLogo from '../../../assets/icons/github.svg';
+import GitHubLogo from '../github-icon/github-icon';
 import { HeaderContainer, LogoContainer, NavigationContainer } from './header.style';
 
 export default function Header() {
   return (
     <HeaderContainer>
-      <LogoContainer>
-        <Link to="/">
-          <SheetsLogo width={26} height={26} />
+      <Link to="/">
+        <LogoContainer>
+          <SheetsLogo width={32} height={32} />
           <span>Sheets.ch</span>
           <span>ad</span>
-        </Link>
-      </LogoContainer>
+        </LogoContainer>
+      </Link>
       <NavigationContainer>
         <Link to="/posts">Posts</Link>
         <Link to="/projects">Projects</Link>
         <Link to="/about">About</Link>
         <a href="https://github.com/cjsheets">
-          <GitHubLogo width={26} height={26} />
+          <GitHubLogo cornerRadiusPercent={50} width={24} height={24} />
         </a>
       </NavigationContainer>
     </HeaderContainer>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import moment from 'moment';
-import config from '../../../content/config';
+import config from '../../config';
 
 interface ISEO {
   postNode?: any;

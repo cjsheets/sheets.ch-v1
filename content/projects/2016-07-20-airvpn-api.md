@@ -1,6 +1,6 @@
 ---
 title: 'AirVPN API - Python Utilities Script'
-createdDate: '2016-07-19'
+date: '2016-07-19'
 author: Chad Sheets
 tags:
   - project

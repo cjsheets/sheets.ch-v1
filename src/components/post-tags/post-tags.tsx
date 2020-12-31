@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import toKebabCase from '../../utility/toKebabCase';
+import toKebabCase from '../../utility/to-kebab-case';
 
 function PostTags({ tags }) {
   return (

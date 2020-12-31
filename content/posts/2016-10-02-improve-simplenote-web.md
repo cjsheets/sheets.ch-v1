@@ -1,7 +1,6 @@
 ---
 title: 'Improving the Simplenote Web Client'
-createdDate: '2016-08-01'
-date: "2015-05-06T23:46:37.121Z"
+date: '2016-08-01'
 author: Chad Sheets
 tags:
   - starter
@@ -9,7 +8,7 @@ tags:
 draft: false
 ---
 
- like Markdown, use Linux, and needed a note taking app that syncs with Android. Simplenote is perfect right?
+like Markdown, use Linux, and needed a note taking app that syncs with Android. Simplenote is perfect right?
 
 ### Almost Perfect...
 
@@ -23,7 +22,11 @@ Easy, create a bookmark that removes window decorations:
 Bookmark
 
 ```javascript
-javascript:void(window.open("https://app.simplenote.com","_blank","outerWidth=958,outerHeight=567,top=500,left=600,menubar=no,toolbar=no,location=no,personalbar=no,status=no,resizable"))
+javascript: void window.open(
+  'https://app.simplenote.com',
+  '_blank',
+  'outerWidth=958,outerHeight=567,top=500,left=600,menubar=no,toolbar=no,location=no,personalbar=no,status=no,resizable'
+);
 ```
 
 Done. Next?
@@ -52,9 +55,10 @@ To prevent this behavior, we need to inject a little jQuery into the browsers de
 Disable double-click
 
 ```javascript
-$("*").click(function() {  
-$("#static_content").unbind('dblclick'); }); 
-$("#view_mode_markdown").click();
+$('*').click(function () {
+  $('#static_content').unbind('dblclick');
+});
+$('#view_mode_markdown').click();
 ```
 
 Inspect Element

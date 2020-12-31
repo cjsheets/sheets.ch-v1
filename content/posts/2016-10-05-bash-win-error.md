@@ -1,7 +1,6 @@
 ---
 title: 'Fixing Bash on Windows Error: 0x80070002'
-createdDate: '2016-10-05'
-date: "2015-05-06T23:46:37.121Z"
+date: '2016-10-05'
 author: Chad Sheets
 tags:
   - starter
@@ -12,13 +11,13 @@ draft: false
 I've been testing the limits of the new Ubuntu/Bash shell on Windows and after restarting my computer it mysteriously refused to launch. Running `bash` from the command line yielded the following message:
 
 ```bash
-Error: 0x80070002  
+Error: 0x80070002
 ```
 
 After a few attempts at repair I resorted to re-installing by issuing the following commands from the command line:
 
     lxrun /uninstall /full
-    lxrun /install  
+    lxrun /install
 
 This reset the environment and deleted everything I'd done, but seemed to be the only option.
 

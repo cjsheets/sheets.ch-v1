@@ -32,6 +32,8 @@ export const Illustration = styled.section`
   font-weight: ${(props) => props.theme.fontWeightLight};
   font-size: 2.5em;
   font-weight: ${(props) => props.theme.fontWeightLight};
+  align-items: center;
+  justify-content: center;
 `;
 
 export const SubtextContainer = styled.section`
@@ -81,9 +83,17 @@ export const Card = styled.li`
 export const PostContainer = styled.section`
   flex: 1 1 auto;
   display: flex;
+`;
 
-  > div {
-    flex: 1 1 50%;
-    text-align: center;
+export const PostCell = styled.section`
+  flex: 1 1 50%;
+  min-height: 700px;
+  text-align: center;
+  margin-top: 150px;
+
+  h4 {
+    font-weight: ${(props) => props.theme.fontWeightBold};
+    color: ${(props) => props.theme.gray3};
+    margin: 30px 0 80px 0;
   }
 `;

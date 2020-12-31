@@ -7,6 +7,7 @@ import {
   CardContainer,
   HeroContainer,
   Illustration,
+  PostCell,
   PostContainer,
   SiteTitle,
   SubtextContainer,
@@ -18,7 +19,7 @@ import Lightning from '../../assets/icons/lightning.svg';
 import Pencil from '../../assets/icons/pencil.svg';
 import Code from '../../assets/icons/code.svg';
 import IconCircle from '../components/icon-circle/icon-circle';
-import { MarkdownRemarkConnection } from '../graphql-types';
+import { MarkdownRemarkConnection, MarkdownRemarkEdge } from '../graphql-types';
 import PostListing from '../components/post-listing/post-listing';
 
 interface IBlogIndex {
@@ -28,9 +29,27 @@ interface IBlogIndex {
   };
 }
 
+interface ILatestPostCell {
+  Icon: any;
+  edge: MarkdownRemarkEdge;
+  title: string;
+}
+
 export default function BlogIndex({ data }: IBlogIndex) {
   const postEdges = data.posts.edges;
   const projectEdges = data.projects.edges;
+
+  function LatestPostCell({ Icon, edge, title }: ILatestPostCell) {
+    return (
+      <PostCell>
+        <IconCircle style={{ margin: 'auto' }}>
+          <Icon />
+        </IconCircle>
+        <h4>{title}</h4>
+        <PostListing postEdge={edge} style={{ margin: '0 50px' }} />
+      </PostCell>
+    );
+  }
 
   return (
     <LayoutContainer fullScreen>
@@ -70,20 +89,8 @@ export default function BlogIndex({ data }: IBlogIndex) {
         </Card>
       </CardContainer>
       <PostContainer>
-        <div>
-          <IconCircle style={{ margin: 'auto' }}>
-            <Pencil />
-          </IconCircle>
-          <h4>Latest Posts</h4>
-          <PostListing postEdge={postEdges[0]} />
-        </div>
-        <div>
-          <IconCircle style={{ margin: 'auto' }}>
-            <Code />
-          </IconCircle>
-          <h4>Latest Projects</h4>
-          <PostListing postEdge={projectEdges[0]} />
-        </div>
+        <LatestPostCell Icon={Pencil} title="Latest Post" edge={postEdges[0]} />
+        <LatestPostCell Icon={Code} title="Latest Project" edge={projectEdges[0]} />
       </PostContainer>
       <SEO title="Chad Sheets - Web Developer" />
     </LayoutContainer>
@@ -110,6 +117,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "DD MMMM, YYYY")
             title
+            author
           }
         }
       }

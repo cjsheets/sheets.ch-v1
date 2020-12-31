@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'gatsby';
 import { MarkdownRemarkEdge } from '../../graphql-types';
 import { PostContainer, PostDate, PostTitle } from './post-listing.style';
 
@@ -22,9 +23,14 @@ export default function PostListing({ postEdge, condensed, style }: IPostListing
 
   return (
     <PostContainer style={style}>
-      <PostTitle>{frontmatter.title}</PostTitle>
+      <Link to={fields.slug}>
+        <PostTitle>{frontmatter.title}</PostTitle>
+      </Link>
       <PostDate>{`By ${frontmatter.author} on ${formattedDate}`}</PostDate>
       {excerpt}
+      <div style={{ marginTop: 20 }}>
+        <Link to={fields.slug}>Read More &rsaquo;</Link>
+      </div>
     </PostContainer>
   );
 }

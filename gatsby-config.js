@@ -1,4 +1,4 @@
-const config = require('./content/config');
+const config = require('./src/config');
 
 module.exports = {
   pathPrefix: config.pathPrefix,

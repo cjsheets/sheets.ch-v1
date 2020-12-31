@@ -1,7 +1,6 @@
 ---
 title: 'Install Vagrant + libvirt on Ubuntu 16.04'
-createdDate: '2016-10-02'
-date: "2015-05-06T23:46:37.121Z"
+date: '2016-10-02'
 author: Chad Sheets
 tags:
   - starter
@@ -13,7 +12,7 @@ Vagrant could be installed using the Ubuntu package manager: `apt-get install va
 [latest version](https://www.vagrantup.com/downloads.html) from their site and install it manually. Choose 32 or 64 bit \*.deb, download, and install with the following command:
 
 ```bash
-sudo dpkg -i vagrant_*.deb  
+sudo dpkg -i vagrant_*.deb
 ```
 
 ## Vagrant + libvirt
@@ -25,13 +24,13 @@ For use with libvirt, see the [official plugin page](https://github.com/vagrant-
 I installed the following prerequisites prior to installing the libvirt plugin:
 
 ```bash
-sudo apt-get install libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev  
+sudo apt-get install libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev
 ```
 
 Once the dependencies were installed I setup the libvirt plugin using the following command:
 
 ```bash
-vagrant plugin install vagrant-libvirt  
+vagrant plugin install vagrant-libvirt
 ```
 
 Using Vagrant
@@ -39,21 +38,21 @@ Using Vagrant
 A sample Vagrantfile input is shown below.
 
 ```bash
-    # -*- mode: ruby -*-  
+    # -*- mode: ruby -*-
     # vi: set ft=ruby :
-     
-    Vagrant.configure("2") do |config|  
+
+    Vagrant.configure("2") do |config|
       config.vm.box = "debian/jessie64"
       config.vm.provider :libvirt do |libvirt|
         libvirt.storage_pool_name = "VagrantPool"
       end
-    end  
+    end
 ```
 
 Finally, launch vagrant with the following:
 
 ```bash
-vagrant init debian/jessie64; vagrant up --provider libvirt  
+vagrant init debian/jessie64; vagrant up --provider libvirt
 ```
 
 ## Extending Available Boxes with Mutate
@@ -63,17 +62,17 @@ vagrant init debian/jessie64; vagrant up --provider libvirt
 First, we need to setup our environment with the required dependencies:
 
 ```bash
-apt-get install qemu-utils libvirt-dev ruby-dev  
+apt-get install qemu-utils libvirt-dev ruby-dev
 ```
 
 vagrant-mutate is installed as a plugin.
 
 ```bash
-vagrant plugin install vagrant-mutate  
+vagrant plugin install vagrant-mutate
 ```
 
 Finally, convert boxes with the following command:
 
 ```bash
-vagrant mutate https://atlas.hashicorp.com/debian/boxes/wheezy64/versions/7.11.2/providers/virtualbox.box libvirt  
+vagrant mutate https://atlas.hashicorp.com/debian/boxes/wheezy64/versions/7.11.2/providers/virtualbox.box libvirt
 ```
