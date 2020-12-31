@@ -1,37 +1,33 @@
-import { GatsbyLinkProps } from 'gatsby-link';
+import { GatsbyLinkProps } from 'gatsby';
 import * as React from 'react';
-import { markdownRemarkGroupConnectionConnection } from '../../../@types/graphql-types';
+import { markdownRemarkGroupConnectionConnection } from '../../graphql-types';
 
 interface ITagsdivProps extends React.HTMLProps<HTMLDivElement> {
   tags: markdownRemarkGroupConnectionConnection[];
-  Link: React.ComponentClass<GatsbyLinkProps>;
+  Link: React.ComponentClass<GatsbyLinkProps<any>>;
   tag?: string;
 }
 
-export default (props: ITagsdivProps) => {
-  return (
+export default ({ tags, tag, Link }: ITagsdivProps) => (
+  <div>
+    <div>
+      <div>Tags</div>
+    </div>
     <div>
       <div>
-        <div>
-          Tags
-        </div>
-      </div>
-      <div>
-        <div>
-          {props.tags.map((tag) => {
-            const isActive = tag.fieldValue === props.tag;
-            return (
-              <div key={tag.fieldValue}>
-                <div>
-                  <props.Link to={`/post/tags/${tag.fieldValue}/`}>
-                    {tag.fieldValue} ({tag.totalCount}) {isActive}
-                  </props.Link>
-                </div>
+        {tags.map((_tag) => {
+          const isActive = _tag.fieldValue === tag;
+          return (
+            <div key={_tag.fieldValue}>
+              <div>
+                <Link to={`/post/tags/${_tag.fieldValue}/`}>
+                  {_tag.fieldValue} ({_tag.totalCount}) {isActive}
+                </Link>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
     </div>
-  );
-};
+  </div>
+);

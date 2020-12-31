@@ -3,13 +3,13 @@ import React from 'react';
 import { MarkdownRemarkConnection } from '../graphql-types';
 import LayoutContainer from '../components/layout/layout';
 
-interface IPrivacy {
+interface IAbout {
   data: {
     allMarkdownRemark: MarkdownRemarkConnection;
   };
 }
 
-export default function Privacy({ data }: IPrivacy) {
+export default function About({ data }: IAbout) {
   const { node } = data.allMarkdownRemark.edges[0];
 
   return (
@@ -20,8 +20,8 @@ export default function Privacy({ data }: IPrivacy) {
 }
 
 export const pageQuery = graphql`
-  query PrivacyMarkdown {
-    allMarkdownRemark(filter: { fields: { slug: { eq: "/privacy" } } }) {
+  query AboutMarkdown {
+    allMarkdownRemark(filter: { fields: { slug: { eq: "/about" } } }) {
       edges {
         node {
           frontmatter {
