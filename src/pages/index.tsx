@@ -39,8 +39,10 @@ export default function BlogIndex({ data }: IBlogIndex) {
   const postEdges = data.posts.edges;
   const projectEdges = data.projects.edges;
   const loadTime =
-    window?.performance?.timing?.domContentLoadedEventEnd -
-      window?.performance?.timing?.navigationStart || 0;
+    (typeof window !== 'undefined' &&
+      window?.performance?.timing?.domContentLoadedEventEnd -
+        window?.performance?.timing?.navigationStart) ||
+    0;
   const loadString = loadTime < 1000 ? `${loadTime}ms` : `${Math.round(loadTime / 10) / 100}s`;
 
   function LatestPostCell({ Icon, edge, title }: ILatestPostCell) {
