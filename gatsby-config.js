@@ -86,6 +86,15 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
+    {
+      resolve: 'gatsby-plugin-matomo',
+      options: {
+        siteId: '2',
+        matomoUrl: 'https://logs.sheets.ch',
+        siteUrl: 'https://sheets.ch',
+        disableCookies: true,
+      },
+    },
     // ToDo: RSS Feed
   ],
 };
