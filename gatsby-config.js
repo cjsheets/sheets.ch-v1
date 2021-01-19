@@ -95,6 +95,14 @@ module.exports = {
         disableCookies: true,
       },
     },
+    {
+      resolve: '@sentry/gatsby',
+      options: {
+        dsn: 'https://7d0d7f5349c944c8a6ac9a4e9bf2c33d@o507140.ingest.sentry.io/5597817',
+        autoSessionTracking: true,
+        sampleRate: 0.7,
+      },
+    },
     // ToDo: RSS Feed
   ],
 };
